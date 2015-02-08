@@ -4,6 +4,9 @@
 require.config({
     baseUrl: 'js',
     paths : {
+        //text插件
+        text : 'lib/require-text',
+        //jQuery
         jquery : 'lib/jquery'
     }
 });
