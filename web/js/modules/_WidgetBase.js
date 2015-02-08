@@ -4,7 +4,7 @@
 define([
     'modules/_Extends',
     'modules/_Evented',
-    'modules/util'
+    'Util'
 ] , function(_Extends , _Evented , util){
 
     //组件基础类

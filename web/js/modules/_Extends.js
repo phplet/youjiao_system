@@ -2,7 +2,7 @@
  * Created by tonyjiang on 15/2/8.
  */
 define([
-    'modules/util'
+    'Util'
 ],function(util){
     var ClassBase = function(){
         this.inherited = function(){
@@ -30,11 +30,11 @@ define([
         var _extendsPrototype = {};
         if(arguments.length > 1){
             for(var i = 1,len = arguments.length ; i < len ; i++){
-                _extendsPrototype = util.mixin(_extendsPrototype , new arguments[i]);
+                _extendsPrototype = Util.mixin(_extendsPrototype , new arguments[i]);
             }
         }
-        this.prototype = util.mixin(this.prototype , _extendsPrototype);
-        return util.hitch(this , function(){
+        this.prototype = Util.mixin(this.prototype , _extendsPrototype);
+        return Util.hitch(this , function(){
             var o = new this();
             o.constructor = this;
             return o;

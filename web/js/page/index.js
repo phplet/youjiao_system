@@ -4,7 +4,7 @@
  */
 define([
     'jquery',
-    'modules/util',
+    '../modules/Util',
     'modules/_Extends',
     'modules/_WidgetBase',
     'text!./templates/index.html'
@@ -28,7 +28,7 @@ define([
         };
 
         this._initEvent = function () {
-            $(this.domNode).delegate('#btn1', 'click', util.hitch(this, this._btnClickHandler))
+            $(this.domNode).delegate('#btn1', 'click', Util.hitch(this, this._btnClickHandler))
         };
 
         this._btnClickHandler = function () {
