@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+	<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+    <title>组卷-试卷名称</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script>
+	<script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script src="../Scripts/TestPaper.js" type="text/javascript"></script>
+    <script src="../Scripts/public_base.js" type="text/javascript"></script>
+    <style type="text/css">
+        ul
+        {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            float: left;
+            font-size: 12px;
+        }
+        td
+        {
+            font-size: 12px;
+        }
+        
+        tr
+        {
+            height: 35px;
+        }
+        #ChooseClass td
+        {
+            float: left;
+            width: 80px;
+        }
+        #ulClass
+        {
+            width: 80%;
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+            float: left;
+        }
+        #ulStudent
+        {
+            width: 80%;
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+            float: left;
+            display: none;
+        }
+        .item
+        {
+            padding: 3px 0px 0px 0px;
+            border-bottom: 1px dotted #D9D7D7;
+            margin-bottom: 3px;
+        }
+        
+        .item ul.chapter
+        {
+            width: 83%;
+        }
+        
+        .item li
+        {
+            list-style: none;
+            float: left;
+            width: 32%;
+        }
+        
+        .item:last-child
+        {
+            border-bottom: 0px;
+            margin-bottom: 0px;
+        }
+        
+        .item .left
+        {
+        }
+        
+        .item .right
+        {
+            padding: 10px 0px 10px 20px;
+        }
+        .item .right h2
+        {
+            width: 100%;
+            float: left;
+            font-weight: bold;
+            padding-bottom: 3px;
+        }
+        
+        .item .right h2:not(:first-child)
+        {
+            padding-top: 10px;
+        }
+        
+        
+        li
+        {
+            list-style-type: none;
+            float: left;
+           width: 28%; 
+        }
+		
+		#book  li{
+		   list-style-type: none;
+           float: left;
+		   width: 38%; 	
+		}
+		#provinces {
+			width: 100%; 
+		}
+		#provinces li{
+			width: 23%;
+		}
+		#ZiTi label{
+			font-size:14px;
+			color:#999999;
+		}
+		#ZiTi td{
+			padding-left:50px;
+			padding-top:20px;
+		}
+		#TdBasicInformation{
+			font-size:14pz; 
+			color:#999999;
+			font-weight:700;
+		}
+		.tree li{ clear:both; width:300px;}
+    </style>
+     
+</head>
+<body class="easyui-layout">
+    <div region="center" data-options="region:'center',border:false,fit:true,doSize:true"
+        style="overflow-y: scroll; padding: 3px 3px 0px 3px;">
+        <form id='listForm'>
+        <div class="easyui-panel" title="&nbsp;&nbsp;试卷中心&nbsp;>>&nbsp;智能组卷" border="true" collapsible="false" id="cc">
+			<div style=" width:100%; height:80px; border-bottom:1px dashed black;">
+			<table id="ZiTi">
+				<tr>
+					<td id="TdBasicInformation" ><label style="color:blue;">设定试卷基本信息</label></td>
+					<td><img src='../images/green.png' style=" height:25px;" /></td>
+					<td id="TdTopicInformation"><label id="labHuanSe">设定题型信息</label></td>
+					<td><img src='../images/green.png'  style=" height:25px" /></td>
+					<td id=" TdBrowse"><label id="labYuLan">试卷浏览</label></td>
+				</tr>
+			</table>
+		</div>
+        	<div id="stup_1">
+                <div style=" margin-top:20px;">
+                     <table>
+                        <tr>
+                            <td style="width:110px;">
+                                试卷名称：
+                            </td>
+                            <td>
+                                <input type="text" id="testname" class="easyui-validatebox" data-options='required:true' />
+                                
+                            </td>
+                            <td>&nbsp;<span id="addTest" class="color_text">*必填</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                试卷类型：
+                            </td>
+                            <td>
+                                <input type="radio" value="1" name="object" checked="checked" />
+                                测试
+                                <input type="radio" value="0" name="object" />作业
+                            </td>
+                            <td>&nbsp;<span id="addTest" class="color_text">*必填</span></td>
+                        </tr>
+                      
+                    
+                        <tr class="item">
+                            <td class="left" style="width: 110px;">
+                                当前学科：
+                            </td>
+                            <td colspan="2">
+                                <input id="subjectId" type="hidden" /><span id="subjectName" style="line-height: 20px;"></span>
+                            </td>
+                            
+                        </tr>
+                     
+                        <tr class="item">
+                                <td class="left"  >
+                                    适用年级：
+                                </td>
+                                <td>
+                                    <label>学段：</label> 
+                                     <select style="width: 95px;" id="selectClassgrade" class="easyui-combobox"  editable=false panelHeight="auto">
+                                        <option value="请选择">请选择</option>
+                                    </select>
+                                    <label style=" padding-left:25px;">年级：</label>
+                                    <select style="width: 95px;" id="selectgrade" class="easyui-combobox" editable=false panelHeight="auto">
+                                        <option value="请选择">请选择</option>
+                                    </select>
+                                </td>
+                                <td>&nbsp;<span id="addTest" class="color_text">*必填</span></td>
+                            </tr>
+                            <tr class="item">
+                            <td class="left" style="width:110px;"  height="40">
+                                请选择题库：
+                            </td>
+                            <td class="left">
+                                <span><input type="radio" name="tiku_type" checked="checked"  value="1" onclick="inforadio(0);"/>平台题库&nbsp;</span>
+                               <span id="dbtype_2"><input type="radio" name="tiku_type"  value="2" onclick="inforadio(0);"/>自建库&nbsp;</span>
+                                 
+                            </td>
+                            <td>&nbsp;<span id="addTest" class="color_text">*必填</span></td>
+                         </tr>
+                     </table>
+                     <table>
+                         
+                        <tr class="item">
+                            <td class="left" style="width:110px;">
+                                请选择子题库：
+                            </td>
+                            <td class="left">
+                    <div class="tab_list_1">
+                        <div class="title_box clearfix">
+                            <div id="tab_1" class="now_focus_1 tab">同步题库</div>
+                            <div id="tab_2" class="tab">专题题库</div>
+                            <div id="tab_3" class="tab">历年真题</div>
+                        </div>
+                        
+                        <div class="con_box">
+                            <div class="now_focus_1 clearfix">
+                                <table cellpadding="0" cellspacing="0" border="0" style="padding-left:20px;">
+                                    <tr>
+                                        <td align="right">
+                                            选择版本：
+                                        </td>
+                                        <td>
+                                            <select id="booktype" name="booktype"  class="easyui-combobox" editable=false style="width:340px;"  name="12"  panelHeight="90">                               				<option value="请选择">请选择</option>
+                                                 
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            选择教材：
+                                        </td>
+                                        <td>
+                                            <select id="publisher" name="publisher"  class="easyui-combobox" editable=false style="width:340px;"   panelHeight="100">                               		<option value="请选择">请选择</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            选择章/单元：
+                                        </td>
+                                        <td>
+                                            <select id="chapter" name="chapter" class="easyui-combotree" editable=false multiple style="width:340px;" panelHeight="100">                               				 
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                     
+                            </div>
+                     
+                            <div >
+                                <table cellpadding="0" cellspacing="0" border="0" style="padding-left:20px;">
+                                    <tr>
+                                        <td align="right">
+                                            选择专题：
+                                        </td>
+                                        <td>
+                                            <select id="special" name="special"  class="easyui-combotree" editable=false  multiple style="width:340px;"  name="12"  panelHeight="100">                               				<option value="请选择">请选择</option>
+                                                 
+                                            </select>
+                                        </td>
+                                    </tr> 
+                                </table>
+                            </div>
+                            <div >
+                                <table cellpadding="0" cellspacing="0" border="0" style="padding-left:20px;">
+                                    <tr>
+                                        <td align="right">
+                                            选择省份：
+                                        </td>
+                                        <td>
+                                            <select id="province" name="province"  class="easyui-combotree" editable=false multiple style="width:340px;"   panelHeight="100">                               				<option value="请选择">请选择</option>
+                                        </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            选择年份：
+                                        </td>
+                                        <td>
+                                            <select id="yeares" name="yeares"  class="easyui-combotree" editable=false  multiple style="width:340px;"   panelHeight="100">                               				<option value="请选择">请选择</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                     
+                                </table>
+                            </div>
+                             
+                        </div>
+                   </div> 
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="DivSynchronous" style="display: none; width: 100%; ">
+                    <p>
+                        <label style="font-size: 12px;">
+                            选择教材：</label></p>
+                    <div style="width: 90%;  padding-left:120px;">
+                        <ul id="book">
+                        </ul>
+                    </div> 
+                </div>
+                <div id="Div_Type3" style="display: none;">
+                    <table style="width: 80%;">
+                        <tr class="item">
+                            <td class="left" style="width: 110px;">
+                                请选择年份：
+                            </td>
+                            <td>
+                                <ul id="year" style="width: 90%;">
+                                    
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                     <table style="width: 80%;">
+                        <tr class="item">
+                            <td class="left" style="width: 110px;">
+                                请选择省份：
+                            </td>
+                            <td>
+                                <ul id="provinces">
+                                    
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear: both; width: 80%; height:20px;"></div>
+                 <div style="clear: both; width: 80%; padding-top: 20px;">
+                    <center>
+                    	
+                        <a class="easyui-linkbutton" onclick="DivTopicReview();">下一步</a>
+                    </center>
+                </div>
+            </div>
+            
+            <!-- 下一步 -->
+            <div style=" display:none;" id="stup_2">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody class="itembox">
+                        <tr class="item">
+                            <td class="left">
+                                请选择难度：
+                            </td>
+                            <td class="right">
+                                <input type="radio" value="0"  name="difficulty" checked="checked" onclick="onchangeDifficulty(this.value)"/><label
+                                    for="Basic">全部</label>
+                                <input type="radio" value="1" name="difficulty" onclick="onchangeDifficulty(this.value)"/><label for="Medium">容易</label>
+                                <input type="radio" value="2" name="difficulty" onclick="onchangeDifficulty(this.value)"/><label for="Medium">较易</label>
+                                <input type="radio" value="3" name="difficulty" onclick="onchangeDifficulty(this.value)"/><label for="Medium">中等</label>
+                                <input type="radio" value="4" name="difficulty" onclick="onchangeDifficulty(this.value)"/><label for="Medium">较难</label>
+                                <input type="radio" value="5" name="difficulty" onclick="onchangeDifficulty(this.value)"/><label for="Medium">困难</label>
+                                 
+                            </td>
+                        </tr>
+                        <tr style=" height:25px;"> 
+                            <td>
+                                设定题数和分值：
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody class="itembox">
+                        <tr class="item" style=" height:30px;"><td class="left">第一大题题型：</td><td><select id="objective_total" name="objective_total_S" onfocus="resub(this,'_S');" style="width: 90px;" onChange="setNum('',this.value);" ></select><label  style="padding-left:30px;" >名称：</label><input type=" text" id="obj_name" size="15"/></td><td><label  style="padding-left:30px;">题数：</label><input type=" text" id="ti_num"  size="6" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" /><label style=" font-size:12px; color:red;">（最大量&nbsp;<strong><span id="ti_sums"></span></strong>&nbsp;道）</label><span id="score_name"><label  style="padding-left:25px;" >总分值：</label><input type=" text" size="6" id="score" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="5" size="14"/>分</span><a href="#" onclick="addQuetype('_S')">添加大题</a></td></tr>
+                    </tbody>
+                </table>
+                 
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody id="addQueT">
+                         
+                    </tbody>
+                </table>
+                
+                <div class="anext" style=" margin-top:15px;">
+                	<center>
+                        <a id="stup_sub" class="easyui-linkbutton">上一步</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#" id="TiXingNext" class="easyui-linkbutton" onclick="setTest()">
+                            下一步</a>
+                    </center>
+                </div>
+            </div>
+            
+        </div>
+        
+       
+        </form>
+        
+    </div>
+</body>
+</html>

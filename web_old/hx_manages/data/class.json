@@ -1,0 +1,14 @@
+{
+	"totals":239,
+	"schools":[{
+		"id":1,
+		"class_Id":"100",
+		"class_Status":"1",
+		"class_Name":"班级001",
+		"class_Teacher":"张",
+		"creat_Time":"2013-04",
+		"end_Time":"2013-06",
+		"class_StuSum":"30",
+		"c_id":"111"
+	}]
+}

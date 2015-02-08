@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+    <title>华夏教育测评_班级管理</title>
+    <link href="../themes/default/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="../themes/icon.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/Style.css" rel="stylesheet" type="text/css" />
+    <script src="../jquery-easyui-1.3.0/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../jquery-easyui-1.3.0/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.json.min.js" type="text/javascript"></script><script src="../Scripts/json2.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.easyui.theme.js" type="text/javascript"></script>
+    <script src="../Scripts/Base64.js" type="text/javascript"></script>
+    <script src="../locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="../Scripts/Common.js" type="text/javascript"></script>
+    <script src="../Scripts/CurrentClass.js" type="text/javascript"></script>
+    <style type="text/css">
+        #ClassIntroduction a
+        {
+            border-bottom: #FFFFFF;
+            display: block;
+            font-size: 12px;
+            color: #333333;
+            height: 10px;
+        }
+        #ClassIntroduction td
+        {
+            padding-left: 50px;
+            line-height: 30px;
+        }
+        
+        .studentlist .datagrid-row-selected
+        {
+            background: #CDE6C7;
+        }
+    </style>
+    <script type="text/javascript">
+       
+    </script>
+</head>
+<body class="easyui-layout">
+    <div region="center" split="true">
+        <div id="aa" class="easyui-accordion" style="width:800px;height:400px; margin:15px auto;">
+			<div title="发送新通知" style="overflow:auto;padding:10px;">
+				<table style="width:100%;">
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #E8E8E8;height:25px;">
+						通知标题:
+						</td>
+						<td style="width: 500px;text-align:left;border:1px solid #E8E8E8;height:25px;">
+							<input type="text" name="tzBt" value="" style="width:500px;"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #E8E8E8;height:25px;">
+						通知内容:
+						</td>
+						<td style="width: 500px;text-align:left;border:1px solid #E8E8E8;height:25px;">
+							<textarea type="text" name="tzCt" cos="10" rows="7" value="" style="width:500px;"/></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #E8E8E8;height:25px;">
+						显示截止日期:
+						</td>
+						<td style="width: 150px;text-align:left;border:1px solid #E8E8E8;height:25px;">
+							<input type="tzDate" name="tzDt" value="" style="width:150px;"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #E8E8E8;height:25px;">
+						通知接收班级:
+						</td>
+						<td style="width: 150px;text-align:left;border:1px solid #E8E8E8;height:25px;">
+							<input type="tzDate" name="tzDt" value="" style="width:150px;"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #E8E8E8;height:25px;">
+						通知接收班级:
+						</td>
+						<td style="width: 150px;text-align:left;border:1px solid #E8E8E8;height:25px;">
+							<input type="checkbox" name="checkbox1" value="checkbox"> A班 
+							<input type="checkbox" name="checkbox2" value="checkbox"> B班  
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #E8E8E8;height:25px;">
+						是否给家长发送短信:
+						</td>
+						<td style="width: 150px;text-align:left;border:1px solid #E8E8E8;height:25px;">
+							<input type="checkbox" name="yesTojz" value="checkbox"> 是 
+							<input type="checkbox" name="yesTojz" value="checkbox"> 否  
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="width: 100px;text-align:center;border:1px solid #E8E8E8;height:35px;">
+							<a href="javascript:void(0)" id="publish"class="easyui-linkbutton" onclick="publish_message()">发布通知</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div title="通知列表" style="overflow:auto;padding:10px;" selected>
+				<table style="width: 100%">
+					<tr style="width: 100%;">
+						<td style="width: 100px;text-align:right;">
+						通知状态：
+							<select id="MessageStatus" class="easyui-combobox" panelheight="auto" style="width: 95px;" data-options="textField: 'label',valueField: 'value'">								
+								<option value="1">显示中</option>
+								<option value="2">显示结束</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<div style="height:300px;">
+					<table id="bztt"  class="easyui-datagrid" pagination="true" autoRowHeight="false" fit="true">  
+						<thead>    
+							<tr>    
+								<th field="name1" width="200" align="center">通知标题</th>    
+								<th field="name2" width="80"  align="center">发布时间</th>    
+								<th field="name3" width="80" align="center">显示截止时间</th>    
+								<th field="name4" width="50" align="center">状态</th> 
+								<th field="name5" width="180" align="center">通知接收班</th> 
+								<th field="name6" width="50" align="center">是否发送短信</th> 
+								<th field="name7" width="100" align="center">操作</th> 
+							</tr>
+							<tbody>                                
+								
+								<tr>                               
+									<td>关于启用新作息时间的通知</td>                
+									<td>2013-03-15</td>                
+									<td>2013-03-17</td>                
+									<td>显示中</td>                             
+									<td>A班  B班</td>                             
+									<td>是</td>                             
+									<td>修改</td>                             
+								</tr>
+								<tr>                               
+									<td>关于启用新作息时间的通知</td>                
+									<td>2013-03-15</td>                
+									<td>2013-03-17</td>                
+									<td>显示中</td>                             
+									<td>A班  B班</td>                             
+									<td>是</td>                             
+									<td>修改</td>                             
+								</tr>      
+							</tbody>                         
+						</thead>   
+					</table> 
+				</div>
+			</div>
+		</div>
+    </div>
+	
+</body>
+</html>

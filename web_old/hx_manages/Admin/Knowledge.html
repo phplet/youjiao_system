@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>知识点管理</title>
+</head>
+ <style type="text/css">
+	#content{
+		padding: 5px;
+		width: 1035px;
+		height: auto;
+		border:1px solid black;
+		
+	}
+	#content_left{
+		width:300px;
+		height:auto;
+		border:1px solid black;
+		float:left;
+	}
+	#content_left_head{
+		width:auto;
+		height:auto;
+		
+	}
+	#content_right{
+		width:300px;
+		float:left;
+		border:1px solid black;
+		
+	}
+	.clear_both{
+		clear:both;
+	}
+	
+	.title{
+		font-size: 12px;
+		font-weight: normal;
+	}
+ </style>
+<body>
+	<div id="head"></div>
+	<div id="body">
+		<div id="content">
+			<div  id="content_left">
+				<div id="content_left_head">
+					<div id="c_l_h_subject">
+						<span class="title">学科</span>
+						<select id="subject">
+							<option>物理</option>
+						</select>
+					</div>
+					<div id="c_l_h_knowledge">
+						<span class="title">学段</span>
+						<select id="knowledge">
+							<option>化学</option>
+						</select>
+					</div>
+				</div>
+				<div id="content_left_body" class="title">
+					知识点树
+				</div>
+			</div>
+			<div  id="content_right">
+				<div id="content_right_head">
+					<span class="title">学科</span>
+					<select id="exam_subject">
+						<option>物理</option>
+					</select>
+					<span class="title">学段</span>
+					<select id="exam_knowledge">
+						<option>化学</option>
+					</select>
+				</div>
+			</div>
+			<div class="clear_both"></div>
+		</div>
+	</div>
+	<div id="font"></div>
+</body>
+</html>

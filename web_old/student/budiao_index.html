@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+		<title>题酷在线</title>
+        <link href="layer/skin/layer.css" type="text/css" rel="stylesheet" />
+		<link type='text/css' href='css/budiao_index.css' rel='stylesheet' /> 
+        <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+		<script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+        <script type="text/javascript" src="Js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="Js/jquery.json.min.js"></script>
+        <script type="text/javascript" src="Js/Base64.js"></script>
+        <script type="text/javascript" src="Js/sha256.js"></script>
+        <script type="text/javascript" src="Js/json2.js"></script>
+        <script type="text/javascript" src="Js/public_base.js"></script>
+        <script type='text/javascript' src="layer/layer.js"></script>
+	</head>
+    <style>
+		    .main_left{float:left;width:220px;}
+			.content_left{
+				float:none;
+				width:220px;
+			}
+			.content_lefts_img{width:220px; border-bottom:#ebebeb dotted 1px;} 
+        	.content_center{float:right;width:760px; }
+			.title_label{margin-top:20px; width:250px; font-size:18px; font-weight:bolder; color:#454545; cursor:pointer;}
+			.main_done{ text-align:center; line-height:35px; height:35px;}
+			.last_numColor{ color:#ff9c68; font-weight:bolder;}
+			.content_element_main{ height:auto;}
+			.bottom_sub_xxqx a{ color:#000; font-size:12px;}
+			.main_enter{ width:320px; margin:0 auto;}
+			
+        </style> 
+	<body>
+		
+		<div class="header_bg">	
+        <div class="header">
+            <div class="logo">
+                <a href="Index.html"><img src="images/logo_new.png"></a>
+            </div>
+            <div class="logins">
+                <div class="logins_font">
+                	<span>&nbsp;<a href="javascript:void(0);" onclick="outlogin();">退 出</a></span>
+                	<span class="icon_18_16"></span>
+                    <span>&nbsp;<a href="edit_login.html">账户设置</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="icon_13_16"></span>
+                    <span style="width:50px;">&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a id="headusername" href="javascript:void(0)">学生</a>,欢迎您！</span>
+                    <span class="icon_26_26"></span>
+                	
+                </div>
+                <span class="cleard"></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div style="height: 25px; font-size: 12px; text-align: right; display: block; padding-right:10px; color:#777777;">联系我们 : 15201117816 , QQ : 2278596726 , Email : sales001@hxnetwork.com</div>
+		<div class="content">
+        	<div class="main_left">
+            	<div class="content_lefts_img"><img src="images/budiao_logo.png" width="220" height="105"/></div>
+                <div class="content_left">
+                    <div class="nav_element" id="nav_element_template" style="display:none;"></div>
+                <div class="nav_element active_nav" style="" subject_id="1"><span class="disp_s"><span class="tongbu_span icon_33_33 web_icon_1_33"></span><span class="tongbu_span">&nbsp;高中语文</span><span class="cleard"></span></span></div><div class="nav_element" style="" subject_id="2"><span class="disp_s"><span class="tongbu_span icon_33_33 web_icon_2_33"></span><span class="tongbu_span">&nbsp;高中数学</span><span class="cleard"></span></span></div><div class="nav_element" style="" subject_id="3"><span class="disp_s"><span class="tongbu_span icon_33_33 web_icon_3_33"></span><span class="tongbu_span">&nbsp;高中英语</span><span class="cleard"></span></span></div><div class="nav_element" style="" subject_id="4"><span class="disp_s"><span class="tongbu_span icon_33_33 web_icon_4_33"></span><span class="tongbu_span">&nbsp;高中物理</span><span class="cleard"></span></span></div><div class="nav_element" style="" subject_id="5"><span class="disp_s"><span class="tongbu_span icon_33_33 web_icon_5_33"></span><span class="tongbu_span">&nbsp;高中化学</span><span class="cleard"></span></span></div><div class="nav_element" style="" subject_id="6"><span class="disp_s"><span class="tongbu_span icon_33_33 web_icon_6_33"></span><span class="tongbu_span">&nbsp;高中生物</span><span class="cleard"></span></span></div><div class="nav_element" style="" subject_id="7"><span class="disp_s"><span class="tongbu_span icon_33_33 web_icon_7_33"></span><span class="tongbu_span">&nbsp;高中地理</span><span class="cleard"></span></span></div><div class="nav_element" style="" subject_id="8"><span class="disp_s"><span class="tongbu_span icon_33_33 web_icon_8_33"></span><span class="tongbu_span">&nbsp;高中历史</span><span class="cleard"></span></span></div><div class="nav_element" style="" subject_id="9"><span class="disp_s"><span class="tongbu_span icon_33_33 web_icon_9_33"></span><span class="tongbu_span">&nbsp;高中政治</span><span class="cleard"></span></span></div></div>
+            </div>
+			<div class="content_center">
+			    <div class="top_notes">
+					<div class="top_notes_content">
+						<img src="images/budiao_top.png"/>
+					</div>
+				</div>
+				<div class="title_group">
+					<div class="title_group_content">
+						<div class="title_group_content_num">
+							<label>01</label><!-------需动态获取第几组数-------->
+						</div>
+						<div class="title_group_content_right">
+							<ul class="title_group_content_right_ul">
+								<li>
+									<div class="assessment_title">
+										<div class="assessment_title_left"></div>
+										<div class="assessment_title_right">
+											<div class="assessment_title_right_content">
+												<label>专题一 知识现代汉语普通话</label>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<ul style="margin-left:10px;" class="title_group_content_right_ul">
+								<li></li>
+							</ul>
+							<ul style="margin-left:10px;" class="title_group_content_right_ul">
+								<li></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content_right"></div>
+		</div>
+		<div class="exercise_setting" style="display:none;">
+            <div class="exercise_setting_content">
+            <span>题型：</span><select class="exercise_question_type"><option value="0">不限</option><option value="1">客观题</option><option value="2">主观题</option></select><span>难度系数：</span><select class="exercise_difficulty"><option value="0">不限</option><option value="1">容易</option><option value="2">较易</option><option value="3">中等</option><option value="4">较难</option><option value="5">困难</option></select><span>题目数量：</span><select class="exercise_count"><optio n value="5" checked="checked">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option></select></div>
+            <div style="padding-top:30px;">
+            	<input type="button" class="begin_exercise" value="开 始"/>&nbsp;&nbsp;&nbsp;&nbsp;
+            	<input type="button" class="cancel_exercise" value="取 消"/>
+          		
+            </div>
+		</div>
+		<div class=""></div>
+        <div class="clear_20"></div>
+<div class="footer_Bg">
+<div class="footer">
+    <span class="footer_font">
+        Copyright©2004-2014 ，北京华夏安业科技有限公司   All Rights Reserved
+        
+    </span>
+</div> </div>
+	</body>
+</html>

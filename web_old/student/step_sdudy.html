@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+		<title>题酷在线</title>
+        <link href="layer/skin/layer.css" type="text/css" rel="stylesheet" />
+		<link type='text/css' href='css/exercise_list.css' rel='stylesheet' /> 
+        <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+		<script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+        <script type="text/javascript" src="Js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="Js/jquery.json.min.js"></script>
+        <script type="text/javascript" src="Js/Base64.js"></script>
+        <script type="text/javascript" src="Js/sha256.js"></script>   
+        <script type='text/javascript' src="layer/layer.js"></script>
+        <script type="text/javascript" src="Js/json2.js"></script>
+        <script type="text/javascript" src="Js/public_base.js"></script>
+		<script type='text/javascript' src='Js/exerciseHandler.js'></script>
+        <script type="text/javascript" src="Highcharts/js/highcharts.js"></script>
+		<script src="Highcharts/js/highcharts-more.js"></script>
+        <script type="text/javascript" src="Highcharts/js/modules/exporting.js"></script>
+        <script type='text/javascript' src='Js/step_sdudy.js'></script>
+        <script type="text/javascript" src="Js/flexjs.js"></script>
+        
+	</head>
+    <style>
+		    .main_left{float:left;width:220px;}
+			.content_left{float:none;width:220px;}
+			.content_lefts_img{width:220px; border-bottom:#ebebeb dotted 1px;} 
+        	.content_center{float:right; width:730px; }
+			.content_center_01{float: right;width:730px; background:#e3e3e3; border-radius:5px; margin-top:20px;}
+			.title_label{margin-top:20px; width:250px; font-size:18px; font-weight:bolder; color:#454545; cursor:pointer;}
+			.main_done{ text-align:center; line-height:35px; height:35px;}
+			.last_numColor{ color:#ff9c68; font-weight:bolder;}
+			.content_element_main{ height:auto;}
+			.bottom_sub_xxqx a{ color:#000; font-size:12px;}
+			.main_enter{ width:320px; margin:0 auto;}
+			.content_element_z { background:none; border:none; height: 168px;margin: 15px;width: 700px;}
+			.pinggu_pad{ padding:10px;}
+        </style> 
+	<body >
+		<div class="header_bg">
+        <div class="header">
+            <div class="logo">
+                <a href="Index.html"><img  src="images/logo_new.png" /></a>
+            </div>
+            <div class="logins">
+                <div class="logins_font">
+                	<span>&nbsp;<a href="javascript:void(0);" onclick="outlogin();">退 出</a></span>
+                	<span class="icon_18_16"></span>
+                    <span>&nbsp;<a href="edit_login.html">账户设置</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="icon_13_16"></span>
+                    <span style="width:50px;">&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a id="headusername" href="javascript:void(0)"></a>,欢迎您！</span>
+                    <span class="icon_26_26"></span>
+                	
+                </div>
+                <span class="cleard"></span>
+            </div>
+            <div  class="clear"></div>
+        </div>
+    </div>
+    <div style="height: 25px; font-size: 12px; text-align: right; display: block; padding-right:10px; color:#777777;">联系我们 : 15201117816 , QQ : 2278596726 , Email : sales001@hxnetwork.com</div>
+		<div class='content'>
+        	<div class="main_left">
+            	<div class='content_lefts_img'><a href="./step_sdudy.html"><img src="images/web_icon_106.png" width="220" height="105" /></a></div>
+                <div class='content_left'>
+                    <div class='nav_element' id='nav_element_template' style='display:none;'></div>
+                </div>
+            </div>
+			<div class="content_center">
+            	<div align="left" style="height:115px; background:url(images/top.png) no-repeat;"><div class="my_BJ" id="my_BJ">我的笔记</div></div>
+				<div class='content_center_01'>
+                <div class='content_element_z' id='content_element_template' style='display:none;'>
+                	<div class="budiao_list">
+                        <div class="budiao_num"><span id="zhuanti_num"></span></div>
+                        <div class="budiao_bg_ccc"></div>
+                        <div class="budiao_left">
+                            <div class="title_label_z">标题一</div>
+                            <div class="Z_ceping_dj">你的测评等级是：<span id="main_done"></span></div>
+                            <div class="but_Z_cp"><a class='zhuanti_enter study_kslx' href='javascript:void(0);' Qtype="ping">测评</a><a class='zhuanti_enter study_jzlx' href='javascript:void(0);' Qtype="on_ping">继续测评</a></div>
+                        </div>
+                        <div class="budiao_center">
+                            <div class="img_xxdj"><img  src="images/big_0.png" /></div>
+                            <div class="but_Z_xxxx"><a class='zhuanti_enter study_jxxx' href='javascript:void(0);' Qtype="on_study">继续学习</a></div>
+                        </div>
+                        <div class="budiao_right">
+                           <div class="budiao_map"><span><img  src="images/dj_03.png"/><br />100人</span><span><img  src="images/dj_03.png"/><br />100人</span><span><img  src="images/dj_03.png"/><br />100人</span><span><img  src="images/dj_03.png"/><br />100人</span><span><img  src="images/dj_03.png"/><br />100人</span></div>
+                           <div style="clear:both;"></div>
+                           <div class="but_Z_xxbf"><a class='zhuanti_enter study_xxpg' href='javascript:void(0);' Qtype="pinggu">学习步伐</a></div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+					 
+				</div>
+				
+				</div>
+                <div class="cleard"></div>
+			</div>
+            <div class="cleard"></div>
+			<div class='content_right'></div>
+		</div>
+		 
+		 
+        <div class="clear_20"></div>
+<div class="footer_Bg">
+<div class="footer">
+    <span class="footer_font">
+        Copyright©2004-2014 ，北京华夏安业科技有限公司   All Rights Reserved
+        
+    </span>
+</div> </div>
+	</body>
+</html>

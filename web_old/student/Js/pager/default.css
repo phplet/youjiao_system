@@ -1,0 +1,29 @@
+.pager_container a{
+		font-family: "微软雅黑",Arial,"宋体",sans-serif;
+		font-size:14px;
+	    
+	    color: black;
+	    cursor: pointer;
+	    display: block;
+	    
+	    margin-right:10px;
+	    text-decoration: none;
+		float:left;
+	
+}
+
+.pager_container .finish_right{
+	background:rgb(181,230,29);
+}
+
+.pager_container .finish_wrong{
+	background:#B5E61D;
+}
+
+.pager_container a:hover{
+	background-color:rgb(235,231,246);
+}
+
+.pager_current{
+	background-color:rgb(222,216,240);
+}

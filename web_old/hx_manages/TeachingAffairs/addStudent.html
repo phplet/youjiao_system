@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Teaching_addStudent.js"></script>
+      
+</head>
+ 
+<body style="padding:5px;"   >
+    
+    <div style="border:#8DB2E3 solid 1px; height:auto; font-size:12px; padding-bottom:20px;">
+        <div class="newstitle">
+             &nbsp;&nbsp;班级与学生管理&nbsp;>>&nbsp;新增学生
+        </div>
+        <div id="SerToolBar">
+           
+           <div class="hx_Schooltop">
+                
+               <ul >
+                   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+                   <li class="hx_Schooltop_Scname">
+                        学校名称：<span class="hx_text001">华夏学校</span>
+                   </li>
+                   <li class="hx_Schooltop_Scname">
+                        校区名称：<span class="hx_text001">华夏校区</span>
+                   </li>
+                     
+                </ul>
+                
+          </div>
+          
+        </div>
+  		<div class="addclassform" >
+              <form id="stuForm"> 
+               
+               <ul>
+                <!--<li style="padding-left:150px;font-size:14px; ">新 建 班 级</li>-->
+                <li style="height:20px;">
+                	<div>
+                    	<div class="text_float addclasstitle">学号ID：</div>
+                    	<div class="text_float addclasstext">hx_0000001</div>
+                	</div>
+                    <div class="cleared"></div>
+                  
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">用户名：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="stuUName" name="stuUName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="stuUName_Ms" class="color_text text_float stuForm">&nbsp;请输入字母和数字组合！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">姓名：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="stuUName" name="stuUName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="stuUName_Ms" class="color_text text_float stuForm">&nbsp;请输入2-4位中文汉字！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">性别：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="stusex"  type="radio" name="stusex" value="1" checked="checked"/>&nbsp;男&nbsp;
+                            <input id="stusex" type="radio" name="stusex" value="2"/>&nbsp;女&nbsp;
+                        </div>
+                        
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">邮箱：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="stuEmail" name="stuEmail" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="stuEmail_Ms" class="color_text text_float stuForm">&nbsp;请输入正确的邮箱！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">当前年级：</div> 
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<select id="classstudys" name="classstudys"  class="easyui-combobox" style="width:187px;" required  name="12"  panelHeight="auto">
+                                <option value="0">请选择</option>
+                                <option value="1">小学</option>
+                                <option value="2">初中</option>
+                                <option value="3">高中</option>
+                            </select>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="classstudys_Ms" class="color_text text_float stuForm">&nbsp;当前年级不能为空！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">在读学校：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="schoolName" name="schoolName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="schoolName_Ms" class="color_text text_float stuForm">&nbsp;请输入学校名称！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">家长联系方式：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="stuTel" name="stuTel" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="stuTel_Ms" class="color_text text_float stuForm">&nbsp;请输入11位手机号码！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                  
+                <li style="height:auto;">
+                	 <div class="tab_list">
+                          <div class="title_box clearfix">
+                              <div class="now_focus tab">加入大班</div>
+                              <div class="tab">加入1对1</div>
+                          </div>
+                          
+                          <div class="con_box">
+                              <div class="now_focus clearfix">
+                                  <span >
+                                      <span class="text_float addclasstitle">选择班级：</span>
+                                      <span id="class_001" class="text_float" style="padding-left:10px;">
+                                          <select id="stuClass" name="stuClass" class="easyui-combobox" style="width:187px;"  name="12"  panelHeight="100">
+                                              <option value="请选择">请选择</option>
+                                              <option value="1">班级001</option>
+                                              <option value="2">班级002</option>
+                                          </select>
+                                      </span>
+                                      
+                                  </span>
+                                   
+                              </div>
+                       
+                              <div >
+                                  <span >
+                                          <span class="text_float addclasstitle">教师选派：</span>
+                                          <span  class="text_float" style="padding-left:10px;">
+                                              <dl id="addteasub" style=" margin:0px; padding:0px; list-style:none;" >
+                                                  <dt style="height:20px;">
+                                                          1.学科&nbsp;<select id="classSubjects" name="classSubjects" onchange="changesub(this.value,'classTeacher');" style="width:100px;"  name="12" >
+                                                      </select>
+                                                      &nbsp;教师&nbsp;
+                                                      <select id="classTeacher_s" name="classTeacher_s" style="width:100px;"  name="12" >
+                                                          <option value="请选择">请选择</option>
+                                                      </select>&nbsp;&nbsp;&nbsp;
+                                                     <a onclick="addteasub();">添加一行</a>
+                                                  </dt>
+                                                   
+                                              </dl>
+                                          </span>
+                                          <span class="cleared"></span>
+                                    </span>
+                              </div>
+                          </div>
+                      </div>
+                 
+
+                	 
+                	<!--<div >
+                    	<div class="text_float addclasstitle">教师选派：</div>
+                        <div  class="text_float addclasstext addclassform_left">
+                            <dl id="addteasub" style=" margin:0px; padding:0px; list-style:none;" >
+                                <dt style="height:20px;">
+                                        1.学科&nbsp;<select id="teacherSubjects" name="teacherSubjects"   style="width:100px;"  name="12" >
+                                        <option value="1">数学001科目</option>
+                                        <option value="2">禁用</option>
+                                    </select>
+                                    &nbsp;教师&nbsp;
+                                    <select id="teacherSubjects" name="teacherSubjects"   style="width:100px;"  name="12" >
+                                        <option value="1">数学001科目</option>
+                                        <option value="2">禁用</option>
+                                    </select>&nbsp;&nbsp;&nbsp;
+                                   <a href="#" onclick="addteasub();">添加一行</a>
+                                </dt>
+								 
+                    		</dl>
+                        </div>
+                    	<div class="cleared"></div>
+                    </div>-->
+                    
+                     
+                </li>
+                 
+                <li>&nbsp;</li>
+                <li style=" height:30px; line-height:30px; padding-left:150px;">
+							<a href="#" class="easyui-linkbutton"   data-options="iconCls:'icon-ok'">登陆</a>&nbsp;&nbsp;
+                            <a href="#" class="easyui-linkbutton"   data-options="iconCls:'icon-cancel'">取消</a>
+                </li>
+                </ul>
+                <div class="cleared"></div>
+                 
+              </form>
+            </div>
+     </div>
+ 
+</body>
+</html>
+ 

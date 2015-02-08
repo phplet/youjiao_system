@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>欢迎登录-教育测评</title>
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="themes/icon.css" />
+    <link href="layer/skin/layer.css" type="text/css" rel="stylesheet" />
+    <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+	<script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+    <script type='text/javascript' src="layer/layer.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.json.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="Scripts/Base64.js"></script>
+    <script type="text/javascript" src="Scripts/sha256.js"></script>
+    <script type="text/javascript" src="locale/easyui-lang-zh_CN.js"></script>
+	 
+    <script type="text/javascript" src="Js/jquery.ui.draggable.js"></script>
+	<script type="text/javascript" src="Js/confirmjs.js"></script>
+     <script type="text/javascript" src="Scripts/jquery.Plug.js"></script>  
+      
+   
+</head>
+<body>
+    <div id="getpassworddiv" class="easyui-dialog" title="找回密码" style="width: 400px; height: 150px; padding: 5px;" minimizable="false" maximizable="false" resizable="false" collapsible="false" closable="false" draggable="true" shadow="true" modal="true">
+        <table style="width:100%; height:100%">
+            <tr>
+                <td align="center" align="center">
+                    <form id="getpasswordform">
+                      登录邮箱：<input type="text" id="username" name="username" style="width: 200px;" class="easyui-validatebox" required="true" validtype="email" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#getpassworddiv').dialog({
+            buttons: [{
+                text: '上一步',
+                handler: function () {
+                    window.location.href = '../index.html';
+                }
+            }, {
+                text: '下一步',
+                handler: function () {
+
+                    if (!$("#getpasswordform").form('validate')) return;
+
+                    $.messager.progress({'text':'系统正在发送邮件'});
+
+                    var token = { "username": $('#username').val() };
+					 
+                    token = Base64.encode($.toJSON(token));
+
+                    $.ajax({
+                        type: "GET",
+                        dataType: "text",
+                        url: "/restAPI/user/getPassword?r=" + $.getRom(),
+                        beforeSend: function (request) {
+                            request.setRequestHeader("Authorization", "Digest " + token);
+                        },
+                        success: function () {
+                            $.messager.progress('close');
+                            $.remind('我们已向您的邮箱发送了重置密码的邮件，请及时查看！<br/>点击确定按钮返回登录界面。', function () {
+                                window.location.href = '../index.html?r=' + $.getRom();
+                            });
+                        },
+                        error: function (result) {
+                            $.messager.progress('close');
+                            if(result.status=='401'){
+								layer.alert('账号在别的地方登录，点击确认从新登录！', 8,'温馨提示',function(){
+									clearcookie();
+							});
+							}else{
+								layer.alert('加载数据失败！', 8,'温馨提示');	
+							}
+                        }
+                    });
+                }
+            }]
+        });
+    });
+</script>

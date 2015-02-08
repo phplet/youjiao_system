@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title></title>
+     
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script src="../Scripts/TestNed.js" type="text/javascript"></script>
+    <script src="../Scripts/public_base.js" type="text/javascript"></script>
+</head>
+<body  style="padding:5px;" >
+    
+    <div style="border:#8DB2E3 solid 1px; height:auto; font-size:12px;">
+        <div class="newstitle" id="test_type">
+             &nbsp;&nbsp;试卷中心&nbsp;>>&nbsp;手动组卷&nbsp;>>&nbsp;组卷成功
+        </div>
+        <div style="padding:10px;">
+        	<p align="center">
+            	<span id="bluidtypes">手动</span>组卷完成，感谢您使用华夏优教组卷系统。
+            </p><br />
+            <p align="center">
+            	<a class="easyui-linkbutton" onclick="testCenter();">试卷中心</a>&nbsp;&nbsp;
+                <a id="exam_type_admission" class="easyui-linkbutton" onclick="sendTest();">测评派送</a>&nbsp;&nbsp;
+                <a class="easyui-linkbutton" onclick="setWord();">下载试卷</a>&nbsp;&nbsp;
+            </p>
+        </div>
+    </div>
+     
+</body>
+</html>

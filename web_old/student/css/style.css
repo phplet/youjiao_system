@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+body 
+{margin:0px; padding:0px;font-family:Microsoft YaHei,'微软雅黑','宋体';}
+img{ margin:0px; padding:0px; border:0px; }
+ul{ margin:0px; padding:0px; list-style-type:none;}
+a{ text-decoration:none}
+a:hover{text-decoration:none}
+.clear{ clear:both;}
+.clear_10{ clear:both; padding-top:10px;}
+.clear_20{ clear:both; padding-top:50px;}
+.header_bg{ width:100%; background:url(../images/header_bg.png); height:100px;}
+.header{width:1000px; margin:0 auto; height:100px;}
+.logo{ float:left; width:450px; height:100px; text-align:left;}
+.logins{ float:right; width:520px; padding-top:45px; text-align:right;}
+.logins_font{font-size:14px; color:#333;line-height:26px;}
+.logins_font span{ float:right; color:#FFF;}
+#headusername{ color:#FFF;}
+.logins_font a{font-size:14px; color:#9bdae9; text-decoration:none;}
+.home_header_bg{ width:100%; height:80px;}
+.home_header{width:1000px; margin:0 auto; height:80px;}
+.home_logo{ float:left; width:450px; height:80px; text-align:left;}
+.home_logins{ float:right; width:520px; text-align:right;}
+.home_logins_font{font-size:14px; color:#333;line-height:26px; padding-top:28px;}
+.home_logins_font span{ float:right; color:#777777;}
+.home_logins_font a{font-size:14px; color:#777777; text-decoration:none;}
+
+
+.banner{ width:100%; height:485px; background:url(../images/banner_bg.png);}
+.banner_div{ width:979px; height:485px; margin:0 auto;}
+ 
+.mains{ width:1000px;  margin:0 auto; }
+.drw_img{ height:125px; width:1000px; background:url(../images/line_bg.png) bottom repeat-x;}
+.aboutUs{padding-right:20px;}
+.product_list{width:1000px; padding-top:20px;}
+.product_list ul{  display:inline-table; padding:15px 5px 15px 5px;}
+.product_list_ul_li{ float:left; width:337px; height:210px; text-align:center;}
+.product_list_ul_li_side{ float:left; width:315px; height:210px; text-align:center;}
+.product_img_01{ width:315px; height:183px; background:url(../images/home_pro_bg.png) center no-repeat;}
+.product_img_02{ width:315px; height:183px; background:url(../images/home_pro_bg.png) center no-repeat;}
+.product_img_03{ width:315px; height:183px; background:url(../images/home_pro_bg.png) center no-repeat;}
+.product_img_04{ width:315px; height:183px; background:url(../images/home_pro_bg.png) center no-repeat;}
+.product_img_05{ width:315px; height:183px; background:url(../images/home_pro_bg.png) center no-repeat;}
+.product_img_06{ width:315px; height:183px; background:url(../images/home_pro_bg.png) center no-repeat;}
+.product_img_07{ width:315px; height:183px; background:url(../images/home_pro_bg.png) center no-repeat;}
+.product_img_08{ width:315px; height:183px; background:url(../images/home_pro_bg.png) center no-repeat;}
+.product_img_09{ width:315px; height:183px; background:url(../images/home_pro_bg.png) center no-repeat;}
+.product_img_s{ cursor:pointer; width:315px; height:183px; background:url(../images/home_pro_bg.png) center no-repeat;}
+ 
+.proT_main{ padding:20px 0px 0px 35px;}
+.proT_img{float:left; width:50px;}
+.proT_title{float:left; padding-left:30px; font-size:26px; color:#0090b2; font-weight:bolder; line-height:46px;}
+.proT_li{line-height:26px; padding-left:115px; text-align:left; padding-top:5px;}
+.proT_li_w{line-height:26px; padding-left:80px; text-align:left; padding-top:5px;}
+.proT_span{ display:block; font-size:14px; color:#1e1e1e; }
+
+
+.mains_c{background-color:#d6f9ff;}
+.sider{ float:left; width:130px;}
+.contents{ float:right; width:914px;}
+
+
+/*登录css*/
+.Login_ct{ padding-left:70px;}
+.Login_ct_Title{ font-size:25px; letter-spacing:2px; line-height:30px; color:#0090b2; padding-bottom:20px;}
+.Login_user{ padding:10px 0px 10px 20px; color:#333; }
+.Login_user_1{ padding:30px 0px 10px 20px; color:#333; }
+.userinput{ height:30px; width:300px; line-height:30px; border:#CCC solid 1px;border-radius: 3px;behavior: url(ie-css3.htc);}
+.links_ul{ width:959px; border-top:#CCC solid 1px; padding-left:20px; padding-right:20px;}
+.links_ul ul{ float:left; width:120px; margin-top:30px; }
+.li_noborder{ border-right:none; font-size:16px;}
+.links_ul_li{ width:100px; font-size:12px; line-height:25px; color:#333; font-size:16px;border-right:#CCC dashed 1px;}
+
+.links_ul ul li a{ color:#999; font-size:14px;}
+.footer_Bg{ width:100%; height:80px; background:url(../images/footer_bg.png);}
+.footer{ text-align:center;padding-top:30px;}
+.footer_font{ font-size:12px; line-height:25px; color:#FFF;}

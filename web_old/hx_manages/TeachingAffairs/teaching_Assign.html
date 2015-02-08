@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+     
+    <script type="text/javascript" src="../Scripts/Teaching_Assign.js"></script>
+     
+</head>
+ 
+<body  style="padding:5px;" >
+    
+    <div style="border:#8DB2E3 solid 1px; height:auto; font-size:12px;">
+        <div class="newstitle">
+             &nbsp;&nbsp;班级与学生管理&nbsp;>>&nbsp;教师选派管理
+        </div>
+        <div id="SerToolBar">
+           
+           <div class="hx_Schooltop">
+                
+               <ul >
+                   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+                   <li class="hx_Schooltop_Scname">
+                        学校名称：<span class="hx_text001">华夏学校</span>
+                   </li>
+                   <li class="hx_Schooltop_Scname">
+                        校区名称：<span class="hx_text001">华夏校区</span>
+                   </li>
+                     
+                </ul>
+                
+          </div>
+          
+        </div>
+  		<div class="addclassform" >
+              <form id="TeacherForm"> 
+              <input id="hiddenteacherid" type="hidden" />
+               <ul>
+                <!--<li style="padding-left:150px;font-size:14px; ">新 建 班 级</li>-->
+                <li style="height:20px;">
+                	<div>
+                    	<div class="text_float addclasstitle">班级ID：</div>
+                    	<div class="text_float addclasstext">hx_0000001</div>
+                	</div>
+                    <div class="cleared"></div>
+                  
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">班级名称：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<span>A班</span>
+                        </div>
+                        
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                
+                 
+                <li>
+                	<div style="clear:both;" >
+                    	<div class="text_float addclasstitle">教师选派：</div>
+                        <div  class="text_float addclasstext addclassform_left">
+                            <dl id="addteasub" style=" margin:0px; padding:0px; list-style:none;" >
+                                <dt style="height:20px;">
+                                        1.学科&nbsp;<select id="teacherSubjects" name="teacherSubjects"   style="width:100px;"  name="12" >
+                                        <option value="1">数学001科目</option>
+                                        <option value="2">禁用</option>
+                                    </select>
+                                    &nbsp;教师&nbsp;
+                                    <select id="teacherSubjects" name="teacherSubjects"   style="width:100px;"  name="12" >
+                                        <option value="1">数学001科目</option>
+                                        <option value="2">禁用</option>
+                                    </select>&nbsp;&nbsp;&nbsp;
+                                   <a href="#" onclick="addteasub();">添加一行</a>
+                                </dt>
+								 
+                    		</dl>
+                            <dl id="addteasub" style=" margin:0px; padding:0px; list-style:none;" >
+                                <dt style="height:20px;">
+                                        1.学科&nbsp;<select id="teacherSubjects" name="teacherSubjects"   style="width:100px;"  name="12" >
+                                        <option value="1">数学001科目</option>
+                                        <option value="2">禁用</option>
+                                    </select>
+                                    &nbsp;教师&nbsp;
+                                    <select id="teacherSubjects" name="teacherSubjects"   style="width:100px;"  name="12" >
+                                        <option value="1">数学001科目</option>
+                                        <option value="2">禁用</option>
+                                    </select>&nbsp;&nbsp;&nbsp;
+                                   <a href="#" onclick="addteasub();">添加一行</a>
+                                </dt>
+								 
+                    		</dl>
+                            <dl id="addteasub" style=" margin:0px; padding:0px; list-style:none;" >
+                                <dt style="height:20px;">
+                                        1.学科&nbsp;<select id="teacherSubjects" name="teacherSubjects"   style="width:100px;"  name="12" >
+                                        <option value="1">数学001科目</option>
+                                        <option value="2">禁用</option>
+                                    </select>
+                                    &nbsp;教师&nbsp;
+                                    <select id="teacherSubjects" name="teacherSubjects"   style="width:100px;"  name="12" >
+                                        <option value="1">数学001科目</option>
+                                        <option value="2">禁用</option>
+                                    </select>&nbsp;&nbsp;&nbsp;
+                                   <a href="#" onclick="addteasub();">添加一行</a>
+                                </dt>
+								 
+                    		</dl>
+                        </div>
+                    	<div class="cleared"></div>
+                    </div>
+                    
+                    <!--<span class="color_text">*</span><span id="userSubjects_Ms" class="color_text">&nbsp;学科不能为空！</span>-->
+                </li>
+                 
+                <li>&nbsp;</li>
+                <li style=" height:30px; line-height:30px; padding-left:150px;">
+							<a href="#" class="easyui-linkbutton"   data-options="iconCls:'icon-ok'">登陆</a>&nbsp;&nbsp;
+                            <a href="#" class="easyui-linkbutton"   data-options="iconCls:'icon-cancel'">取消</a>
+                </li>
+                </ul>
+                <div class="cleared"></div>
+                 
+              </form>
+            </div>
+        <div style="border:#ccc solid 1px; margin:10px;">
+         	<div style="background:#efefef; height:30px; padding-left:15px; font-weight:bolder; color:#416aa3; line-height:30px;"> 
+            	<span>教师选派日志</span>
+          	</div>
+        	<div class="table_School_title">
+                  <ul>
+                      <li class="table_text_001 table_text_title" >序列号</li>
+                      <li class="table_text_002 table_text_title" >日期</li>
+                      <li class="table_text_003 table_text_title" style="width:500px;" >改变记录</li>
+                      
+                  </ul>
+                 
+                </div>
+                <div class="cleared"></div>
+                
+                <div class="table_School_ct">
+                  <ul >
+                      <li class="table_text_001 table_text">1</li>
+                      <li class="table_text_002 table_text">@163.com</li>
+                      <li class="table_text_003 table_text" style="width:500px;">吴教师</li>
+                      
+                  </ul>
+                  <div class="cleared"></div>
+                  <ul >
+                      <li class="table_text_001 table_text">2</li>
+                      <li class="table_text_002 table_text">@163.com</li>
+                      <li class="table_text_003 table_text" style="width:500px;">吴教师</li>
+                       
+                  </ul>
+                  <div class="cleared"></div>
+                  <ul >
+                      <li class="table_text_001 table_text">3</li>
+                      <li class="table_text_002 table_text">@163.com</li>
+                      <li class="table_text_003 table_text" style="width:500px;">吴教师</li>
+                       
+                  </ul>
+                  <div class="cleared"></div> 
+                </div>
+        </div>
+     </div>
+ 
+</body>
+</html>
+ 

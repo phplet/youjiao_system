@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏教育测评_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script>
+	<script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Big_Classes_Management.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    
+     
+</head>
+<body >
+ 
+<div style="padding: 5px; ">
+ 	 <div class="text_border">
+     	<div class="newstitle">
+             &nbsp;&nbsp;班级与学生管理&nbsp;>>&nbsp;<script type="text/javascript">document.write(public_Bigclass_name)</script>管理&nbsp;>>&nbsp;当前班级
+        </div>
+        <div style="padding: 10px; display:inline-block;width:98%;">
+           <!--班级列表 -->
+           <div>
+           		<ul id="classes_list">
+                	 
+                </ul>
+                <div class="cleared"></div>
+                
+           </div> 
+           <div class="cleared"></div>
+            
+        </div>
+     </div>  
+</div>
+
+<div id="teaching_Note"  style="display:none; padding:0px 0px 0px 10px;"><!--教学备注-->
+         <div style="line-height:25px; padding:10px 0px 10px 0px;" id="note_CZC">忧才学校 大钟寺校区 中考拔优班  教学备注</div>
+         <div style="padding-bottom:10px;">
+         		<span style="line-height:25px;">请填写教学备注:</span><br />
+                <input type="text" id="note_id" hidden="true" />
+            	<textarea id="note_content_id" cols="43" rows="2"></textarea>　　<a id="addnote" class="easyui-linkbutton" data-options="iconCls:'icon-add'" >保存备注</a>
+
+         </div>
+         <div style="border:#ccc solid 1px; width:500px;">
+         	
+    		<div class="table_School_title">
+                  <ul>
+                      <li class="table_text_001 table_text_title" >备注时间</li>
+                      <li class="table_text_002 table_text_title" >备注人</li>
+                      <li class="table_text_003 table_text_title" >备注内容</li>
+                      <li class="table_text_004 table_text_title" >操作</li>
+                  </ul>
+                 
+                </div>
+                <div class="cleared"></div>
+                <div class="table_School_ct" style="height:140px; overflow:scroll;" id="note_lists">
+                   
+                </div>
+        	</div>  
+         </div>
+</div>  
+         
+</body>
+</html>

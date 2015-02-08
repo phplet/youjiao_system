@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Select_School_P.js"></script>
+    
+<style>
+	.datagrid-btable tr{ height:35px;}
+</style>
+</head>
+<body class="easyui-layout">
+	<div id="SerToolBar">
+    
+           <div class="hx_Schooltop" >
+               <ul>
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	   <li class="hx_Schooltop_Scname">
+                   		学校名称：<span class="hx_text001">华夏学校</span>
+                   </li>
+                   <li class="hx_Schooltop_Scname">
+                   		校区：<span class="hx_text001">华夏校区</span>
+                   </li>
+                   <li class="hx_Schooltop_enable">
+                   		学科：<span>
+                        		<select id="sunbject" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto">
+									<option value="1">数学</option>
+									<option value="2">英语</option>
+								</select>
+                              </span>
+                   </li>
+                   <li class="hx_Schooltop_enable">
+                   		状态：<span>
+                        		<select id="mobile" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto">
+									<option value="1">启用</option>
+									<option value="2">禁用</option>
+								</select>
+                              </span>
+                   </li>
+                   <li class="hx_Schooltop_name">
+                       姓名：<input id="SchoolText" class="easyui-validatebox" type="text" style="width:80px;" value="请输入姓名"/>
+                   </li>
+                   <li  class="hx_Schooltop_search_sel">
+                       <a id="BtnSearch" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>  
+                   </li>
+                    
+                </ul>
+          </div>
+        </div>
+    <div id="School_P" data-options="region:'center',border:false" style="padding: 5px;">
+ 	 
+        <div class="easyui-datagrid" id="Select_School_p" ></div>	
+         
+        
+ </div>
+</body>
+</html>

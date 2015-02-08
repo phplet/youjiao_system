@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title></title>
+    <style type="text/css">
+        /*<![CDATA[*/
+        ul
+        {
+           margin:0px;
+            padding: 0px;
+            width: 98%;
+            margin-top: 4px;
+          list-style-type:none;
+        }
+        li
+        {
+
+            width: 100%;
+            margin-top:5px;
+  
+        }
+        .txt
+        {
+            padding: 4px;
+            background-color:#fedcbd;
+        }
+        .opDiv
+        {
+            background-color: #FFCC00;
+            text-align: right;
+        }
+        
+        /*]]>*/
+		#PaperTitle td{
+			padding-left:35px;
+			padding-top:25px;
+		}
+		#tabsend td{
+			padding-left:100px;
+		}
+		#DivComplete label{ 
+			font-size:14px;
+		}
+		.addTest_types{padding:5px 0px 10px 10px; background:#CCC; }
+		.addTest_types ul li{ float:left; width:140px;}
+		#newQues_list{ padding:10px;}
+		#newQues_list .answer{line-height:25px; padding:10px; background:#00cc33;}
+		#divPage{padding-top:10px; width:450px; margin:0 auto; text-align:center;}
+		#divPage ul li{ width:25px; height:25px; line-height:25px; float:left; text-align:center; background-color:#CCC; margin:0px 5px 0px 5px;}
+		#divPage ul li a:hover{width:25px; height:25px;line-height:25px; text-align:center;  background-color:#6C3; display:block;}
+		.on a{width:25px; height:25px;line-height:25px; text-align:center;  background-color:#F00; display:block;}
+    </style>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script src="../Scripts/public_base.js" type="text/javascript"></script>
+    <script src="../Scripts/ShouDoPaperSort.js" type="text/javascript"></script>
+    
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false" style="padding: 5px;">
+		<div id="papercontent">
+			<div class="easyui-panel" title="手动排序" border="true" collapsible="false">
+				<div style=" width:100%; height:65px;  border-bottom:1px dashed  black; ">
+					<table id="PaperTitle">
+						<tr>
+							<td>
+                                <label>试卷标题：</label>
+                                <label id="test_name" class="text_blue"></label>&nbsp;&nbsp;
+                                <label>测评类型：</label>
+                                <label id="test_type" class="text_blue"></label>&nbsp;&nbsp;
+                                <label>当前学科：</label>
+                                <label id="subject_id" class="text_blue"></label>&nbsp;&nbsp;
+                                <label>适用年级：</label>
+                                <label id="grade_id" class="text_blue"></label>&nbsp;&nbsp;
+                                <label>试题难易度：</label>
+                                <label id="difs" class="text_red"></label>&nbsp;&nbsp;
+                                <label id="test_sorce_name">总分：</label>
+                                <label id="test_sorce" class="text_red"></label>
+                                
+                            </td>
+						</tr>
+					</table>
+				</div>
+				<div id="test">
+				</div>
+			</div>
+			<center>
+            
+				<div style="width:550px; padding-top:30px; margin:0 auto;">
+					<div style=" float:left;" >
+						<a id="stepup" class="easyui-linkbutton" onclick="stepup();" >上一步</a>&nbsp;<label id="test_back"><a class="easyui-linkbutton" href="./GroupRollCenter.html">返 回</a>&nbsp;&nbsp;</label>
+					</div>
+					<div style=" float:right;">
+                    	<a class="easyui-linkbutton"   onclick="AnSave();">保存</a>
+                         
+					</div>
+			   </div>
+		   </center>
+		</div>
+		<!-- <div id="DivComplete" style=" display:none;">
+			<div style=" height:100px;"></div>
+			<center>
+				<div style=" height:100px;">
+					<label>  同步题库智能组卷完成，感谢您使用华夏优才智能组卷功能模块！</label>
+				</div>
+			</center>
+			<div style=" width:680px;  margin:0 auto;">
+				<table id="tabsend">
+					<tr>
+						<td><a href="#" class="easyui-linkbutton"  onclick="Return();">返回试卷中心</a></td>
+						<td><a href="#" class="easyui-linkbutton" onclick="ToSend();">测评派送</a></td>
+						<td><a href="#" class="easyui-linkbutton" onclick="GenerateWord();">生成word</a></td>
+					</tr>
+				</table>
+			</div>
+		</div> -->
+	</div>
+    
+    <div class="easyui-dialog" data-options="title:'报错',closed:true" style="width: 500px;
+            height: 300px;" id="divError">
+            <center>
+                <p>
+                    <label style="line-height: 50px; fond-size: 15px;">
+                        题目报错</label></p>
+            </center>
+            <center>
+                <textarea id="ErrorReason" cols="20" rows="2" style="width: 400px; height: 120px;
+                    background-color: #cde6c7"></textarea>
+                <p style="padding-top: 20px;">
+                 
+                    <a class="easyui-linkbutton" onclick='ErrorOK();' >确定</a> <a class="easyui-linkbutton" style="padding-left: 70px;" onclick='ErrorCancel();'>取消</a>
+                </p>
+            </center>
+    </div>
+    <div id="addTest" >
+    	<div class="addTest_types">
+        	<ul >
+            	<li id="tt_li" >
+                	数据类型：<select id="tiku_type" name="tiku_type"  class="easyui-combobox" editable=false style="width:70px;"  name="12"  panelHeight="90">                         <option value="请选择">请选择</option>               	 
+                    </select>
+                </li>
+                <li id="tb_li">
+                	题库类型：<select id="tiku_bank" name="tiku_bank"  class="easyui-combobox" editable=false style="width:70px;"  name="12"  panelHeight="90">                         <option value="请选择">请选择</option>               	 
+                    </select>
+                </li>
+                <li id="bo_li">
+                	版本类型：<select id="booktype" name="booktype"  class="easyui-combobox" editable=false style="width:70px;"  name="12"  panelHeight="90">                         <option value="请选择">请选择</option>               	 
+                    </select>
+                </li>
+                <li id="pr_li" style=" width:180px;">
+                	真题省份：<select id="province" name="province"  class="easyui-combotree" editable=false  multiple style="width:110px;"  name="12"  panelHeight="90">                         <option value="请选择">请选择</option>               	 
+                    </select>
+                </li>
+                <li id="pub_li" style=" width:260px;">
+                    教材类型：<select id="publisher" name="publisher"  class="easyui-combobox" editable=false style="width:190px;"  name="12"  panelHeight="90">                         <option value="请选择">请选择</option>               	 
+                    </select>
+                </li>
+                <li id="chapters_li" style=" width:360px;">
+                    同步章节：<select id="chapter" name="chapter" class="easyui-combotree" editable=false multiple style="width:300px;" panelHeight="100">                    	 
+                    </select>
+                </li>
+                <li id="specials_li" style=" width:360px;">
+                    专题类型：<select id="special" name="special" class="easyui-combotree" editable=false multiple style="width:300px;" panelHeight="100">                    	 
+                    </select>
+                </li>
+                <li id="yeares_li" style=" width:180px;">
+                    真题年份：<select id="yeares" name="yeares" class="easyui-combotree" editable=false multiple style="width:110px;" panelHeight="100">                    	 
+                    </select>
+                </li>
+                <li style="width:60px; float:right; margin-right:10px;"><a id="seach_Ques" class="easyui-linkbutton l-btn">查询</a></li>
+            </ul>
+            <div class="cleared"></div>
+            
+        </div>
+        
+        <div id="newQues_list">
+        </div>
+        
+        <div id="divPage">
+        </div>
+    
+    </div>
+    
+</body>
+</html>

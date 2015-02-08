@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Teaching_addClass.js"></script>
+ <style>
+ .addclasstitle{width:100px;text-align:right; padding-right:10px;}
+ </style>    
+</head>
+ 
+<body  style="padding:5px;" >
+    
+    <div style="border:#8DB2E3 solid 1px; height:auto; font-size:12px;">
+        <div class="newstitle">
+             &nbsp;&nbsp;班级与学生管理&nbsp;>>&nbsp;新建班级
+        </div>
+        <div id="SerToolBar">
+           
+           <div class="hx_Schooltop">
+                
+               <ul >
+                   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+                   <li class="hx_Schooltop_Scname">
+                        学校名称：<span class="hx_text001">华夏学校</span>
+                   </li>
+                   <li class="hx_Schooltop_Scname">
+                        校区名称：<span class="hx_text001">华夏校区</span>
+                   </li>
+                     
+                </ul>
+                
+          </div>
+          
+        </div>
+  		<div class="addclassform" >
+              <form id="classForm"> 
+              
+               <ul>
+                <!--<li style="padding-left:150px;font-size:14px; ">新 建 班 级</li>-->
+                <li style="height:20px;">
+                	<div>
+                    	<div class="text_float addclasstitle">班级ID：</div>
+                    	<div class="text_float addclasstext">hx_0000001</div>
+                	</div>
+                    <div class="cleared"></div>
+                  
+                </li>
+                <li style="height:20px;">
+                	<div >  
+                    	<div class="addclasstitle text_float">班级名称：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="classUName" name="classUName" class="easyui-validatebox" onblur="valida_null(this)" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="classUName_Ms" class="color_text text_float classForm">&nbsp;班级名称不能为空！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                
+                
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle" >班级学段：</div> 
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<select id="classstudys" name="classstudys"  class="easyui-combobox" data-options="required:true" style="width:187px;"  name="12"  panelHeight="auto">
+                                <option value="0">请选择</option>
+                                <option value="1">小学</option>
+                                <option value="2">初中</option>
+                                <option value="3">高中</option>
+                            </select>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="classstudys_Ms" class="color_text text_float classForm">&nbsp;请选择学段！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle" >开班时间：</div>
+                        <div class="text_float addclasstext addclassform_left">
+                    		<input id="classbeginTime" name="classbeginTime" class="easyui-datebox" required />
+						</div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="classbeginTime_Ms" class="color_text text_float classForm">&nbsp;开班时间不能为空！</div>
+                    </div>
+                     <div class="cleared"></div>                    
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">结束时间：</div>
+                        <div class="text_float addclasstext addclassform_left">
+                    		<input id="classendTime" name="classendTime" class="easyui-datebox" required />
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="classendTime_Ms" class="color_text text_float classForm">&nbsp;结束时间不能为空！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">班级人数上限：</div>
+                        <div class="text_float addclasstext  addclassform_left">
+                    		<input id="classPersons" name="classPersons" style="width:180px;" onblur="valida_null(this)"/>&nbsp;人
+                        </div>
+                        <div class="text_float color_text">&nbsp;*</div><div id="classPersons_Ms" class="color_text text_float classForm">&nbsp;班级上限不能为空！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+               
+                <li>
+                	<div style="clear:both;" >
+                    	<div class="text_float addclasstitle">教师选派：</div>
+                        <div  class="text_float addclasstext addclassform_left">
+                            <dl id="addteasub" style=" margin:0px; padding:0px; list-style:none;" >
+                                <dt style="height:20px;">
+                                        1.学科&nbsp;<select id="classSubjects" name="classSubjects" onchange="changesub(this.value,'classTeacher');" style="width:100px;"  name="12" >
+                                    </select>
+                                    &nbsp;教师&nbsp;
+                                    <select id="classTeacher_s" name="classTeacher_s" style="width:100px;"  name="12" >
+                                        <option value="请选择">请选择</option>
+                                    </select>&nbsp;&nbsp;&nbsp;
+                                   <a onclick="addteasub();">添加一行</a>
+                                </dt>
+								 
+                    		</dl>
+                        </div>
+                    	<div class="cleared"></div>
+                    </div>
+                    
+                    <!--<span class="color_text">*</span><span id="userSubjects_Ms" class="color_text">&nbsp;学科不能为空！</span>-->
+                </li>
+                 
+                <li>&nbsp;</li>
+                <li style=" height:30px; line-height:30px; padding-left:150px;">
+							<a  id="classsub" class="easyui-linkbutton"   data-options="iconCls:'icon-ok'">保存</a>&nbsp;&nbsp;
+                            <a  id="classreset" class="easyui-linkbutton"   data-options="iconCls:'icon-cancel'">取消</a>
+                </li>
+                </ul>
+                <div class="cleared"></div>
+                 
+              </form>
+        </div>
+    </div>
+ 
+</body>
+</html>
+ 

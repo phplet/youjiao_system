@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/MyClass_Student.js"></script>
+   <style>
+	  .transition{width:450px; padding:10px;}
+	  .text_float{float:left;}
+	  
+	  .transition_left{  width:150px; height:200px; padding:10px; overflow-y:scroll;border:#CCC 1px solid;}
+	  .transition_btn{ float:left; width:100px; height:200px; font-size:12px; line-height:30px; text-align:center; padding-top:85px;}
+	  .transition li{ line-height:25px; } 
+	</style>
+</head>
+<script type="text/javascript">
+	$().ready(function() {
+       $('input[name="stu"]:checked').removeAttr("checked"); 
+    });
+	
+	function updateclass(){
+		var stutemp = jqchk();	//[id:val,id:val]
+		$.each(stutemp,function(ind,item){
+			var sp = item.split(':');
+			$('#s_'+sp[0]).remove();
+			$('#stus').prepend('<li id="'+sp[0]+'">'+sp[1]+'</li>');
+			 
+		});
+	}
+	
+	function jqchk(){  //jquery获取复选框值    
+  		var chk_value =[];    
+  		$('input[name="stu"]:checked').each(function(){    
+   			chk_value.push($(this).attr("id")+':'+$(this).val());    
+  		});
+  		return chk_value;
+	}   
+</script>
+<body class="easyui-layout" >
+     
+    <div data-options="region:'center',border:false"  style="padding:5px;">
+      <div id="students_counts" fit="true"  >
+  
+        <div id="details" region="center" fit="true" border="border:false" style="padding-top:2px;background-color:#fafafa;">
+                
+                <div title="大班管理" style="padding:5px;">
+                    <div id="day_bar">
+                    	<div class="hx_Schooltop" >
+                           <div>
+                               <div class="hx_Schooltop_sc">
+                                    班级状态：<span>
+                                            <select id="school_Name" class="easyui-combobox"   name="12"  panelHeight="auto">
+                                                <option value="1">当前</option>
+                                                <option value="2">过往</option>
+                                            </select>
+                                          </span>
+                                          <span>
+                                            <select id="school_Name" class="easyui-combobox"   name="12"  panelHeight="auto">
+                                                <option value="1">班级名称01</option>
+                                                <option value="2">班级名称02</option>
+                                            </select>
+                                          </span>
+                               </div>
+                            </div>
+                      	</div>
+                    </div>
+                    <div id="bigClass" data-options="region:'north'" style="height:150px;"></div>
+                    <br />
+                    <div id="bar_height" style="height:30px; line-height:30px;">>>当前班级统计</div>
+					<div id="bigClassCounts" data-options="region:'center'" style=" height:500px;"></div>
+                </div>
+                 
+                <div title="1对1管理" fit="true" style="padding:5px;">
+                	<div id="month_bar">
+                    	<div class="month_Schooltop" >
+                           <div>
+                               
+                               <div class="hx_Schooltop_sc">
+                                    校区名称：<span>
+                                            <select id="school_Name" class="easyui-combobox"   name="12"  panelHeight="auto">
+                                                <option value="1">A校区A校区A校区</option>
+                                                <option value="2">B校区</option>
+                                            </select>
+                                          </span>
+                                          <span>
+                                            <select id="school_Name" class="easyui-combobox"   name="12"  panelHeight="auto">
+                                                <option value="1">普通班</option>
+                                                <option value="2">提高班</option>
+                                            </select>
+                                          </span>
+                               </div>
+                                
+                                
+                            </div>
+                      	</div>
+                    </div>
+					<div id="oneToCounts"></div>
+                </div>
+                
+       </div>
+   </div>
+	 
+ </div> 
+	<div id="tab-tools" data-options="border:false">
+		<a id="addclass" href="addClass.html" class="easyui-linkbutton" data-options="iconCls:'icon-class'" >新建班级</a>
+		<a href="addStudent.html" class="easyui-linkbutton" data-options="iconCls:'icon-student'">新增学生</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-student'" >批量新增学生</a>
+        <a href="addStudent_exist.html" class="easyui-linkbutton" data-options="iconCls:'icon-student'" >加入学生</a>
+	</div>
+    
+    <div id="EditClass">
+    	<div class="addclassform" >
+              <form id="TeacherForm"> 
+              <input id="hiddenteacherid" type="hidden" />
+               <ul>
+               <li>当前学校：<span>华夏学校</span>&nbsp;当前校区：<span>大钟寺校区</span></li>
+                <!--<li style="padding-left:150px;font-size:14px; ">新 建 班 级</li>-->
+                <li style="height:20px;">
+                	<div>
+                    	<div class="text_float addclasstitle">班级ID：</div>
+                    	<div class="text_float addclasstext">hx_0000001</div>
+                	</div>
+                    <div class="cleared"></div>
+                  
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">班级名称：</div>
+                    	<div class="text_float addclasstext addclassform_left" style=" width:auto">
+                        	<input id="teacherUName" name="teacherUName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherUName_Ms" class="color_text text_float">&nbsp;请输入字母和数字组合！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                
+                
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">班级学段：</div> 
+                    	<div class="text_float addclasstext addclassform_left" style=" width:auto">
+                        	<select id="teacherSubjects" name="teacherSubjects"  class="easyui-combobox" style="width:187px;"  name="12"  panelHeight="auto">
+                                <option value="1">数学001科目</option>
+                                <option value="2">禁用</option>
+                            </select>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherRName_Ms" class="color_text text_float">&nbsp;请输入中文姓名,2-4位汉字！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">开班时间：</div>
+                        <div class="text_float addclasstext addclassform_left" style=" width:auto">
+                    		<input id="dd" class="easyui-datebox" required />
+						</div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherTel_Ms" class="color_text text_float">&nbsp;联系方式为11位数字！</div>
+                    </div>
+                     <div class="cleared"></div>                    
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">结束时间：</div>
+                        <div class="text_float addclasstext addclassform_left" style=" width:auto">
+                    		<input id="dd" class="easyui-datebox" required />
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherTel_Ms" class="color_text text_float">&nbsp;联系方式为11位数字！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">班级人数上限：</div>
+                        <div class="text_float addclasstext  addclassform_left" style=" width:auto">
+                    		<input id="teacherEmail" name="teacherEmail" style="width:180px;"/>&nbsp;人
+                        </div>
+                        <div class="text_float color_text">&nbsp;*</div><div id="teacherEmail_Ms" class="color_text text_float">&nbsp;用户邮箱必须为电子邮件格式！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                
+                <li>&nbsp;</li>
+                
+                </ul>
+                <div class="cleared"></div>
+                 
+              </form>
+            </div>
+    </div>
+    
+    
+	<div id="teaching_Note" ><!--教学备注-->
+        <div style="line-height:25px; padding:10px 0px 10px 10px;">忧才学校 大钟寺校区 中考拔优班  教学备注</div>
+         <div style="border:#ccc solid 1px; width:500px; ">
+    		<div class="table_School_title">
+                  <ul>
+                      <li class="table_text_001 table_text_title" >备注时间</li>
+                      <li class="table_text_002 table_text_title" >备注人</li>
+                      <li class="table_text_003 table_text_title" >备注内容</li>
+                      <li class="table_text_003 table_text_title" >学生人次统计</li>
+                  </ul>
+                 
+                </div>
+                <div class="cleared"></div>
+                <div class="table_School_ct">
+                  <ul >
+                      <li class="table_text_001 table_text">1</li>
+                      <li class="table_text_002 table_text">@163.com</li>
+                      <li class="table_text_003 table_text">小王</li>
+                      <li class="table_text_003 table_text">小王</li>
+                      
+                  </ul>
+                  <div class="cleared"></div>
+                  <ul >
+                      <li class="table_text_001 table_text">2</li>
+                      <li class="table_text_002 table_text">@163.com</li>
+                      <li class="table_text_003 table_text">小王</li>
+                      <li class="table_text_003 table_text">小王</li>
+                      
+                  </ul>
+                  <div class="cleared"></div>
+                  <ul >
+                      <li class="table_text_001 table_text">3</li>
+                      <li class="table_text_002 table_text">@163.com</li>
+                      <li class="table_text_003 table_text">小王</li>
+                      <li class="table_text_003 table_text">小王</li>
+                       
+                  </ul>
+                  <div class="cleared"></div> 
+                </div>
+        	</div>  
+         </div>
+    
+    </div>  
+    <div id="test_Statistics"><!--测评统计-->
+    	<div style="line-height:25px; padding:10px 0px 10px 10px;">忧才学校 大钟寺校区 中考拔优班  测评统计</div>
+         <div style="border:#ccc solid 1px; width:500px; ">
+    		<div class="table_School_title">
+                  <ul>
+                      <li class="table_text_001 table_text_title" >发布教师</li>
+                      <li class="table_text_002 table_text_title" >学科</li>
+                      <li class="table_text_003 table_text_title" >班测评统计</li>
+                      
+                  </ul>
+                 
+                </div>
+                <div class="cleared"></div>
+                <div class="table_School_ct">
+                  <ul >
+                      <li class="table_text_001 table_text">1</li>
+                      <li class="table_text_002 table_text">@163.com</li>
+                      <li class="table_text_003 table_text">小王</li>
+                  </ul>
+                  <div class="cleared"></div>
+                  <ul >
+                      <li class="table_text_001 table_text">2</li>
+                      <li class="table_text_002 table_text">@163.com</li>
+                      <li class="table_text_003 table_text">小王</li>
+                      
+                  </ul>
+                  <div class="cleared"></div>
+                  <ul >
+                      <li class="table_text_001 table_text">3</li>
+                      <li class="table_text_002 table_text">@163.com</li>
+                      <li class="table_text_003 table_text">小王</li>
+                       
+                  </ul>
+                  <div class="cleared"></div> 
+                </div>
+        	</div>  
+         </div>
+         
+         <div id="changeClass">
+         	<div class="transition">
+            	  <div>
+                  	学校名称：<span>华夏学校</span>&nbsp;校区名称：<span>大钟寺校区</span>&nbsp;班级名称：<span>大班</span>
+                  </div>
+                  <div class="transition_left text_float">
+                  	   
+                      <ul>
+                          <li id="s_base_1">
+                              <input id="base_1" name="stu"  type="checkbox" value="小王"/>小王
+                          </li>
+                          <li id="s_base_2">
+                              <input id="base_2" name="stu" type="checkbox" value="小李"/>小李
+                          </li>
+                          <li id="s_base_3">
+                              <input id="base_3" name="stu" type="checkbox" value="小张"/>小张
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="transition_btn">
+                      <a style="color:#06C; font-size:14px;" onclick="updateclass()">换班级&nbsp;>></a>
+                  </div>
+                  <div class="transition_left text_float">
+                  	  
+                      <div>
+                          <select name="class_name">
+                              <option value="1">班级</option>
+                          </select>
+                      </div>
+                      <ul id="stus">
+                          <li id="now_1">
+                              wang
+                          </li>
+                          <li id="now_2">
+                              li
+                          </li>
+                          <li id="now_3">
+                              xxx
+                          </li>
+                          <li id="now_4">
+                              keai
+                          </li>
+                          <li id="now_5">
+                              xixux
+                          </li>
+                          <li id="now_6">
+                              rrrr
+                          </li>
+                          <li id="now_7">
+                              ccc
+                          </li>
+                          <li id="now_8">
+                              fff
+                          </li>
+                          <li id="now_9">
+                              ddd
+                          </li>
+                      </ul>	
+                  </div>
+                  <div class="cleared"></div>
+              </div>
+         </div>
+    </div>   
+</body>
+</html>

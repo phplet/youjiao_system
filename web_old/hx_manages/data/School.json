@@ -1,0 +1,37 @@
+{
+	"totals":239,
+	"schools":[{
+		"id":1,
+		"name":"中心一校区",
+		"realname":"负责人一",
+		"city":"北京市",
+		"address":"大钟寺华杰大厦01",
+		"creat_date":"2013-05-12",
+		"distroy_date":"2013-05-13",
+		"mobile":"1",
+		"school_id":"12"
+	},{
+	  "id":2,
+	  "name":"中心一校区",
+	  "realname":"负责人一",
+	  "city":"北京市",
+	  "address":"大钟寺华杰大厦01",
+	  "creat_date":"2013-05-12",
+	  "distroy_date":"2013-05-13",
+	  "mobile":"1",
+	  "school_id":"13" 
+	 
+	},{
+	  "id":3,
+	  "name":"中心一校区",
+	  "realname":"负责人一",
+	  "city":"北京市",
+	  "address":"大钟寺华杰大厦01",
+	  "creat_date":"2013-05-12",
+	  "distroy_date":"2013-05-13",
+	  "mobile":"0",
+	  "school_id":"14"
+	 
+	}]
+
+}

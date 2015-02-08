@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏教育测评_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+     <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    <script type="text/javascript" src="../Scripts/systemSchool.js"></script>
+     
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false" style="padding: 5px;">
+
+        <div id="SerToolBar">
+           <div class="hx_Schooltop">
+               <ul>
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	   <li class="hx_Schooltop_Scname">
+                   		系统名称：<span class="hx_text001">互动平台</span>
+                   </li>
+                   <li class="hx_Schooltop_enable">
+                   		状态：<span><select id="startusid" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto">
+		<option value="1">启用</option>
+		<option value="0">停运</option>
+	</select></span>
+                   </li>
+                   <li class="hx_Schooltop_name_sc">
+                       校区名称：<input id="SchoolText" class="easyui-validatebox" type="text" style="width:100px;" value="请输入姓名"/>
+                   </li>
+                   <li  class="hx_Schooltop_search_sc">
+                       <a id="BtnSearch" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a> 
+                   </li>
+                   <li class="hx_Schooltop_add_sc">
+                       <a id="BtnAdd" class="easyui-linkbutton"   data-options="iconCls:'icon-add'" title="添加学校信息">学校</a>
+                   </li>
+                </ul>
+          </div>
+        </div>
+
+        <div id="schoolmanager"></div>
+
+        <div id="addSchool">
+            <div data-options="region:'center'" style="padding:16px;padding-left:30px;">
+              <form id="addSchoolForm" >
+                <div class="text_pbottom">
+                    学校名称：
+                    <input id="schoolName" class="easyui-validatebox" data-options="required:true" style="width:223px;" />&nbsp;&nbsp;<a href="#" style=" text-decoration:none" id="checkname" onclick="selSchool();">验证</a>
+                    <span class="color_text">*</span><span class="color_text addSchoolForm" id="schoolName_Ms"></span>
+                </div>
+                <div class="text_pbottom">
+                    所在城市：
+                    省(地区)&nbsp;<select id="schoolAddrP" class="easyui-combobox" style="width:88px;"  name="12"  panelHeight="120"><option value="请选择">请选择</option></select>&nbsp;&nbsp;
+                    市&nbsp;<select id="schoolAddrC" class="easyui-combobox" style="width:88px;"  name="12"  panelHeight="120"><option value="请选择"></option></select>
+                    <span class="color_text">*</span><span class="color_text addSchoolForm" id="schoolAddrP_Ms"></span><span class="color_text addSchoolForm" id="schoolAddrC_Ms"></span>
+                </div>
+                <div class="text_pbottom">
+                    学校地址：
+                    <input id="schoolAddrDetail" class="easyui-validatebox"  onblur="valida_null(this)"  style="width:260px;" />
+                    <span class="color_text">*</span><span class="color_text addSchoolForm" id="schoolAddrDetail_Ms"></span>
+                </div>
+                <div>
+                    选择负责人：
+                    <select id="schoolPrincipal"  class="easyui-combobox" editable=false style="width:255px;"  name="12"  panelHeight="100">
+                    <option value="请选择"></option>
+                    </select>
+                     
+                </div>
+                <div style=" padding-top:10px;">
+                	
+                	<span id="zijianku_type" style="display:block; padding-bottom:10px;">本校自建库：<input type="radio" name="zijianku" value="1"/>&nbsp;有&nbsp;<input type="radio" name="zijianku" value="0" checked="checked" />&nbsp;否&nbsp;</span>
+                    <span style="line-height:20px; display:none;"  id="zijianku_something">自建库IP：&nbsp;<input type="text" id="zijianku_ip" name="zijianku_ip" style="width:130px; height:15px; line-height:15px;"/>&nbsp;
+                    自建库名称：<input type="text" id="zijianku_name" name="zijianku_name"  style="width:130px; height:15px;line-height:15px;"/></span>
+                </div>
+                <div style=" padding-top:10px;">
+                    选择版本：
+                    <select id="versions_lev"  class="easyui-combobox" editable=false style="width:150px;"  name="12"  panelHeight="100">
+                     	<option value="请选择">请选择</option>
+                    </select>
+                    &nbsp;<span><input type="radio" value="1" name="school_zone_tyle" checked="checked" onclick="change_zone_ytpe(1)"/>&nbsp;直营模式&nbsp;<input type="radio" value="2" name="school_zone_tyle" onclick="change_zone_ytpe(2)"/>&nbsp;代理模式</span>
+                </div> 
+                <div style=" padding-top:10px;" id="zhiyiing_type">
+                    校区个数：
+                    <input type="text" id="zone_sums" name="zone_sums" value="0"  class="zonecss"/>
+                    &nbsp;&nbsp;老师总数：
+                    <input type="text" id="teacher_sums" name="teacher_sums" value="0"  class="zonecss"/>
+                  &nbsp;&nbsp;学生总数：
+                    <input type="text" id="student_sums" name="student_sums" value="0"  class="zonecss"/>(不限为0)
+                </div> 
+                <div id="daili_type" style=" padding-top:10px;">
+                	<ul id="zones_list_sums">
+                        
+                    </ul>
+                </div>
+                 
+              </form>
+            </div>
+        </div>
+        
+        
+</div>
+         
+</body>
+</html>

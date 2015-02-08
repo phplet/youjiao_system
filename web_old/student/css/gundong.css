@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+#product {  
+        width:600px;  
+        height:200px; 
+        float:left;  
+		text-align:left;
+    }  
+    #product div#content {  
+        position:relative;  
+        width:515px;  
+        height:200px;
+        display:inline-block;  
+        overflow:hidden;
+		  
+        float:left;  
+    }  
+    #product div#content_list {  
+        position:relative;
+		 
+        width:4000px;  
+		height:200px;
+		 
+    }  
+    #product dl{  
+        width:117px;  
+        height:200px;
+		margin:0px 4px;  
+        padding:2px 2px; 
+        float:left;
+         text-align:center;
+    }  
+     
+    .product_dt {  
+       width:115px;  
+       height:158px;
+	   text-align:left;
+	   border:#ccc solid 1px;
+    } 
+	.product_dt span{
+		font-size:14px;
+		color:#696969;
+		padding:5px;
+		line-height:25px;
+		display:block;
+    } 
+	
+	.product_dt_radio {  
+       width:117px;
+	   padding-top:5px;
+	   padding-bottom:20px;
+	   font-size:12px;
+	   color:#696969;
+    }  
+     
+    #product dl dd {  
+        text-align:center;  
+    }  
+    #product span.prev{  
+        cursor:pointer;  
+        display:inline-block;  
+        width:42px;  
+        height:160px;  
+        background:url(../images/left_01.png) no-repeat left center;  
+        float:left;  
+    }
+	#product span.prev:hover{  
+        cursor:pointer;  
+        display:inline-block;  
+        width:42px;  
+        height:160px;  
+        background:url(../images/left_01.png) no-repeat left center;  
+        float:left;  
+    }    
+    #product span.next{  
+        cursor:pointer;  
+        display:inline-block;  
+        width:22px;  
+        height:160px; 
+        background:url(../images/right_01.png) no-repeat left center;  
+        float:right;  
+    } 
+	#product span.next:hover{  
+        cursor:pointer;  
+        display:inline-block;  
+        width:22px;  
+        height:160px;  
+        background:url(../images/right_01.png) no-repeat left center;  
+        float:right;  
+    } 
+ 

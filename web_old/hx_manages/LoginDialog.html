@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>欢迎登录-华夏优教互动平台</title>
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="themes/icon.css" />
+    <script type="text/javascript" src="Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.json.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="Scripts/Base64.js"></script>
+	 <script src="Scripts/Common.js" type="text/javascript"></script>
+    <script type="text/javascript" src="locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+    <div id="loginWin" class="easyui-window" title="欢迎登录" style="width: 350px; height: 250px; padding: 5px;"
+        minimizable="false" maximizable="false" resizable="false" collapsible="false" closable="false" draggable="false" shadow="true" modal="true">
+        <div class="easyui-layout" fit="true">
+            <div region="center" border="false" style="padding: 5px; text-align:center; background: #fff; border: 1px solid #ccc;">
+                <form id="LoginForm">
+                <div style="padding: 10px 10px 0px 40px; text-align: left;">
+                    <label for="login" style="display:block;padding-bottom:3px">帐号：</label>
+                    <input type="text" id="username" name="username" style="width: 230px;" class="easyui-validatebox" required="true" validtype="email" />
+                </div>
+                <div style="padding: 10px 10px 0px 40px; text-align: left;">
+                    <label for="password" style="display:block;padding-bottom:3px">密码：</label>
+                    <input type="password" id="password" name="password" style="width: 230px;" class="easyui-validatebox" required="true" />
+                </div>
+                <div style="padding: 15px 37px 0px 10px; text-align: right;">
+                    <input id="checkUserName" type="checkbox" checked="checked" /><label for="checkUserName">记住用户名</label>
+                    <input id="checkboxPassword" type="checkbox" checked="checked" /><label for="checkboxPassword">自动登录</label>
+                </div>
+                </form>
+            </div>
+            <div region="south" border="false" style="text-align: right; padding: 12px 20px 10px 0px;">
+                <a class="easyui-linkbutton" id="LoginButton" iconcls="icon-ok" href="javascript:void(0)">登录</a>
+                <a class="easyui-linkbutton" id="RegisterButton" iconcls="icon-add" href="javascript:void(0)">注册</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

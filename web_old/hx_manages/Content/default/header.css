@@ -1,0 +1,5 @@
+﻿#header, #header .headerNav { background:url(images/header_bg.png) repeat-x;}
+#header { background-color:#102c4a;}
+#header .nav li a, 
+#header .userInfoheader li,
+#header .userInfoheader li a{ color:#ffffff;}

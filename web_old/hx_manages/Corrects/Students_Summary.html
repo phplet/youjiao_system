@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    <script type="text/javascript" src="../Scripts/Students_Summary.js"></script>
+    
+</head>
+
+<body class="easyui-layout" >
+     
+    <div data-options="region:'center',border:false"  style="padding:5px;">
+      <div id="students_counts" fit="true" >
+        <div id="details"   region="center" fit="true" border="border:false" style="padding-top:2px;background-color:#fafafa;" >
+                <div title="按天统计" style="padding:5px;">
+                    <div id="day_bar">
+                    	<div class="hx_Schooltop" >
+                           <div>
+                               
+                               <div class="hx_Schooltop_sTT" style="width:520px;">
+                                    校区名称：
+                                    	<span class="zone_Name_1">
+                                             
+                                          </span>
+                                        <span class="zone_Name_1_s">
+                                            <select id="zone_Name_1" class="easyui-combobox" editable="false" panelHeight="auto">
+                                                 
+                                            </select>
+                                          </span>
+                                           
+                               </div>
+                                
+                                
+                            </div>
+                      	</div>
+                    </div>
+					<div id="day_counts"></div>
+                </div>
+                
+                
+                <div title="按月统计" fit="true" style="padding:5px;">
+                	<div id="month_bar">
+                    	<div class="month_Schooltop" >
+                           <div>
+                               
+                               <div class="hx_Schooltop_sTT" style="width:520px;">
+                                    校区名称：
+                                    	<span class="zone_Name_2">
+                                             
+                                          </span>
+                                        <span class="zone_Name_2_s">
+                                            <select id="zone_Name_2" class="easyui-combobox" editable="false"  panelHeight="auto">
+                                                 
+                                            </select>
+                                          </span>
+                                          
+                               </div>
+                                
+                                
+                            </div>
+                      	</div>
+                    </div>
+					<div id="month_counts"></div>
+                </div>
+                <div title="按阶段统计" fit="true" style="padding:5px;">
+                	<div id="phases_bar">
+                    	<div class="hx_Schooltop" >
+                           <div>
+                               
+                               <div class="hx_Schooltop_sc" >
+                                    从：<span>
+                                            <input id="begintime" class="easyui-datebox" editable=false></input>
+                                          </span>到：<span>
+                                            <input id="endtime" class="easyui-datebox" editable=false ></input>
+                                          </span>
+                               </div>
+                               <div  class="hx_Schooltop_search_sc" style="padding-top:2px; width:330px;" >
+                       					<a id="BtnSearch"  class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a> 
+                                          
+                   			   </div>
+                               
+                            </div>
+                      	</div>
+                    </div>
+					<div id="phases_counts"></div>
+                </div>
+             
+       </div>
+   </div>
+	 
+ </div> 
+ 
+
+</body>
+</html>

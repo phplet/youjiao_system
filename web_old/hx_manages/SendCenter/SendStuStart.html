@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏教育测评_班级详情</title>
+    <link href="../themes/default/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="../themes/icon.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/Style.css" rel="stylesheet" type="text/css" />
+    <script src="../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.json.min.js" type="text/javascript"></script><script src="../Scripts/json2.js" type="text/javascript"></script>
+    <script src="../Highcharts/highcharts.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.easyui.theme.js" type="text/javascript"></script>
+    <script src="../Scripts/Base64.js" type="text/javascript"></script>
+    <script src="../Scripts/Common.js" type="text/javascript"></script>
+    <script src="../locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="../Scripts/SendStuStart.js" type="text/javascript"></script>
+    <script src="../Scripts/public_base.js" type="text/javascript"></script>
+	 <style type="text/css">
+		#ZiTi label{
+			
+			color:#999999;
+		}
+		#ZiTi td{
+			padding-left:50px;
+			padding-top:20px;
+		}
+		#StudentsChoose{
+			
+			color:#999999;
+			font-weight:700;
+		}
+		#sentobj{ padding-left:25px;}
+		#sentobj_class{margin-left:20px; margin-bottom:20px; border-top:#CCC solid 1px; border-left:#CCC solid 1px; width:760px;}
+		#sentobj_class tr{
+			height:30px;
+		}
+		#sentobj_class th{
+			padding:5px;border-bottom:#CCC solid 1px; border-right:#CCC solid 1px; color:#333;min-width:170px;
+		}
+		#sentobj_class td{
+			padding:5px;border-bottom:#CCC solid 1px; border-right:#CCC solid 1px;
+		}
+		#SendDetail td{
+			height:30px;
+			 
+		
+		}
+		#SendWay td{
+			width:130px;
+			height:50px;
+		}
+		#tabconfirm td{
+			height:30px;
+			width:130px;
+			
+		}
+		input[type="checkbox"] { vertical-align:middle; padding-bottom:2px;margin-bottom:5px;}
+	
+	 </style>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false" style=" padding:5px;" >
+      <div style="border:#99bbe8 solid 1px;">
+		<div style="padding: 5px; position: relative; z-index: 1; width: 90%; height: 200px;">
+            <table id="PapersInformation" class="easyui-datagrid">
+				
+            </table> 
+        </div>
+		<div style=" height:30px; padding-left:25px;" id="t_zonenameinfo">
+			<label>
+				请选择
+			</label>
+			<label style="color:red;" id="center_name_1">
+				华夏学校  东校区
+			</label>
+			<label>
+				的学生
+			</label>
+		</div>
+		<div id="confirm" style="padding:5px;">
+			<div style=" width:100%;">
+				<table id="sentobj" cellpadding="0" cellspacing="0" border="0" style="display:none">
+                	<tr>
+                        <td align="left" style="text-align:left; padding-bottom:10px;">选择模式：<select id="stu_class_M" onChange="stu_class_M(this.value)">
+                            <option value="0" selected="selected">按班级派送</option>
+                            <option value="1" >按学生派送</option>
+                        </select>&nbsp;&nbsp;(*必选)</td>
+                    </tr>
+				</table>
+                
+                <table id="sentobj_class" cellpadding="0" cellspacing="0" border="0"></table>
+                 
+			</div>
+			<div style="margin:0 auto; width:300px;">
+				<div style="width:150px; float:left;">
+					<a class="easyui-linkbutton" onclick="PreviousStep();">上一步</a>
+				</div>
+				<div style="width:150px; float:left;">
+					<a class="easyui-linkbutton" onclick="NextSendwer();">下一步</a>
+				</div>
+			</div>
+           	<div class="cleared"></div>
+		</div>
+		<div id="SentDrectly" style=" display:none;">
+				<table id="SendDetail">
+					<tr>
+						<td>
+							<label >学校校区：</label>
+						</td>
+						<td>
+							<label id="center_name_2"></label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label id="class_t">派送学生：</label>
+						</td>
+						<td>
+							<label id="class_name"></label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>派送测评名称：</label>
+						</td>
+						<td>
+							<label id="test_name"></label>
+						</td>
+					</tr>
+				</table>
+				<table style=" height:15px;">
+					<tr>
+						<td></td>
+					</tr>
+				</table>
+				<table id="SendWay">
+					<tr>
+						<td>
+							<label>
+								选择派送终端：
+							</label>
+						</td>
+						<td>
+							<input type="radio" name="Send_types" checked="checked" value="1"/>
+							<label>OnLine</label>
+                             
+						</td>
+						 
+						<td>
+							<!--<input type="radio" name="Send_types"  value="2"/>
+							<label>邮件WORD</label>
+-->						</td>
+					</tr>
+				</table>
+				<div style=" height:65px;">
+					<label id="time_now">当前时间：2013-03-15</label>
+					<label style=" padding-left:30px;">结束时间：</label>
+					<input id="endtime" class="easyui-datebox" >
+				</div>
+				<center>
+					<div style=" width:350px; height:80px;">
+						<div style=" float:left;">
+							<a class="easyui-linkbutton" onclick="setreturn();">上一步</a>
+						</div>
+						<div style=" float:right;">
+							
+                            <a id="send_Ok" class="easyui-linkbutton">确认</a>
+						</div>
+					</div>
+                    <div class="cleared"></div>
+				</center>
+			</div>
+		</div>
+     </div>
+</body>
+</html>

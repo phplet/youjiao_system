@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/subClassManage.js"></script>
+     
+</head>
+ 
+<body  style="padding:5px;">
+    <div style="border:#8DB2E3 solid 1px; height:auto; font-size:12px;">
+        <div class="newstitle">
+             &nbsp;&nbsp;班级与学生管理&nbsp;>>&nbsp;报班管理
+        </div>
+        <div id="SerToolBar">
+           
+           <div class="hx_Schooltop">
+                
+               <ul >
+                   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+                   <li class="hx_Schooltop_Scname">
+                        学校名称：<span class="hx_text001">华夏学校</span>
+                   </li>
+                   <li class="hx_Schooltop_Scname">
+                        校区名称：<span class="hx_text001">华夏校区</span>
+                   </li>
+                   <li class="hx_Schooltop_Scname">
+                        班级名称：<span class="hx_text001">提高班</span>
+                   </li>
+                    <li class="hx_Schooltop_Scname">
+                        姓名：<span class="hx_text001">小刘</span>
+                   </li> 
+                </ul>
+                
+          </div>
+          
+        </div>
+  		<div class="addclassform" >
+              <form id="TeacherForm"> 
+              <input id="hiddenteacherid" type="hidden" />
+               <ul>
+                <!--<li style="padding-left:150px;font-size:14px; ">新 建 班 级</li>-->
+                <li style="height:20px;">
+                	<div>
+                    	<div class="text_float addclasstitle">班级ID：</div>
+                    	<div class="text_float addclasstext">hx_0000001</div>
+                	</div>
+                    <div class="cleared"></div>
+                  
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">班级名称：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<span>A班</span>
+                        </div>
+                        
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">姓名：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<span>小刘</span>
+                        </div>
+                        
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li>
+                	<div style="clear:both;" >
+                    	<div class="text_float addclasstitle">状态：</div>
+                        <div  class="text_float addclasstext addclassform_left">
+                            <div class="tab_list">
+                                  <div class="title_box clearfix">
+                                      <div class="now_focus tab">新入班级</div>
+                                      <div class="tab">更换班级</div>
+                                      <div class="tab">退出班级</div>
+                                  </div>
+                                  
+                                  <div class="con_box">
+                                      <div class="now_focus clearfix">
+                                           <span >
+                                                 
+                                                <span class="text_float" style="padding-left:20px; ">
+                                                    <span style=" height:25px; line-height:25px;">新加入班级：</span><br />
+                                                    
+                                                    <select id="teacherSubjects" name="teacherSubjects"  class="easyui-combobox" style="width:140px; margin-top:10px;"  name="12"  panelHeight="auto">
+                                                        <option value="1">班级001</option>
+                                                        <option value="2">班级002</option>
+                                                    </select>
+                                                 	  
+                                                    	<dl style="overflow-y:scroll; margin-top:5px; width:140px; height:200px; border:#CCC solid 1px;">
+                                                        	<dt>1234</dt>
+                                                            <dt>12\5</dt>
+                                                            <dt>1232</dt>
+                                                            <dt>123111</dt>
+                                                            <dt>12322</dt>
+                                                            <dt>1234</dt>
+                                                            <dt>12\5</dt>
+                                                            <dt>1232</dt>
+                                                            <dt>123111</dt>
+                                                            <dt>12322</dt>
+                                                        </dl>
+                                                    
+                                                </span>
+                                                <span class="text_float" style="padding-left:20px; ">
+                                                	<span style="height:25px; line-height:25px;">备注：</span> <br />
+                                                	<textarea rows="10" cols="30" style=" height:227px; border:#CCC solid 1px;"></textarea>
+                                                </span>
+                                                
+                                            </span>
+                                      </div>
+                               
+                                      <div >
+                                          <span >
+                                                 
+                                                <span class="text_float" style="padding-left:20px; ">
+                                                    
+                                                        <span style=" height:25px; line-height:25px;">选择移出班级：</span><br />
+                                                        
+                                                        <select id="teacherSubjects" name="teacherSubjects"  class="easyui-combobox" style="width:140px; margin-top:10px;"  name="12"  panelHeight="auto">
+                                                            <option value="1">班级001</option>
+                                                            <option value="2">班级002</option>
+                                                        </select>
+                                                        <br />
+                                                        <span style=" height:25px; line-height:25px;">选择换入班级：</span><br />
+                                                        
+                                                        <select id="teacherSubjects" name="teacherSubjects"  class="easyui-combobox" style="width:140px; margin-top:10px;"  name="12"  panelHeight="auto">
+                                                            <option value="1">班级001</option>
+                                                            <option value="2">班级002</option>
+                                                        </select>
+                                                        <br />
+                                                    	<dl style="overflow-y:scroll; margin-top:5px; width:140px; height:200px; border:#CCC solid 1px;">
+                                                        	<dt>1234</dt>
+                                                            <dt>12\5</dt>
+                                                            <dt>1232</dt>
+                                                            <dt>123111</dt>
+                                                            <dt>12322</dt>
+                                                            <dt>1234</dt>
+                                                            <dt>12\5</dt>
+                                                            <dt>1232</dt>
+                                                            <dt>123111</dt>
+                                                            <dt>12322</dt>
+                                                        </dl>
+                                                    
+                                                </span>
+                                                <span class="text_float" style="padding-left:20px; ">
+                                                	<span style="height:25px; line-height:25px;">备注：</span> <br />
+                                                	<textarea rows="10" cols="30" style=" height:273px; border:#CCC solid 1px;"></textarea>
+                                                </span>
+                                                
+                                            </span>
+                                      </div>
+                                      
+                                      <div >
+                                           <span >
+                                                 
+                                                <span >
+                                                    
+                                                        <span class="text_float" style="width:90px;padding-left:20px; padding-right:10px; text-align:right;">选择移出班级：</span>
+                                                        <span class="text_float">
+                                                        <select id="teacherSubjects" name="teacherSubjects"  class="easyui-combobox" style="width:140px; margin-top:10px;"  name="12"  panelHeight="auto">
+                                                            <option value="1">班级001</option>
+                                                            <option value="2">班级002</option>
+                                                        </select>
+                                                         </span>
+                                                		<span class="cleared"></span>         
+                                                </span>
+                                                <br /><br />
+                                                <span>
+                                                	<span class="text_float" style="width:90px;padding-left:20px; padding-right:10px; text-align:right;">退出班级备注：</span>
+                                                    <span class="text_float">
+                                                		<textarea rows="5" cols="35" style=" border:#CCC solid 1px;"></textarea>
+                                                	</span>
+                                                    <span class="cleared"></span>
+                                                </span>
+                                                
+                                            </span>
+                                      </div>
+                                  </div>
+                              </div> 
+                        </div>
+                    	<div class="cleared"></div>
+                    </div>
+                    
+                    <!--<span class="color_text">*</span><span id="userSubjects_Ms" class="color_text">&nbsp;学科不能为空！</span>-->
+                </li>
+                 
+                <li>&nbsp;</li>
+                <li style=" height:30px; line-height:30px; padding-left:150px;">
+							<a href="#" class="easyui-linkbutton"   data-options="iconCls:'icon-ok'">登陆</a>&nbsp;&nbsp;
+                            <a href="#" class="easyui-linkbutton"   data-options="iconCls:'icon-cancel'">取消</a>
+                </li>
+                </ul>
+                <div class="cleared"></div>
+                 
+              </form>
+            </div>
+        <div style="border:#ccc solid 1px; margin:10px;">
+         	<div style="background:#efefef; height:30px; padding-left:15px; font-weight:bolder; color:#416aa3; line-height:30px;"> 
+            	<span>历史报换班记录</span>
+          	</div>
+        	<div class="table_School_title">
+                  <ul>
+                      <li class="table_text_001 table_text_title" style="width:250px;">操作记录</li>
+                      <li class="table_text_002 table_text_title" style="width:250px;">备注</li>
+                      <li class="table_text_003 table_text_title"  >操作人</li>
+                      
+                  </ul>
+                 
+                </div>
+                <div class="cleared"></div>
+                
+                <div class="table_School_ct">
+                  <ul >
+                      <li class="table_text_001 table_text" style="width:250px;">1</li>
+                      <li class="table_text_002 table_text" style="width:250px;">@163.com</li>
+                      <li class="table_text_003 table_text" >吴教师</li>
+                      
+                  </ul>
+                  <div class="cleared"></div>
+                  <ul >
+                      <li class="table_text_001 table_text" style="width:250px;">2</li>
+                      <li class="table_text_002 table_text" style="width:250px;">@163.com</li>
+                      <li class="table_text_003 table_text" >吴教师</li>
+                       
+                  </ul>
+                  <div class="cleared"></div>
+                  <ul >
+                      <li class="table_text_001 table_text" style="width:250px;">3</li>
+                      <li class="table_text_002 table_text" style="width:250px;">@163.com</li>
+                      <li class="table_text_003 table_text">吴教师</li>
+                       
+                  </ul>
+                  <div class="cleared"></div> 
+                </div>
+        </div>
+     </div>
+ 
+</body>
+</html>
+ 

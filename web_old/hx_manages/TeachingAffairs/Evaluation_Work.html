@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_测评监理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+     
+    <script type="text/javascript" src="../Scripts/Evaluation_Work.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.form.js"></script>
+  
+</head>
+ 
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false"  style="padding:5px;" >
+        
+        <div id="SerToolBar">
+           <div class="hx_Schooltop">
+           	    
+               <ul >
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	   <li class="hx_Schooltop_Scname">
+                   		校区名称：<span class="hx_text001">华夏学校</span>
+                   </li>
+                    
+                   <li class="hx_Schooltop_enable_teacher">
+                   		学科选择：<span>
+                        		<select id="teacher_sub" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto">
+									<option value="1">语文</option>
+									<option value="2">数学</option>
+								</select>
+                              </span>
+                   </li>
+                   <li class="hx_Schooltop_enable">
+                   		选择教师：<span>
+                        		<select id="Tmobile" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto">
+									<option value="1">启用</option>
+									<option value="2">禁用</option>
+								</select>
+                              </span>
+                   </li>
+                   <li class="hx_Schooltop_name_sc">
+                       派送时间：<input id="SchoolText" class="easyui-validatebox" type="text" style="width:80px;" value="请输入姓名"/>
+                   </li>
+                   <li  class="hx_Schooltop_search_sel">
+                       <a id="BtnSearch" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a> 
+                   </li>
+                    
+                </ul>
+                
+                
+               
+          </div>
+        </div>
+ 
+        <div id="Teacher_Ma" class="easyui-datagrid" >
+        </div>
+ 
+        <div id="wdialog">
+            <div data-options="region:'center'" style="padding:5px;padding-left:38px;">
+              <form id="TeacherForm"> 
+              <input id="hiddenteacherid" type="hidden" />
+               <p>
+                    <img  src="../images/head_img.png" width="50" height="50" id="teacher_headimg" style="border:0px;"/>
+                    &nbsp;&nbsp;<span ><a href="#">更改头像</a></span>
+                </p>
+                <p>
+                    编　　码：
+                    hx_0000001
+                </p>
+                <p>
+                    用 户 名：
+                    <input id="teacherUName" name="teacherUName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                    <span class="color_text">*</span><span id="teacherUName_Ms" class="color_text">&nbsp;请输入字母和数字组合！</span>
+                </p>
+                
+                
+                <p>
+                    真实姓名： 
+                    <input n id="teacherRName" name="teacherRName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                    <span class="color_text">*</span><span id="teacherRName_Ms" class="color_text">&nbsp;请输入中文姓名,2-4位汉字！</span>
+                </p>
+                <p>
+                    性　　别：
+                    <input type="radio" name="teacherSex" id="teacherSex" value="1"  checked="checked"/>　男　
+                    <input type="radio" name="teacherSex" id="teacherSex" value="2" />　女
+                     
+                </p>
+                <p>
+                    联系方式：
+                    <input id="teacherTel" name="teacherTel" style="width:180px;"/>
+                    <span class="color_text">*</span><span id="teacherTel_Ms" class="color_text">&nbsp;联系方式为11位数字！</span>
+                </p>
+                
+                <p>
+                    邮　　箱：
+                    <input id="teacherEmail" name="teacherEmail" style="width:180px;"/>
+                    <span class="color_text">*</span><span id="teacherEmail_Ms" class="color_text">&nbsp;用户邮箱必须为电子邮件格式！</span>
+                </p>
+               
+                <p>
+                    学　　科：
+                    <select id="teacherSubjects" name="teacherSubjects"  class="easyui-combobox" style="width:187px;"  name="12"  panelHeight="auto">
+						<option value="1">数学001科目</option>
+						<option value="2">禁用</option>
+        
+					</select>
+                    <!--<span class="color_text">*</span><span id="userSubjects_Ms" class="color_text">&nbsp;学科不能为空！</span>-->
+                </p>
+                 <p>
+                    身　　份：
+                    <input  type="checkbox"  /> 教师
+                    <!--<span class="color_text">*</span><span id="userSubjects_Ms" class="color_text">&nbsp;学科不能为空！</span>-->
+                </p>
+                <p>
+                    学校校区：
+                    <select  id="teacherSchool" name="teacherSchool" class="easyui-combotree"  multiple style="width:187px;">
+                    </select>
+                    <!--<span class="color_text">*</span><span id="userSchool_Ms" class="color_text">&nbsp;校区不能为空！</span>-->
+                </p>
+                 <p >
+                    <span style="line-height:25px;float:left;">备　　注：</span>
+                    <span style=" float:left;">&nbsp;
+                    	<textarea id="teacherMessage" name="teacherMessage" style="height:100px; width:360px;"></textarea>
+                   	</span>
+                     
+                </p>
+                
+               <!-- <p style="padding-left:18px; color:#808080;">
+                    真实姓名：<span id="RealName"></span><br />
+                    性别：<span id="UserSex"></span><br />
+                    联系方式：<span id="Number"></span>
+                    <input id="hiddenteacherid" type="hidden" />
+                </p>-->
+              </form>
+            </div>
+        </div>
+        
+         
+        <div id="SeltTeacher">
+            <div data-options="region:'center'" style="padding-left:38px; padding-top:12px;">
+                <form id="Form2"> 
+                 <p>
+                    <img  src="../images/head_img.png" width="50" height="50" style="border:0px;"/>
+                    
+                </p>
+                <p>
+                    编　　码：
+                    0000001
+                    
+                </p>
+                <p>
+                    用 户 名：<span id="sel_teacherName"></span>
+                     
+                </p>
+                 <p>
+                    密　　码：123456&nbsp;&nbsp;&nbsp;<a href="#">重置密码</a>
+                     
+                </p>
+                <p>
+                    邮　　箱：
+                    
+                </p>
+                <p>
+                    姓　　名：
+                    
+                </p>
+                <p>
+                    姓　　别：
+                    
+                </p>
+                <p>
+                    学　　科：
+                     
+                </p>
+                <p>
+                    学校校区：
+                     
+                    
+                </p>
+                
+                <p>
+                    联系方式：
+                     
+                </p>
+                <p >
+                    <span style="line-height:25px;float:left;">备　　注：</span>
+                    <span style=" float:left;">&nbsp;</span>
+                     
+                </p>
+                </form>
+            </div>
+        </div>
+ 
+
+</body>
+</html>
+ 

@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏教育测评_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Student_One.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    <style>
+		.stuInfo_table_side{border-left:#E3E3E3 dotted 1px; border-top:#E3E3E3 dotted 1px;}
+    	.stuInfo_table_side td{ border-right:#E3E3E3 dotted 1px; border-bottom:#E3E3E3 dotted 1px; padding:5px 0px 5px 10px;}
+		.stuInfo_table_side td input{ height:20px; font-size:12px; line-height:20px;}
+    </style> 
+     
+</head>
+<body>
+<div style="padding: 5px;">
+ 	 <div class="text_border">
+     	<div class="newstitle" id="stu_title">
+             &nbsp;&nbsp;班级与学生管理&nbsp;>>&nbsp;<script type="text/javascript">document.write(public_Bigclass_name)</script>管理&nbsp;>>&nbsp;当前班级&nbsp;>>&nbsp;学生详细
+        </div>
+        
+        <div style="padding: 10px;">
+        	<div class="student_title" >
+            	华夏学校  大钟寺校区  中考拔优班
+            </div>   
+           <!--学生信息 -->
+           <div style="padding-bottom:10px;">
+               <ul id="student_info">
+               		 
+               </ul>
+               <div class="cleared"></div>
+           </div> 
+           <!--作业/测试详情 -->
+           <div style="margin-top:10px;">
+           		<div style="height:40px; background-color:#ccc; font-size:12px; font-weight:bolder; line-height:40px; padding-left:10px;">
+                	<span>作业/测试详情</span>
+                </div>
+                 
+                <div style=" height:auto; border:#CCC solid 1px; padding:10px; font-size:12px;  line-height:22px;">
+                	<div id="#lists"></div>
+                	<div id="Assesslist" class="easyui-datagrid" data-options="height:350"></div>
+                </div>
+           </div>
+           
+           <!--试卷成绩统计 -->
+           <div style="margin-top:10px;">
+           		<div style="height:40px; background-color:#ccc; font-size:12px; font-weight:bolder; line-height:40px; padding-left:10px;">
+                	<span>学生详细信息</span>
+                     
+                </div>
+                <div style=" height:auto; border:#CCC solid 1px; padding:10px; font-size:12px; background-color:#ffffcc; line-height:22px;">
+                	 <table cellpadding="0" cellspacing="0" border="0" class="stuInfo_table_side">
+                     	<tr>
+                        	<td width="80" align="right">姓　　名：</td>
+                            <td width="130"><input  id="stuname" type="text" style="display:none;" size="15" /><span id="stuname_span">我的姓名</span></td>
+                            <td width="80" align="right">性　　别：</td>
+                            <td width="130">
+                            	<span id="stusexes" style="display:none;"><input  id="stusex" type="radio" name="stusex" value="1" />男
+                            	<input  id="stusex" type="radio" value="2" name="stusex" />女</span>
+                                <span id="stusex_span">男</span> 
+                            </td>  
+           
+                            <td width="100" align="right">邮　　　　箱：</td>
+                            <td width="130"> <input  id="stuemail" type="text" size="15" style="display:none;"/>
+                            	 <span id="stuemail_span">123@163.com</span>
+                            </td>
+                            <td  rowspan="2" align="center" valign="middle" width="60" bgcolor="#e7e7e7"><a id="editstuBtn">修改</a></td>
+                        </tr>
+                        <tr>
+                        	<td width="80" align="right">当前年级：</td>
+                            <td >
+                            	<select id="stugrade" name="stugrade" style="display:none;">
+                                	 
+                                    <option value="1">小学一年级</option>
+                                    <option value="2">小学二年级</option>
+                                    <option value="3">小学三年级</option>
+                                    <option value="4">小学四年级</option>
+                                    <option value="5">小学五年级</option>
+                                    <option value="6">小学六年级</option>
+                                    <option value="7">初中一年级</option>
+                                    <option value="8">初中二年级</option>
+                                    <option value="9">初中三年级</option>
+                                    <option value="10">高中一年级</option>
+                                    <option value="11">高中二年级</option>
+                                    <option value="12">高中三年级</option>
+                                </select>
+                            	<span id="stugrade_span" class="3">三年级</span>
+                            </td>
+                            <td width="80" align="right">在读学校：</td>
+                            <td>
+                            	<input  id="stuschool" type="text" size="15" style="display:none;"/>
+                                <span id="stuschool_span">华夏小学</span>
+                            </td>
+                            <td width="100" align="right">家长联系方式：</td>
+                            <td><input  id="stutel" type="text" size="15" style="display:none;"/><span id="stutel_span">13121162106</span></td>
+                        	
+                        </tr>
+                        
+                     </table>
+                     
+                </div>
+           </div>
+           
+            
+           
+        </div>
+     </div>  
+</div>
+         
+</body>
+</html>

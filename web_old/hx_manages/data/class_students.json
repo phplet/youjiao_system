@@ -1,0 +1,29 @@
+{
+	
+	"totals":239,
+	"schools":[{
+		"id":1,
+		"nowBigStus":"100",
+		"nowOneStus":"200",
+		"jionStus":"30",
+		"loseStus":"50",
+		"creat_date":"2013-04"
+	},{
+	   	"id":2,
+	    "nowBigStus":"80",
+		"nowOneStus":"400",
+		"jionStus":"40",
+		"loseStus":"60",
+		"creat_date":"2013-08"
+	 
+	},{
+	  	"id":3,
+	  	"nowBigStus":"180",
+		"nowOneStus":"160",
+		"jionStus":"20",
+		"loseStus":"50",
+		"creat_date":"2013-05"
+	 
+	}]
+
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>巨人学校管理后台</title>
+	<link rel="stylesheet" href="js/jquery_ui/themes/base/jquery.ui.all.css">
+	<script src="js/jquery-1.5.2.min.js"></script>
+	<script src="js/jquery_ui/ui/jquery.ui.core.js"></script>
+	<script src="js/jquery_ui/ui/jquery.ui.widget.js"></script>
+	<script src="js/jquery_ui/ui/jquery.ui.accordion.js"></script>
+	<script src="js/jquery_ui/ui/jquery.ui.button.js"></script>
+	<link rel="stylesheet" href="main.css">
+	<script src="js/main.js"></script>
+</head>
+<body>
+
+<div class="all">
+
+<!--页面头开始-->
+<div class="top">
+<div id="header"><span>巨人学校管理后台</span></div>
+</div>
+<!--页面头结束-->
+<!--左侧菜单开始-->
+<div class="leftmenu">
+
+<div id="accordion">
+	<h3><a href="#">客户端统计</a></h3>
+	<div>
+		<button id="history" class="lbtn">总数统计</button>
+		<button id="daycount" class="lbtn">分日统计</button>
+		<button id="monthcount" class="lbtn">分月统计</button>
+	</div>
+	<h3><a href="#">客户反馈</a></h3>
+	<div>
+		<button id="ticoolfeedback" class="lbtn">题库端反馈</button>
+	</div>
+	<h3><a href="#">帐号管理</a></h3>
+	<div>
+		<button class="lbtn" id="active">激活帐号</button>
+	</div>
+	<h3><a href="#">系统维护</a></h3>
+	<div>
+		<button class="lbtn" id="GpictureManager">高考图片管理</button>
+		<button class="lbtn" id="GuploadPics">高考上传图片</button>
+		<button class="lbtn" id="ZpictureManager">中考图片管理</button>
+		<button class="lbtn" id="ZuploadPics">中考上传图片</button>
+	</div>
+</div>
+</div>
+<!--左侧菜单结束-->
+
+
+<!--右侧开始-->
+<div id="main">
+<div id="content">
+	<iframe id="myiframe" frameborder="0" width="0" height="0"></iframe>
+</div>
+</div>
+<!--右侧结束-->
+
+</div>
+
+</body>
+</html>

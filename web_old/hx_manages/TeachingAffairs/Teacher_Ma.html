@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>华夏优教互动平台_校区管理</title>
+     
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    <script type="text/javascript" src="../Scripts/Teacher_Ma.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.form.js"></script>
+    
+<style type="text/css">
+	.demo{width:400px; margin:30px auto; height:140px;}
+	.demo p{line-height:32px}
+	.btn{position: relative;overflow: hidden;margin-right: 4px;display:inline-block;*display:inline;padding:4px 10px 4px;font-size:14px;line-height:18px;*line-height:20px;color:#fff;text-align:center;vertical-align:middle;cursor:pointer;background-color:#5bb75b;border:1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf;border-bottom-color:#b3b3b3;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+	.btn input {position: absolute;top: 0; right: 0;margin: 0;border: solid transparent;opacity: 0;filter:alpha(opacity=0); cursor: pointer;}
+	.progress { position:relative; margin-left:100px; margin-top:-24px; width:200px;padding: 1px; border-radius:3px; display:none}
+	.bar {background-color: green; display:block; width:0%; height:20px; border-radius: 3px; }
+	.percent { position:absolute; height:20px; display:inline-block; top:3px; left:2%; color:#fff }
+	.files{height:22px; line-height:22px; margin:10px 0}
+	.delimg{margin-left:20px; color:#090; cursor:pointer}
+	#main_list table{ border-top:#CCC solid 1px;border-left:#CCC solid 1px; margin-top:10px;}
+	#main_list td{ border-right:#CCC solid 1px;border-bottom:#CCC solid 1px; padding:5px;}
+	#TeacherForm p{ padding-top:5px;}
+</style>
+</head>
+ 
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false"  style="padding:5px;" >
+        
+        <div id="SerToolBar_teacher">
+           <div class="hx_Schooltop_teacher">
+           	    
+               <ul >
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	   <li class="hx_Schooltop_Scname" style="width:auto;">
+                   		学校名称：<span class="hx_text001" id="centers_name">华夏学校</span>&nbsp;&nbsp;
+                   </li>
+                   <li class="hx_Schooltop_Scname" style="width:auto;">
+                   		校区名称：<span class="hx_text001" id="zones_name">华夏校区</span>&nbsp;
+                   </li>
+                   <li class="hx_Schooltop_enable_teacher">
+                   		学科选择：<span>
+                        		<select id="teacher_sub" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="100">
+									<option value="请选择">请选择</option>
+									<option value="1">语文</option>
+                                    <option value="2">数学</option>
+                        			<option value="3">英语</option>
+                        			<option value="4">物理</option>
+                                    <option value="5">化学</option>
+                                    <option value="6">生物</option>
+                                    <option value="7">地理</option>
+                                    <option value="8">历史</option>
+                                    <option value="9">政治</option>
+								</select>
+                              </span>
+                   </li>
+                   <li class="hx_Schooltop_enable">
+                   		状态：<span>
+                        		<select id="startusid" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto">
+									<option value="1">启用</option>
+									<option value="2">禁用</option>
+								</select>
+                              </span>
+                   </li>
+                   <li class="hx_Schooltop_name">
+                       姓名：<input id="SchoolText" class="easyui-validatebox" type="text" style="width:80px;" value="请输入姓名"/>
+                   </li>
+                   <li  class="hx_Schooltop_search_sel">
+                       <a id="BtnSearch" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查看</a> 
+                   </li>
+                    
+                </ul>
+                
+                <ul style=" clear:both; padding-top:5px;">
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	     
+                   <li class="hx_Schooltop_add">
+                       <a id="BtnAddTeacher"  class="easyui-linkbutton" data-options="iconCls:'icon-add'" title="新增教师">新增教师</a>&nbsp;&nbsp;
+                       <a id="BtnAddMoreTeacher"  class="easyui-linkbutton" data-options="iconCls:'icon-add'" title="批量新建教师">批量新建教师</a>&nbsp;&nbsp;
+                       <a id="BtnAddSearch"  class="easyui-linkbutton" data-options="iconCls:'icon-add'" title="加入教师">加入教师</a>&nbsp;&nbsp;
+                       <a id="BtnSelSearch"  class="easyui-linkbutton" data-options="iconCls:'icon-search'" title="咨询师查询">咨询师查询</a>
+                   </li>
+                </ul>
+               
+          </div>
+        </div>
+ 
+        <div id="Teacher_Ma" class="easyui-datagrid" >
+        </div>
+ 
+        <div id="wdialog">
+            <div data-options="region:'center'" style="padding:5px;padding-left:25px;">
+              <form id="TeacherForm"> 
+              
+              <!-- <p>
+                    <img  src="../images/head_img.png" width="50" height="50" id="teacher_headimg" style="border:0px;"/>
+                    &nbsp;&nbsp;<span ><a href="#">更改头像</a></span>
+                </p>-->
+                 <!--<div class="text_pbottom">
+                    <img  src="../images/head_img.png" width="50" height="50" style="border:0px;"/>
+                    &nbsp;&nbsp;<span ><a href="#" >更改头像</a></span>
+                </div>-->
+                <p>
+                    用 户 名：
+                    <input id="teacherUName" name="teacherUName" class="easyui-validatebox" data-options="required:true" style="width:145px;"/>&nbsp;&nbsp;<a href="#" style=" text-decoration:none" id="checkname" onclick="selverify('teacherUName');">验证</a>
+                    <span class="color_text">*</span><span id="teacherUName_Ms" class="color_text TeacherForm" >&nbsp;请输入邮箱格式！</span>
+                </p>
+                
+                
+                <p>
+                    真实姓名： 
+                    <input n id="teacherRName" name="teacherRName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                    <span class="color_text">*</span><span id="teacherRName_Ms" class="color_text TeacherForm" >&nbsp;请输入中文姓名,2-4位汉字！</span>
+                </p>
+                 <p>
+                    身　　份：
+                    <input  id="usertype" name="usertype" type="radio" checked="checked" value="2" onclick="change_subject_no_B(this.value)"/> 教师
+                    <input  id="usertype1" name="usertype" type="radio" value="3" onclick="change_subject_no_B(this.value)" /> 咨询师
+                    <!--<span class="color_text">*</span><span id="userSubjects_Ms" class="color_text">&nbsp;学科不能为空！</span>-->
+                </p>
+                <p>
+                    性　　别：
+                    <input type="radio" name="teacherSex" id="teacherSex" value="1"  checked="checked"/>　男　
+                    <input type="radio" name="teacherSex" id="teacherSex" value="2" />　女
+                     
+                </p>
+                <p>
+                    联系方式：
+                    <input id="teacherTel" name="teacherTel" style="width:180px;"/>
+                    <span class="color_text">*</span><span id="teacherTel_Ms" class="color_text TeacherForm" >&nbsp;联系方式为11位数字！</span>
+                </p>
+               
+                <p>
+                    邮　　箱：
+                    <input id="teacherEmail" name="teacherEmail" style="width:180px;"/>
+                    <span class="color_text">*</span><span id="teacherEmail_Ms" class="color_text TeacherForm" >&nbsp;用户邮箱必须为电子邮件格式！</span>
+                </p>
+               
+                <p>
+                    学　　科：
+                    <select id="teacherSubjects" name="teacherSubjects"  class="easyui-combobox" style="width:187px;"  name="12"  panelHeight="100">
+						<option value="请选择">请选择</option>
+                        <option value="1">语文</option>
+                        <option value="2">数学</option>
+                        <option value="3">英语</option>
+                        <option value="4">物理</option>
+                        <option value="5">化学</option>
+                        <option value="6">生物</option>
+                        <option value="7">地理</option>
+                        <option value="8">历史</option>
+                        <option value="9">政治</option>
+        
+					</select>
+                    <span id="sss_subject_no">
+                    <span class="color_text">*</span><span id="teacherSubjects_Ms" class="color_text TeacherForm">&nbsp;学科不能为空！</span></span>
+                </p>
+                
+                 
+                 <p>
+                    <span style="line-height:25px;float:left;">备　　注：</span>
+                    <span style=" float:left;">&nbsp;
+                    	<textarea id="teacherMessage" name="teacherMessage" style="height:100px; width:360px;"></textarea>
+                   	</span>
+                </p>
+                
+               <!-- <p style="padding-left:18px; color:#808080;">
+                    真实姓名：<span id="RealName"></span><br />
+                    性别：<span id="UserSex"></span><br />
+                    联系方式：<span id="Number"></span>
+                    <input id="hiddenteacherid" type="hidden" />
+                </p>-->
+              </form>
+            </div>
+        </div>
+        <div id="addSearthTeacher" style="padding-top:10px;">
+        	 
+        	<p align="center">
+        	真实姓名：<input  type="text" name="addSeaTeacher" id="addSeaTeacher" class="easyui-validatebox" />&nbsp;&nbsp;
+                <a id="BtnaddSearthTeacher" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查看</a> 
+        	</p>
+            <div id="ShowSearthTeacher" class=" cleared" style="width:480px; padding-top:10px; margin:auto;">
+            	<ul style="border-top:#CCC dotted 1px; border-left:#CCC dotted 1px; display:inline-table;">
+                	<li class="text_float text_side" style="width:120px; text-align:center;">用户名</li>
+                    <li class="text_float text_side" style="width:50px; text-align:center;">姓名</li>
+                    <li class="text_float text_side" style="width:40px; text-align:center;">学科</li>
+                    <li class="text_float text_side" style="width:150px; text-align:center;">学校-校区</li>
+                    <li class="text_float text_side" style="width:70px; text-align:center;">联系方式</li>
+                    <li class="text_float text_side" style="width:40px; text-align:center;">操作</li>
+                </ul>
+                <div class=" cleared"></div>
+                <div id="search_otherT">
+                	
+                </div>
+            </div>
+        </div>
+        <div id="addMoreTeacher" style="display:none">
+        	<div id="main">
+   
+               <div class="demo">
+               
+                    
+                    <div class="btn">
+                        <span>添加附件</span>
+                        <input id="fileupload" type="file" name="mypic" onChange="changesupload()"/>
+                    </div>
+                    <div class="progress">
+                        <span class="bar"></span><span class="percent">0%</span >
+                    </div>
+                    <div class="files" ></div>
+                    <div id="showimg"></div>
+                    <div id="anwe"></div>
+                    
+                    
+               </div>
+   				<p style="padding-left:20px; text-align:left;">说明：上传只适合excel格式,请按照excel模板格式制作文件。模板格式下载：<a href="../2013hx_teacher_upload/templet_teacher.xls">样式模板</a></p>
+			</div>
+            <div id="main_list" style="display:none;">
+            	<table border="0" id="nonereg" cellpadding="0" cellspacing="0">
+                	
+                </table>
+                <table border="0" id="yesreg" cellpadding="0" cellspacing="0" >
+                	 
+                </table>
+            </div>
+            
+        </div>
+         
+        <div id="SeltTeacher" style="line-height:25px;">
+            <div data-options="region:'center'" style="padding-left:38px; padding-top:12px;">
+                <form id="Form2">
+                  
+                <p>
+                    用 户 名：<span id="sel_teacher_uname"></span> 
+                </p>
+                
+                <p>
+                    邮　　箱：<span id="sel_teacher_email"></span>
+                    
+                </p>
+                <p>
+                    姓　　名：<span id="sel_teacher_rname"></span>
+                    
+                </p>
+                <p>
+                    姓　　别：<span id="sel_teacher_sex"></span>
+                    
+                </p>
+                <p>
+                    学　　科：<span id="sel_teacher_sub"></span>
+                     
+                </p>
+                <p>
+                    身　　份：<span id="sel_teacher_role"></span>
+                     
+                </p>
+                
+                <p>
+                    联系方式：<span id="sel_teacher_tel"></span>
+                     
+                </p>
+                <p >
+                    <span style="line-height:25px;float:left;">备　　注：</span>
+                    <span style=" float:left;" id="sel_teacher_message">&nbsp;</span>
+                </p>
+                </form>
+            </div>
+        </div>
+ 
+
+</body>
+</html>
+<script type="text/javascript">
+	var bar = $('.bar');
+	var percent = $('.percent');
+	var showimg = $('#showimg');
+	var progress = $(".progress");
+	var files = $(".files");
+	var btn = $(".btn span");
+	var anwe = $("#anwe"); 
+$(function () {
+	bar = $('.bar');
+	percent = $('.percent');
+	showimg = $('#showimg');
+	progress = $(".progress");
+	files = $(".files");
+	btn = $(".btn span");
+	anwe = $("#anwe"); 
+	 
+	$("#fileupload").wrap("<form id='myupload' action='"+Webversion +"/batch_user?action=uploa_file_TT&usr_type=2&center_id="+centerAll.center_id+"&zone_id="+$('#A_zones',window.parent.document).find("option:selected").val()+"' method='post' enctype='multipart/form-data'></form>");
+     
+  
+});
+function changesupload(){
+		$("#myupload").ajaxSubmit({
+			dataType:  'json',
+			beforeSend: function(){
+        		 
+				progress.show();
+        		var percentVal = '0%';
+        		bar.width(percentVal);
+        		percent.html(percentVal);
+				btn.html("上传中...");
+    		},
+    		uploadProgress: function(event, position, total, percentComplete) {
+        		var percentVal = percentComplete + '%';
+        		bar.width(percentVal);
+        		percent.html(percentVal);
+    		},
+			success: function(data) {
+				if(data.beyond_list==null||data.beyond_list==undefined||data.beyond_list==""){
+					teachername_Tnone_datas = data;
+					$.messager.alert('温馨提示','附件上传成功!','info',function(){
+						btn.html("添加附件");
+						$('#main').hide();
+						$('#main_list').show();
+						
+						
+						if(data.list.registered!=null&&data.list.registered!=""&&data.list.registered!=undefined){  //用户名被占用过的
+							
+							var nonehtmls = '<tr><td colspan="8" align="center"><strong>已占用的老师账号</strong></td></tr><tr><td><input type="checkbox" name="nonereg_check" id="nonereg_check" onclick="snonereg_check()" /></td><td>用户名</td><td>验证</td><td>真实姓名</td><td>性别</td><td>联系方式</td><td>邮箱</td><td>学科</td></tr>';
+							$.each(data.list.registered,function(i,n){
+								nonehtmls += '<tr id="trsde_'+i+'"><td><input type="checkbox" name="nonereg_check" value="'+i+'" /></td><td><input type="text" name="stuname_Tnone_'+i+'" value="'+n.username+'" style="width:100px;" id="stuname_Tnone_'+i+'" onblur="SomeSub(\'stuname_Tnone_'+i+'\')"/></td><td><a onclick="selverify_moreTeaStu(\'stuname_Tnone_'+i+'\')">验证</a><span id="stuname_Tnone_'+i+'_Ms" class="Ms_check">用户已存在！</span></td><td>'+n.realname+'</td><td>'+(n.gender==1?"男":"女")+'</td><td>'+n.tel+'</td><td>'+n.email+'</td><td>'+subject_sum(parseInt(n.subject_id))+'</td></tr>';
+							 
+							});
+							$('#nonereg').html(nonehtmls);
+						}else{
+							$('#addMoreTeacher').dialog('close');
+							pager.pagination("select",1);
+						}
+						var percentVals = 0 + '%';
+						bar.width(percentVals);
+						percent.html(percentVals);
+						
+					});
+					$('#fileupload').remove();
+					$('#myupload').append('<input id="fileupload" type="file" name="mypic"  onChange="changesupload()"/>');
+				}else{
+					btn.html("添加附件");
+					bar.width('0'); 
+					var max_stu = data.beyond_list.database.center_max_info.teacher_max_count ; //最大学生数
+					var now_st =data.beyond_list.database.center_teacher_count;  //现有学生数
+					var upload_stu = data.beyond_list.upload_count; //上传了几个
+					var beyond_stu = data.beyond_list.beyond_count ;//超出了几个
+					$.messager.alert('温馨提示','<div style="padding-left:60px;">上传失败，原因是：<br />学校上限教职工数：'+max_stu+'<br />学校现有教职工数：'+now_st+'<br />此次上传教职工数：'+upload_stu+'<br />此次超出教职工数：'+beyond_stu+'</div>','info');
+					
+					
+					
+				}
+			},
+			error:function(xhr){
+				btn.html("上传失败");
+				bar.width('0')
+				files.html(xhr.responseText);
+			}
+		});
+	}
+</script>

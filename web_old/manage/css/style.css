@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+
+ul li {
+	background: url(../images/accept.png) no-repeat left;
+	list-style: none;
+	padding: 3px 3px 3px 20px;
+	margin-left:10px;
+}
+
+
+
+.flexigrid div.fbutton .add {
+	background: url(../images/add.png) no-repeat center left;
+}
+
+.flexigrid div.fbutton .delete {
+	background: url(../images/close.png) no-repeat center left;
+}

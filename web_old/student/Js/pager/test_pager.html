@@ -1,0 +1,20 @@
+<html>
+    <meta content="text/html; charset=UTF-8" />
+    <script type='text/javascript' src='../jquery.js'></script>
+    <script type='text/javascript' src='pager.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+			
+            var pager = new Pager();
+            $('body').append(pager.showHTML(10, 0, 5));
+            pager.addStyle();
+            pager.bindEvent();
+            pager.change(function(offset , step){
+				console.log('change',offset,step);
+			});
+            
+        });
+    </script>
+    <body style='width:1336px;height:720px;'>
+    </body>
+</html>

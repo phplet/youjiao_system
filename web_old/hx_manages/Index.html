@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>互动平台</title>
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="Content/default/header.css" />
+    <link rel="stylesheet" type="text/css" href="Content/Style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.json.min.js"></script>
+    <script type="text/javascript" src="Scripts/json2.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="Scripts/Base64.js"></script>
+    <script type="text/javascript" src="Scripts/sha256.js"></script>
+    
+    <script type="text/javascript" src="locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.Plug.js"></script>
+    <script type="text/javascript" src="Scripts/login.js"></script>
+	<script src="Scripts/Common.js" type="text/javascript"></script>
+    <script type="text/javascript" src="Scripts/featureTab.js"></script>
+    <script type="text/javascript" src="version.js"></script>
+    
+    <!--<script type="text/javascript" src="Scripts/Permission.js"></script>
+    <script type="text/javascript" src="DataDefine/feature.js"></script>-->
+     
+    <script type="text/javascript">
+		 
+        
+		var dingshiqi = null;
+		
+		
+        $(document).ready(function () {
+			
+            $("#themeList").theme({ themeBase: "themes", headerThemeBase: "Content" });
+           
+            $("#logout").click(function (event) {
+
+                $.messager.confirm('温馨提示', '确定要退出系统吗？', function (r) {
+                    if (r) {
+                        var cookieOptions = { path: "/", expires: -1 };
+                        $.cookie("AuthToken", null, cookieOptions);
+                        $.cookie("UserInfo", null, cookieOptions);
+                        
+                        event.preventDefault();
+                        window.location.href = "../index.html";
+                    }
+                });
+
+            });
+			
+            // 过滤掉非法的数组元素
+			 
+            function arrayFilter(array, fun) {
+                var tempArray = [];
+				 
+                $.each(array, function (i, n) {
+                    if (n.children) {
+                        tempArray.push(n);
+                    } else {
+                        if (fun(n.operate)) {
+                            tempArray.push(n);
+                        }
+                    }
+                });
+                return tempArray;
+            }
+			  
+            feature = arrayFilter(feature, $.permission);
+
+            var deleteItem = [];
+
+            $.each(feature, function (index, value) {
+                if (value.children) {
+                    value.children = arrayFilter(value.children, $.permission);
+                    feature[index] = value;
+                    if (!value.children || value.children.length == 0) {
+                        deleteItem.push(value.id);
+                    }
+                }
+            });
+
+            if (deleteItem.length > 0) {
+                $.each(deleteItem, function (i, n) {
+                    $.each(feature, function (k, f) {
+                        if (f.id == n) {
+                            feature.splice(k, 1);
+                            return false;
+                        }
+                    });
+                });
+            }
+
+            if (feature.length == 0) {
+                // 清楚验证信息
+                var cookieOptions = { path: "/", expires: -1 };
+                $.cookie("AuthToken", null, cookieOptions);
+                $.cookie("UserInfo", null, cookieOptions);
+                window.location.href = "../index.html";
+            }
+
+            $("#feature").tree({
+                data: feature,
+                onSelect: function (node) {
+                    if (node.attributes && node.attributes.url && node.attributes.url != "") {
+                        var nodeText = node.text;
+                        $.each(feature, function (index, n) {
+                            if (n.id != node.id && n.children != null && n.children.length > 0) {
+                                $.each(n.children, function (ci, cn) {
+                                    if (cn.id == node.id) {
+                                        nodeText = n.text;
+                                        return false;
+                                    }
+                                });
+                            }
+                        });
+                        ChangeThisTab(nodeText, node.attributes.url);
+                    }
+                }
+            });
+            //$("*[operate]").permission();
+			
+            
+            $(document).ajaxSend(function (event, request, settings) {
+                if ($.cookie("AuthToken") != null && $.trim($.cookie("AuthToken")).length > 0) {
+                    request.setRequestHeader("Authorization", "Digest " + $.cookie("AuthToken"));
+                }
+
+            });
+			
+            try {
+                var UserInfo = $.evalJSON($.cookie("UserInfo"));
+
+                if (UserInfo != null) {
+                    $('#headusername').text(UserInfo.username);
+                    switch (parseInt(UserInfo.level)) {
+                        case 1:
+							$('#A_zones').hide();
+                            $('#indecuserddd').text('校长');
+                            break;
+                        case 2:
+                            $('#indecuserddd').text('教学主任');
+							$('#A_zones').show();
+							
+							selCenter_Zone('#A_zones',UserInfo.id);
+							
+                            break;
+                        case 3:
+                            $('#indecuserddd').text('班主任');
+							$('#A_zones').hide();
+                            break;
+                        case 4:
+                            $('#indecuserddd').text('教师');
+							$('#A_zones').show();
+							selCenter_Zone('#A_zones',UserInfo.id);
+                            break;
+						case 5:
+                            $('#indecuserddd').text('咨询师');
+							$('#A_zones').show();
+							selCenter_Zone('#A_zones',UserInfo.id);
+                            break;
+						case 9:
+                            $('#indecuserddd').text('管理员');
+							$('#A_zones').hide();
+                            break;
+                    }
+                }
+				
+
+            } catch (err) {
+
+            };
+
+            $('#browesmessage').dialog({
+                width: 620,
+                height: 40,
+                closed: true,
+                noheader: true
+            });
+
+            $('#browesmessage').dialog('move', { top: 8 });
+
+            if ($.browser.msie && ($.browser.version == "6.0") && !$.support.style) {
+                setTimeout('$("#browesmessage").dialog("open");dingshiqi = setTimeout(\'$("#browesmessage").dialog("close");clearTimeout(dingshiqi);\', 15000);', 3000);
+            }
+			ChangeThisTab("首页", "HomePage.html");
+            
+        });
+    </script>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'north',border:false" style="height: 65px; background-color:#d2e0f2">
+        <div id="header">
+            <div class="headerNav">
+                <a class="logo" href="#" target="_blank">标志</a>
+                
+                <!--<ul class="nav">
+                    <li><a href="http://www.hxyoucai.com/about_us.html" target="_blank">关于我们</a></li>
+                    <li><a href="http://www.hxyoucai.com" target="_blank">华夏安业</a></li>
+                </ul>-->
+                <ul class="themeList" id="themeList">
+                    
+                    <li theme="default">
+                        <div class="selected">蓝色</div>
+                    </li>
+                    <li theme="Sunny">
+                        <div>绿色</div>
+                    </li>
+                    <li theme="pepper-grinder">
+                        <div>紫色</div>
+                    </li>
+                    <li theme="cupertino">
+                        <div>银色</div>
+                    </li>
+                    <li theme="dark-hive">
+                        <div>天蓝</div>
+                    </li>
+                </ul>
+                <ul class="userInfoheader">
+                    <li>
+                    	<select id="A_zones" onchange="selupdata(this.value);"></select>&nbsp;&nbsp;
+                        欢迎您，
+                        <b id="headusername" style="color:#ff0000; font-size:11pt;"></b>&nbsp;
+                        <span id="indecuserddd"></span>，
+                        <a id="userSetInfo" href="#">账户设置</a>
+                        <a id="logout" href="#">退出</a>
+                    </li>
+                </ul>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <div data-options="region:'west',split:true,title:'互动平台'" style="width: 200px;">
+        <div class="easyui-accordion" data-options="fit:true,border:false">
+            <div title="功能菜单" style="padding: 5px; overflow: auto;">
+                <ul id="feature" class="easyui-tree" data-options="onClick: function(node){
+				$(this).tree('toggle', node.target);
+			}"></ul>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'south',border:false" style="height: 5px; background: #d2e0f2;"></div>
+    <div data-options="region:'center',border:false,plain:true">
+        <div id="maintabs" class="easyui-tabs" data-options="tools:'#tab-tools'" fit="true">
+        	 
+        </div>
+    </div>
+    <div id="menu" class="easyui-menu" style="width: 150px;">
+        <div iconcls="icon-reload" id="m-refresh">刷新</div>
+        <div class="menu-sep"></div>
+        <div iconcls="icon-no" id="m-closeall">全部关闭</div>
+        <div class="menu-sep"></div>
+        <div iconcls="icon-cancel" id="m-closeother">除此之外关闭</div>
+        <div class="menu-sep"></div>
+        <div iconcls="icon-cancel" id="m-close">关闭标签</div>
+    </div>
+    <div id="loginWin" class="easyui-dialog" title="华夏优教互动平台" style="width: 350px; height: 250px; padding: 5px;"
+        minimizable="false" maximizable="false" resizable="false" collapsible="false" closable="true" draggable="true" shadow="true" modal="true" closed="true"  iconCls="icon-user">
+        <div class="easyui-layout" fit="true">
+            <div region="center" border="false" style="padding: 5px; text-align: center; background: #fff; border: 1px solid #ccc;">
+                <form id="LoginForm">
+                    <div style="padding: 10px 10px 0px 40px; text-align: left;">
+                        <label for="login" style="display: block; padding-bottom: 3px">帐号：</label>
+                        <input type="text" id="username" name="username" style="width: 230px;" class="easyui-validatebox" required="true" />
+                    </div>
+                    <div style="padding: 10px 10px 0px 40px; text-align: left;">
+                        <label for="password" style="display: block; padding-bottom: 3px">密码：</label>
+                        <input type="password" id="password" name="password" style="width: 230px;" class="easyui-validatebox" required="true" />
+                    </div>
+                    <div style="padding: 15px 37px 0px 10px; text-align: right;">
+                        <input id="checkUserName" type="checkbox" checked="checked" /><label for="checkUserName">记住用户名</label>
+                        <input id="checkboxPassword" type="checkbox" checked="checked" /><label for="checkboxPassword">自动登录</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="browesmessage" style="padding:5px; font-size:12px;">
+        您的浏览器版本太低，可能导致兼容性问题，推荐安装最新版chrome（谷歌）或firefox（火狐）浏览器。
+        <span style="text-decoration:underline;color:blue;cursor:pointer;" onclick='$("#browesmessage").dialog("close");clearTimeout(dingshiqi);'>关闭</span> 
+    </div>
+
+</body>
+</html>

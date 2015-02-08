@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+    <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>题酷在线</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="layer/skin/layer.css" type="text/css" rel="stylesheet" />
+    <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+    <script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+    <script type='text/javascript' src="layer/layer.js"></script>
+     
+    <script type="text/javascript" src="Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Js/jquery.json.min.js"></script>
+    
+    <script type="text/javascript" src="Js/json2.js"></script>
+    <script type="text/javascript" src="Js/Base64.js"></script>
+    <script type="text/javascript" src="Js/sha256.js"></script>
+     
+    <script type="text/javascript" src="Js/public_base.js"></script>
+    <script type="text/javascript" src="Js/iePNG.js" ></script>
+    <script type="text/javascript" src="Js/index_click.js" ></script>
+    
+</head>
+<body>
+<div class="warps">
+	<div class="home_header_bg">	
+        <div class="home_header">
+            <div class="home_logo">
+                <a href="Index.html"><img  src="images/logo_home.png" /></a>
+            </div>
+            <div class="home_logins">
+                <div class="home_logins_font">
+                  <div id="logins_yes" style="display: none;">
+                	<span>&nbsp;<a href="javascript:void(0);" onclick="outlogin();">退 出</a></span>
+                	<span class="icon_18_16"></span>
+                    <span>&nbsp;<a href="edit_login.html">账户设置</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="icon_13_16"></span>
+                    <span style="width:50px;">&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a id="headusername" href="javascript:void(0)" style="color:#777777;"></a>,欢迎您！</span>
+                    <span class="icon_26_26"></span>
+                 </div>
+                 <div id="logins_no">
+                 	<span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../register.html">注 册</a></span>
+                	<span class="icon_26_26_reg"></span>
+                    <span style="width:50px;">&nbsp;</span> 
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../index.html">用户登录</a></span>
+                    <span class="icon_26_26"></span>
+                 </div>
+                </div>
+                <span class="cleard"></span>
+            </div>
+            <div  class="clear"></div>
+        </div>
+    </div>
+    <div style="height: 25px; font-size: 12px; text-align: right; display: block; padding-right:10px; color:#777777;">联系我们 : 15201117816 , QQ : 2278596726 , Email : sales001@hxnetwork.com</div>
+    <div class="banner"><div class="banner_div"><img  src="images/banner_img_01.png" width="979" height="485"/></div></div>
+    <div class="cleard"></div>
+    <div class="mains">
+    	<div class="drw_img">
+        	<div style="float:left; padding-left:30px;">
+            	<img  src="images/img_drw.png" width="146" height="110"/>
+            </div>
+            <div style="float:right; width:770px; ">
+            	<dl class="aboutUs">
+                    <dd style="font-size:20px; color:#484848; line-height:40px;">
+                    	<strong>题酷在线</strong>
+                    </dd>
+                    <dd style="font-size:14px; color:#484848; line-height:20px;">
+                    	题酷在线，是学生的在线作业本，是学生的自学手册，是学生的海量试卷库，是教师与学生互动的好帮手。为学生和教师更好的服务，我们将心满意足。
+                    </dd>
+                </dl>
+            </div>
+            <div class="clear"></div>
+        </div>
+         
+    	<div class="product_list">
+        	<ul>
+            	<li class="product_list_ul_li">
+                	<div class="product_img_s" onclick="class_alink(1);">
+                    	 <div class="proT_main">
+                         	<div class="proT_img home_icon home_sync_icon"></div>
+                            <div class="proT_title">同步学习</div>
+                         </div>
+                         <div class="clear"></div>
+                         <div class="proT_li">
+                         	<span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;主流版本</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;从评测开始</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;逐章逐节逐点，步步推进</span><span class="clear"></span></span>
+                         </div>
+                    </div>
+                </li>
+                <li class="product_list_ul_li">
+                	<div class="product_img_s" onclick="class_alink(2);">
+                    	 <div class="proT_main">
+                         	<div class="proT_img home_icon home_special_icon"></div>
+                            <div class="proT_title">专题突破</div>
+                         </div>
+                         <div class="clear"></div>
+                         <div class="proT_li">
+                         	<span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;主要学科</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;知识专题</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;指导备考时期的强化训练</span><span class="clear"></span></span>
+                         </div>
+                    </div>
+                </li>
+                <li class="product_list_ul_li_side">
+                	<div class="product_img_s" onclick="class_alink(3);">
+                    	<div class="proT_main">
+                         	<div class="proT_img home_icon home_work_icon"></div>
+                            <div class="proT_title">我的作业</div>
+                         </div>
+                         <div class="clear"></div>
+                         <div class="proT_li_w">
+                         	<span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;接收老师的作业</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;接到老师的叮咛</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;作业在线做，在线交，在线反馈</span><span class="clear"></span></span>
+                         </div>
+                    </div>
+                </li>
+                <li class="product_list_ul_li">
+                	<div class="product_img_s" onclick="class_alink(4);">
+                    	 <div class="proT_main">
+                         	<div class="proT_img home_icon home_exam_icon"> </div>
+                            <div class="proT_title">历年真题</div>
+                         </div>
+                         <div class="clear"></div>
+                         <div class="proT_li">
+                         	<span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;汇集近年来的中高考试题</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;完全的解析</span><span class="clear"></span></span>
+                         </div>
+                    </div>
+                </li>
+                <li class="product_list_ul_li">
+                	<div class="product_img_s" onclick="class_alink(5);">
+                    	 <div class="proT_main">
+                         	<div class="proT_img home_icon home_tests_icon"> </div>
+                            <div class="proT_title">名校试卷</div>
+                         </div>
+                         <div class="clear"></div>
+                         <div class="proT_li">
+                         	<span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;集合全国名校试卷</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;题型丰富，试题精编</span><span class="clear"></span></span>
+                         </div>
+                    </div>
+                </li>
+                <li class="product_list_ul_li_side">
+                	<div class="product_img_s" onclick="class_alink(6);">
+                    	 <div class="proT_main">
+                         	<div class="proT_img home_icon home_goods_icon"> </div>
+                            <div class="proT_title">好题错题</div>
+                         </div>
+                         <div class="clear"></div>
+                         <div class="proT_li_w">
+                         	<span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;好题收藏，培养对重点的把控力</span><span class="clear"></span></span>
+                             
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;错题记录，记录薄弱的知识环节</span><span class="clear"></span></span>
+                         </div>
+                    </div>
+                </li>
+                <li class="product_list_ul_li" >
+                	<div class="product_img_s" onclick="class_alink(7);">
+                    	 <div class="proT_main">
+                         	<div class="proT_img home_icon home_analyze_icon"> </div>
+                            <div class="proT_title">诊断分析</div>
+                         </div>
+                         <div class="clear"></div>
+                         <div class="proT_li">
+                         	<span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;记录学习的轨迹</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;记录练习的统计</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;分析学习，为你智能推送</span><span class="clear"></span></span>
+                         </div>
+                    </div>
+                </li>
+                <li class="product_list_ul_li">
+                	<div class="product_img_s" onclick="class_alink(8);">
+                    	 <div class="proT_main">
+                         	<div class="proT_img home_icon home_news_icon"> </div>
+                            <div class="proT_title">校内通知</div>
+                         </div>
+                         <div class="clear"></div>
+                         <div class="proT_li">
+                         	<span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;校内发布的最新资讯</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;班内发布的最新通知</span><span class="clear"></span></span>
+                            
+                         </div>
+                    </div>
+                </li>
+                <li class="product_list_ul_li_side" >
+                	<div class="product_img_s" onclick="class_alink(9);">
+                    	 <div class="proT_main">
+                         	<div class="proT_img home_icon home_jion_icon"></div>
+                            <div class="proT_title">入学测试</div>
+                         </div>
+                         <div class="clear"></div>
+                         <div class="proT_li">
+                         	<span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;针对入学新生开展测评</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;了解新生基本情况</span><span class="clear"></span></span>
+                         </div>
+                    </div>
+                </li>
+                <li class="product_list_ul_li">
+                	<div class="product_img_s" onclick="class_alink(10);">
+                    	 <div class="proT_main">
+                         	<div class="proT_img home_icon home_special_icon"></div>
+                            <div class="proT_title">步调学习</div>
+                         </div>
+                         <div class="clear"></div>
+                         <div class="proT_li">
+                         	<span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;主要学科</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;学习等级评定</span><span class="clear"></span></span>
+                            <span class="proT_span"><span class="home_icon home_dot_icon"> </span><span>&nbsp;&nbsp;学习、测试、复习好帮手</span><span class="clear"></span></span>
+                         </div>
+                    </div>
+                </li> 
+                 
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <!--<div class="links_ul">
+        	<ul>
+            	<li class="li_noborder">下载中心</li>
+            	<li class="links_ul_li"><a href="#">关于我们</a></li>
+                <li class="links_ul_li"><a href="#">关于我们</a></li>
+            </ul>
+            <ul>
+            	<li class="li_noborder">帮助中心</li>
+            	<li class="links_ul_li"><a href="#">关于我们</a></li>
+                <li class="links_ul_li"><a href="#">关于我们</a></li>
+            </ul>
+            <ul>
+            	<li class="li_noborder">服务与支持</li>
+            	<li class="links_ul_li"><a href="#">关于我们</a></li>
+                <li class="links_ul_li"><a href="#">关于我们</a></li>
+            </ul>
+            <ul>
+            	<li class="li_noborder">关于我们</li>
+            	<li class="links_ul_li"><a href="#">关于我们</a></li>
+                <li class="links_ul_li"><a href="#">关于我们</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>-->
+    </div>
+    <div class="clear_10"></div>
+    <div class="footer_Bg">
+    <div class="footer">
+        <span class="footer_font">
+        	Copyright©2004-2014 ，北京华夏安业科技有限公司   All Rights Reserved
+            
+        </span>
+    </div></div>
+</div>
+</body>
+</html>

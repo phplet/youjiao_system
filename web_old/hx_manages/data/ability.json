@@ -1,0 +1,30 @@
+[{
+		"id":1,
+		"abilityName":"认识能力",
+		"abilityInfo":"指识别和记忆，是最基本的能力层级。",
+		"abilitySubject":"英语 语文 数学",
+		"abilityGrade":"A$utf-8$B$utf-8$C$utf-8$",
+		"abilityExp":"1记忆力很好，能够准确识别所学知识内容。$utf-8$2基本可以记住所学知识内容，但不牢固。$utf-8$3遗忘速度快。很难回忆起所学知识。$utf-8$",
+		"mobile":"1",
+		"abilityId":"12"
+	},{
+	   "id":2,
+	    "abilityName":"辨识能力",
+		"abilityInfo":"指在识别和记忆的基础上，能够辨认相关的信息，精准选择正确的信息。",
+		"abilitySubject":"英语",
+		"abilityGrade":"A$utf-8$B$utf-8$C$utf-8$",
+		"abilityExp":"记忆力很好，能够准确识别所学知识内容。$utf-8$基本可以记住所学知识内容，但不牢固。$utf-8$遗忘速度快。很难回忆起所学知识。$utf-8$",
+		"mobile":"0",
+		"abilityId":"13"
+	 
+	},{
+	  	"id":3,
+	  	"abilityName":"其他能力",
+		"abilityInfo":"其他的...省略了...",
+		"abilitySubject":"语文",
+		"abilityGrade":"A$utf-8$B$utf-8$C$utf-8$",
+		"abilityExp":"记忆力很好，能够准确识别所学知识内容。$utf-8$基本可以记住所学知识内容，但不牢固。$utf-8$遗忘速度快。很难回忆起所学知识。$utf-8$",
+		"mobile":"1",
+		"abilityId":"14"
+	 
+	}]

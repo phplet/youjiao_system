@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+		<title>题酷在线</title>
+		<link type='text/css' href='css/exercise_zhuanti_do.css' rel='stylesheet' /> 
+		<link href="layer/skin/layer.css" type="text/css" rel="stylesheet" />
+        <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+		<script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+        <script type='text/javascript' src="layer/layer.js"></script>
+        <script type="text/javascript" src="Js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="Js/jquery.json.min.js"></script>
+        <script type="text/javascript" src="Js/Base64.js"></script>
+        <script type="text/javascript" src="Js/sha256.js"></script> 
+        <script type="text/javascript" src="Js/json2.js"></script>
+        <script type="text/javascript" src="Js/public_base.js"></script>
+		<script type='text/javascript' charset="utf-8" src="kindeditor-4.1.7/kindeditor.js"></script>
+		<script type='text/javascript' charset="utf-8" src="kindeditor-4.1.7/lang/zh_CN.js"></script>
+		<script type='text/javascript' src='Js/pager/pager.js' ></script>
+		<script type='text/javascript' src='Js/exerciseHandler.js'></script>
+		<script type='text/javascript' src='Js/exercise_zhuanti_do.js'></script>
+        <script type="text/javascript" src="Js/flexjs.js"></script>
+		
+	</head>
+    
+	<body>
+		<div class="header_bg">	
+        <div class="header">
+            <div class="logo">
+                <a href="Index.html"><img  src="images/logo_new.png" /></a>
+            </div>
+            <div class="logins">
+                <div class="logins_font">
+                	<span>&nbsp;<a href="javascript:void(0);" onclick="outlogin();">退 出</a></span>
+                	<span class="icon_18_16"></span>
+                    <span>&nbsp;<a href="edit_login.html">账户设置</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="icon_13_16"></span>
+                    <span style="width:50px;">&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a id="headusername" href="javascript:void(0)"></a>,欢迎您！</span>
+                    <span class="icon_26_26"></span>
+                	
+                </div>
+                <span class="cleard"></span>
+            </div>
+            <div  class="clear"></div>
+        </div>
+    </div>
+    <div style="height: 25px; font-size: 12px; text-align: right; display: block; padding-right:10px; color:#777777;">联系我们 : 15201117816 , QQ : 2278596726 , Email : sales001@hxnetwork.com</div>
+    <div class="clear_30"></div>
+		<div class='content'>
+			<div class='content_left'>
+				<div style="border-bottom:#ebebeb solid 1px;"><img src="images/web_icon_102.png" width="220" height="105" /></div>
+                <div class="test_info">
+                	<div class="test_subject"></div>
+                    <div class="test_name">专题名称：<span class="text_0094b1 chapter_name">专题练习</span></div>
+                    <div class="test_que">答对<span class="test_dui total_right">0</span>题<br>答错<span class="test_cuo total_wrong">0</span>题</div>
+                    <div class="link_sub"><a class="icon_125_35 web_icon_bottom_1" id="temp_Save">下次接着做</a><a class="icon_125_35 web_icon_bottom_2" id="temp_remove">重新开始</a></div>
+               		<div class="home_link"><a href="exercise_zhuanti.html"> << 返回专题首页</a></div>
+                </div>
+			</div>
+			<div class='content_center'>
+				<!--<div class='question_head'>
+					<span style='font-size: 20px;'>专题突破</span>
+					<span class='question_subject'></span>
+					<span class='question_zhuanti'></span>
+					<div class='question_count'>
+						<span>答对</span><span class='total_right'>0</span><span>题</span>
+						<span>答错</span><span class='total_wrong'>0</span><span>题</span>
+					</div>
+                    <input class='home' type='button' value='首页'></input>
+					<input class='exit' type='button' value='返回'></input>
+                    
+				</div>-->
+				<div class='question_pager'></div>
+				<div class='question_content'>
+					<div class='question_prev'></div>
+					<div class='question_content_main'>
+						<div class='main_content'>
+							<div class='main_content_content' style='margin-bottom:30px;min-height:40px;'></div>
+						</div>
+						<div class='main_option' style='display:none;'>
+							<input type='radio' class='option_btn' value='A' name='option' ></input>A&nbsp;
+							<input type='radio' class='option_btn' value='B' name='option' ></input>B&nbsp;
+							<input type='radio' class='option_btn' value='C' name='option' ></input>C&nbsp;
+							<input type='radio' class='option_btn' value='D' name='option' ></input>D&nbsp;
+							<span class='option_e'><input type='radio' class='option_btn' value='E' name='option' ></input>E&nbsp;</span>
+						</div>
+						<div class='main_text' style=''></div>
+						<div class='main_answer' style='display:none;position:relative;'>
+							<div style='margin:10px 0;font-weight: bold;' >本题结果:
+								<span class='answer_correct'>√</span>
+								<span class='answer_wrong'>×</span>
+							</div>
+                            <!--<div class='float_div' style='display:none;'>
+                                    <div style='margin:10px 0;font-weight: bold;font-size:12px;text-align:center;' >本题结果:
+                                        <input type='radio' value=1 class='subjective_check' name='subjective_check' checked='checked' ></input>
+                                        <span class='answer_correct'>√</span>
+                                        <input type='radio' value=0 class='subjective_check' name='subjective_check'></input>
+                                        <span class='answer_wrong'>×</span>
+                                    </div>
+                                    <input type='button' class='subjective_check_btn' value='确定'></input>
+                                    
+                                </div>-->
+							<div style='margin:10px 0;font-weight: bold;' >参考答案:</div><div class='offical_answer'></div>
+							<div style='margin:10px 0;font-weight: bold;' >您的答案:</div><div class='my_answer'></div>
+							 
+						</div>
+                        <div class='main_content'>
+                             <div class='main_content_submit' >
+                             	<a href='javascript:void(0);' id='add_to_haoti' style='font-size:12px; display:none; color:#0094b1;'>收藏好题</a>&nbsp;&nbsp;
+                                <input type='button' class=' icon_125_31 web_icon_bottom_5 question_submit' value='提交本题' />
+                                <input type='button' class=' icon_125_31 web_icon_bottom_5 question_next' value='下一题' style='display:none;' />
+                             </div>
+                        </div>
+					</div>
+					<div style='clear:both;'></div>
+				</div>
+			</div>
+            <div class="content_overTemp" style="display:none;">
+            	<div style="padding-left:50px; padding-bottom:50px; padding-top:25px;">
+            	<div>本次测试难度<span class="difficty_name"></span></div>
+                <div>本次测试共答题<span class="que_sums"></span>道&nbsp;客观题<span class="que_active"></span>道&nbsp;主观题<span class="que_obj"></span>道</div>
+                <div>客观题&nbsp;答对<span class="right_active"></span>道</div>
+                <div>主观题&nbsp;答对<span class="right_obj"></span>道</div>
+                <div>本次测试正确率<span class="percent_nums"></span></div>
+                </div>
+            </div>
+			<!--<div class='content_right'></div>-->
+		</div>
+        <div style='clear:both;'></div>
+		
+		<div class='cover_div' style='display:none;'>
+			
+		</div>
+         
+         
+        <div class="clear_20"></div>
+        
+<div class="footer_Bg">
+<div class="footer">
+    <span class="footer_font">
+        Copyright©2004-2014 ，北京华夏安业科技有限公司   All Rights Reserved
+         
+    </span>
+</div> </div>
+	</body>
+</html>

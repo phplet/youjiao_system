@@ -1,0 +1,490 @@
+<?php
+///////////////////////////////////////////////////////
+// 试卷接口
+// by 孙峻峰 v1.0
+///////////////////////////////////////////////////////
+	//rest接口
+	require_once(dirname(__FILE__)."/../rest.php");
+	
+	class crest extends REST{
+		//GET逻辑
+		public function doGET(){
+			if($this -> urlarr['3']=="word"){
+				$this -> getExamword();
+			}
+			else{
+				$this -> getExam();
+			}
+			
+		}
+		private function getExamword(){
+			if($this -> vr['pass'] && $this -> vr['usr_type']==2){
+			//if($this -> vr['pass'] && $this -> vr['usr_type']==2 && $this -> vr['level']==3){
+				$this -> db -> sql = "select url from exam_exercise where id=".$this -> r('exercise_id');
+				$this -> db -> Queryone();
+				$this -> b['url'] = $this -> db -> rs['url'];
+				$this -> b["sc"] = 200;
+			}
+			else{
+				$this -> b["sc"] = 403;
+			}
+		}
+		private function getExam(){
+		//获取试卷
+			if($this -> vr['pass']){
+				$this -> db -> sql = "select activities,content,creat_date,class_id,creator_id from exam_exercise where id=".$this -> r('exercise_id');
+				$this -> db -> Queryone();
+				$rs = $this -> db -> rs;
+				//$this -> b["param"] = $rs['activities'];
+				$this -> b['creat_date'] = $rs['creat_date'];
+				
+				$this -> db -> sql = "select usr_user.id,realname,subject_grade from usr_user join usr_teacher on usr_user.id=usr_teacher.uid where usr_user.id=".$rs['creator_id'];
+				$this -> db -> Queryone();
+				$this -> b["teacher"] = $this -> db -> rs;
+				
+				$this -> db -> sql = "select usr_user.id,realname,grade_id from usr_user join usr_student on usr_user.id=usr_student.uid where usr_user.id=".$this -> r('student_id');
+				$this -> db -> Queryone();
+				$this -> b["student"] = $this -> db -> rs;
+				
+				$ttti = "";
+				
+				$ss = explode(",",$rs['content']);
+				foreach($ss as $mmmm)
+				{
+					$ttti .= "'".$mmmm."',";
+				}
+				$ttti = substr($ttti,0,-1);
+				
+				$this -> db -> sql = "select id,content,objective_flag,option_count,objective_answer,group_count,question_type,image,answer from exam_question where id IN (".$ttti.") order by objective_flag desc";
+				$this -> db -> Query();
+				if($this -> db -> rs==null){
+					return;
+				}
+				foreach($this -> db -> rs as $k=>$v){
+					$v['image'] = preg_replace("'([\r\n])[\s]+'", "", $v['image']);
+					$iii = json_decode($v['image'],true);
+					$match = null;
+					preg_match_all("/\<img.*?src\=[\'\"](.*?)[\'\"][^>]*>/i", $this -> db -> rs[$k]['content'], $match);
+					foreach($match[0] as $p=>$w){						
+						$qq = $iii['question'];
+						for($j=0;$j<count($qq);$j++){
+							if(strstr($match[1][$p],$qq[$j]['file'])!=false){
+								$this -> db -> rs[$k]['content'] = str_replace($match[0][$p],'<img src="data:image/gif;base64,'.$qq[$j]['pic'].'">',$this -> db -> rs[$k]['content']);
+								break;
+							}
+						}							
+					}
+				 	$match1 = null;
+					preg_match_all("/\<img.*?src\=[\'\"](.*?)[\'\"][^>]*>/i", $this -> db -> rs[$k]['answer'], $match1);
+					foreach($match1[0] as $p1=>$w1){
+						$qq = $iii['answer'];
+						for($j=0;$j<count($qq);$j++){
+							if(strstr($match1[1][$p1],$qq[$j]['file'])!=false){
+								$this -> db -> rs[$k]['answer'] = str_replace($match1[0][$p1],'<img src="data:image/gif;base64,'.$qq[$j]['pic'].'">',$this -> db -> rs[$k]['answer']);
+								break;
+							}
+						}							
+					}
+					unset($this -> db -> rs[$k]['image']);
+				}
+				$this -> b["question"] = base64_encode(json_encode($this -> db -> rs));
+				$this -> b["sc"] = 200;
+			}
+			else{
+				$this -> b["sc"] = 403;
+			}
+			
+		}
+	
+		//POST逻辑
+		public function doPOST(){
+		
+			switch($this -> urlarr['3']){
+				case 'maual':
+					$this -> makeMaual();
+				break;
+				default:
+					$this -> makeAuto();
+				break;
+			}
+			
+			
+		}
+		private function makeMaual(){
+		//手动生成试卷
+			if($this -> vr['pass'] && $this -> vr['usr_type']==2){
+				
+				$arr['content'] = (string)$this -> r('ti_id');
+				$arr['name'] = $this -> r('exam_name');
+				$arr['field'] = (int)$this -> r('field');
+				$arr['exer_type'] = (int)$this -> r('exer_type');			
+				$arr['school_id'] = (int)$this -> vr['school_id'];
+				$arr['subject_id'] = (int)$this -> r('subject_id');				
+				$arr['creat_date'] = 'current_timestamp()';
+				$arr['creator_id'] = (int)$this -> vr['id'];
+				$arr['exam_stat'] = 4;
+				$arr['tmod'] = 1;
+				
+				
+				$aaa = array();
+				$aaa['oprate_one'] = $this -> vr['id'];
+				$aaa['type'] = 1;
+				$aaa['creat_time'] = 'current_timestamp()';
+				$aaa['program'] = 'all';				
+				$aaa['n_bubble'] = '有新作业';
+				$aaa['title'] = '有新作业';
+				$aaa['content'] = '收到新的作业，去看看！';
+				$aaa['n_style'] = 3;
+				
+				
+				if(isset($_REQUEST['class_id'])){
+					$arr['class_id'] = (string)$this -> r('class_id');
+					$this -> db -> Insert('exam_exercise',$arr);
+					$this -> db -> sql;
+					$arr1['exercise_id'] = $this -> db -> Last_id();
+					
+					$this -> db -> sql = "select uid from usr_class where class_Id in (".$this -> r('class_id').") and relationship=1";
+					$this -> db -> Query();
+					$uid = $this -> db -> rs;
+					
+					foreach($uid as $v){
+						$arr1['user_id'] = (int)$v['uid'];
+						$this -> db -> Insert('study_exercise',$arr1);
+						$aaa['user_id'] = (int)$v['uid'];		
+						$this -> db -> Insert('push_list',$aaa);					
+					}
+				}
+				if(isset($_REQUEST['student_id'])){
+					$arr['student_id'] = (string)$this -> r('student_id');
+					$this -> db -> Insert('exam_exercise',$arr);
+					$arr1['exercise_id'] = $this -> db -> Last_id();
+					$student = explode(",",$this -> r('student_id'));
+					foreach($student as $v){
+						$arr1['user_id'] = (int)$v;
+						$this -> db -> Insert('study_exercise',$arr1);
+						$aaa['user_id'] = (int)$v;		
+						$this -> db -> Insert('push_list',$aaa);					
+					}
+				}
+				
+				$this -> b["sc"] = 201;
+				
+			}
+			else{
+				$this -> b["sc"] = 403;
+			}
+		}
+		private function makeAuto(){
+			//自动生成试卷
+			if($this -> vr['pass'] && $this -> vr['usr_type']==2){
+			//if($this -> vr['pass'] && $this -> vr['usr_type']==2 && $this -> vr['level']==3){
+				$this -> db -> sql = "select activities,class_id,subject_id from exam_exercise where id=".$this -> r('exercise_id')." and exam_stat=1";
+				$this -> db -> Queryone();
+				$sid = $this -> db -> rs['subject_id'];
+				$class_id = $this -> db -> rs['class_id'];
+				$activities =  $this -> db -> rs['activities'];
+				if($activities==null){
+					$this -> b["sc"] = 404;
+					return;
+				}
+				$rs = json_decode($activities,true);
+				$vision = $rs['v'];
+				$rs = $rs['condition'];
+				$kkk = explode(';',urldecode(base64_decode($rs['knowledge'])));
+				$rs['knowledge'] = "(";
+				foreach($kkk as $v){
+					if($v!="" && $v!=null){
+						$rs['knowledge'] .= "zh_knowledge like '%".$v."%' or ";
+					}
+					
+				}
+				$rs['knowledge'] = substr($rs['knowledge'],0,-4).") and subject_id=".$sid;
+				//设置题目难度成分构成			
+				switch($rs['difficulty']){
+					//基础
+					case 1:
+						$lv = array(0.5,0.3,0.2,0,0);
+						break;
+					//中等
+					case 2:
+						$lv = array(0.2,0.3,0.3,0.1,0.1);
+						break;
+					//拔高
+					case 3:
+						$lv = array(0,0.1,0.3,0.4,0.2);
+						break;
+					default:
+						break;
+				}
+				//计算各种难度题目数量
+				$obj = $this -> caculateNum($rs['objective_total'],$lv);
+				$sub = $this -> caculateNum($rs['subjective_total'],$lv);
+				$ti = "";
+				if($vision==1){
+				
+				if((int)$rs['ti_type']==1){
+					//按章节生成 
+					$ti .= $this -> getProblem1(1,$obj[0],$rs['chapter_id'],1);
+					$ti .= $this -> getProblem1(1,$obj[1],$rs['chapter_id'],2);
+					$ti .= $this -> getProblem1(1,$obj[2],$rs['chapter_id'],3);
+					$ti .= $this -> getProblem1(1,$obj[3],$rs['chapter_id'],4);
+					
+					$ti .= $this -> getProblem1(2,$sub[0],$rs['chapter_id'],1);
+					$ti .= $this -> getProblem1(2,$sub[1],$rs['chapter_id'],2);
+					$ti .= $this -> getProblem1(2,$sub[2],$rs['chapter_id'],3);
+					$ti .= $this -> getProblem1(2,$sub[3],$rs['chapter_id'],4);
+
+				}
+				else{
+					//按知识点生成
+					$ti .= $this -> getProblem2(1,$obj[0],$rs['knowledge'],1);
+					$ti .= $this -> getProblem2(1,$obj[1],$rs['knowledge'],2);
+					$ti .= $this -> getProblem2(1,$obj[2],$rs['knowledge'],3);
+					$ti .= $this -> getProblem2(1,$obj[3],$rs['knowledge'],4);
+					
+					$ti .= $this -> getProblem2(2,$sub[0],$rs['knowledge'],1);
+					$ti .= $this -> getProblem2(2,$sub[1],$rs['knowledge'],2);
+					$ti .= $this -> getProblem2(2,$sub[2],$rs['knowledge'],3);
+					$ti .= $this -> getProblem2(2,$sub[3],$rs['knowledge'],4);
+					
+				}
+
+				$ti = substr($ti,0,-1);
+				
+				//补足题目数
+				$res=explode(",",$ti);
+				$nn = count($res);
+				if($nn==1 && $res[0]==""){
+					$nn=0;
+				}
+				$tn = $rs['objective_total']+$rs['subjective_total'];
+				if($nn<$tn){
+					if($rs['ti_type']==1){
+						if($nn!=0){
+							$ti .= ",";
+							$ti .= $this -> getProblem3($rs['ti_type'],($tn-$nn),$rs['chapter_id'],$ti);
+						}
+						else{
+							$ti .= $this -> getProblem3($rs['ti_type'],($tn-$nn),$rs['chapter_id'],$ti);
+						}
+						
+					}
+					else{
+						if($nn!=0){
+							$ti .= ",";
+							$ti .= $this -> getProblem3($rs['ti_type'],($tn-$nn),$rs['knowledge'],$ti);
+						}
+						else{
+							$ti .= $this -> getProblem3($rs['ti_type'],($tn-$nn),$rs['knowledge'],$ti);
+						}
+						
+					}
+					
+				}
+				$ti = substr($ti,0,-1);
+
+				
+				//存储题目
+				$arr['content'] = $ti;
+				$arr['exam_stat'] = 4;
+				$this -> db -> Update('exam_exercise',$arr,"id=".$this -> r('exercise_id'));
+				//获取班级成员
+				$this -> db -> sql = "select uid from usr_class where class_Id in (".$class_id.") and relationship=1";
+				$this -> db -> Query();
+				$uid = $this -> db -> rs;
+				//分发卷子
+				$arr1['exercise_id'] = $this -> r('exercise_id');
+				$aaa = array();
+				$aaa['oprate_one'] = $this -> vr['id'];
+				$aaa['type'] = 1;
+				$aaa['creat_time'] = 'current_timestamp()';
+				$aaa['program'] = 'all';				
+				$aaa['n_bubble'] = '有新作业';
+				$aaa['title'] = '有新作业';
+				$aaa['content'] = '收到新的作业，去看看！';
+				$aaa['n_style'] = 3;
+				
+				foreach($uid as $v){
+					$arr1['user_id'] = $v['uid'];
+					$this -> db -> Insert('study_exercise',$arr1);
+					$aaa['user_id'] = $v['uid'];		
+					$this -> db -> Insert('push_list',$aaa);					
+				}
+				//创建word
+				$this -> b["url"] = $this -> creatword($ti);
+				$this -> b["sc"] = 201;
+				
+			}
+			}
+			else{
+				$this -> b["sc"] = 403;
+			}
+		}
+		
+		
+		
+		private function getProblem1($flag,$limit,$condition,$diffculty){
+			if($limit>0){
+				if($flag==1){
+					$this -> db -> sql = "select id from exam_question where chapter_id in (".$condition.") and objective_flag=1 and difficulty=$diffculty order by rand() limit ".$limit;
+				}
+				else{
+					$this -> db -> sql = "select id from exam_question where chapter_id in (".$condition.") and objective_flag!=1 and difficulty=$diffculty order by rand() limit ".$limit;
+				}				
+				$this -> db -> Query();
+				return $this -> getid($this -> db -> rs);
+			}
+			else{
+				return "";
+			}
+			
+		}
+		private function getProblem2($flag,$limit,$condition,$diffculty){
+			if($limit>0){
+				if($flag==1){
+					$this -> db -> sql = "select id from exam_question where (".$condition.") and objective_flag=1 and difficulty=$diffculty order by rand() limit ".$limit;
+				}
+				else{
+					$this -> db -> sql = "select id from exam_question where (".$condition.") and objective_flag!=1 and difficulty=$diffculty order by rand() limit ".$limit;
+				}
+				$this -> db -> Query();
+				return $this -> getid($this -> db -> rs);
+			}
+			else{
+				return "";
+			}
+		}
+		private function getProblem3($flag,$limit,$condition,$notin){
+			if($limit>0){
+				if($flag!=1){
+					if($notin!=""){
+						$this -> db -> sql = "select id from exam_question where (".$condition.") and id not in (".$notin.") order by rand() limit ".$limit;
+					}
+					else{
+						$this -> db -> sql = "select id from exam_question where (".$condition.") order by rand() limit ".$limit;
+					}
+					
+				}
+				else{
+					if($notin!=""){
+						$this -> db -> sql = "select id from exam_question where chapter_id in (".$condition.") and id not in (".$notin.") order by rand() limit ".$limit;
+					}
+					else{
+						$this -> db -> sql = "select id from exam_question where chapter_id in (".$condition.") order by rand() limit ".$limit;
+					}
+					
+				}
+				$this -> db -> Query();
+				return $this -> getid($this -> db -> rs);
+			}
+			else{
+				return "";
+			}
+		}
+	
+		//PUT逻辑
+		public function doPUT(){
+			$this -> b["sc"] = 405;
+		}
+	
+		//DELETE逻辑
+		public function doDELETE(){
+			$this -> b["sc"] = 405;
+		}
+		//获取id
+		public function getid($ti){
+			$rs = "";
+			foreach($ti as $v){
+				$rs .= "'".$v['id']."',";
+			}
+			return $rs;
+		}
+		//计算各种难度题目数量
+		public function caculateNum($tn,$arr){
+			$p1 = $tn*$arr[0];
+			$p2 = $tn*$arr[1];
+			$p3 = $tn*$arr[2];
+			$p4 = $tn*$arr[3];
+			$p5 = $tn*$arr[4];
+			
+			$n1 = floor($p1);
+			$n2 = floor($p2);
+			$n3 = floor($p3);
+			$n4 = floor($p4);
+			$n5 = floor($p5);
+			
+			$l1 = $p1-$n1;
+			$l2 = $p2-$n2;
+			$l3 = $p3-$n3;
+			$l4 = $p4-$n4;
+			$l5 = $p5-$n5;
+			
+			$ta = $l1+$l2+$l3+$l4+$l5;
+			
+			$a = $tn - $ta;
+			
+			$arr = $this -> themax($l1,$l2,$l3,$l4,$l5);
+			
+			for($i=0;$i<$a;$i++){
+				$$arr[$i] += 1; 
+			}
+			return array($n1,$n2,$n3,$n4,$n5);
+			
+		}
+		public function themax($l1,$l2,$l3,$l4,$l5){
+			$arr = array("n1"=>$l1,"n2"=>$l2,"n3"=>$l3,"n4"=>$l4,"n5"=>$l5);
+			asort($arr);
+			return $arr;
+		}
+		public function creatword($id){
+			require_once(dirname(__FILE__)."/../include/h2w.php");
+			//生成word
+			$this -> db -> sql = "select * from exam_exercise where id=".$this -> r('exercise_id');
+			$this -> db -> Queryone();
+			$rs = $this -> db -> rs;
+			$condition = json_decode($rs['activities'],true);
+			$condition = $condition['condition'];
+			$htmltodoc= new HTML_TO_DOC();
+			$this -> db -> sql = "select content,image from exam_question where id in (".$id.") order by objective_flag desc";
+			$this -> db -> Query();
+			
+			$aa = "<html><head><title>评测卷生成时间".date('Y-m-d')."</title></head><body><h1>".$rs['name']."</h1><p>客观题每题".$condition['objective_score']."分，主观题每题".$condition['subjective_score']."分。</p><hr>";
+			$i=1;
+			foreach($this -> db -> rs as $v){
+				$match = null;
+				preg_match_all("/\<img.*?src\=[\'\"](.*?)[\'\"][^>]*>/i", $v['content'], $match);
+				foreach($match[0] as $k=>$w){
+					$v['image'] = preg_replace("'([\r\n])[\s]+'", "", $v['image']);
+					$iii = json_decode($v['image'],true);
+					$qq = $iii['question'];
+					for($j=0;$j<count($qq);$j++){
+						if(strstr($match[1][$k],$qq[$j]['file'])!=false){
+							$v['content'] = str_replace($match[0][$k],'<img src="data:image/gif;base64,'.$qq[$j]['pic'].'">',$v['content']);
+							break;
+						}
+					}
+					
+				}
+				
+				if((int)$v['objective_flag']==1){
+					$ss = $condition['objective_score'];
+				}
+				else{
+					$ss = $condition['subjective_score'];
+				}
+				$aa .= "<p style='font-weight:bold'>-----第".$i++."题 本题".$ss."分----</p><div style='font-weight:bold'>".$v['content']."</div><br><br><br><hr>";
+			}
+			$aa .= "</body></html>";
+			$filename = time().$this -> randStr();
+			$file = dirname(__FILE__)."/../../htdocs/ticool.hxnetwork.com/word/".$filename;
+			$htmltodoc->createDoc($aa,$file,false);
+			$arr['url'] = "https://edu.hxpad.com/word/".$filename.".doc";
+			$this -> db -> Update('exam_exercise',$arr,"id=".$this -> r('exercise_id'));
+			return $arr['url'];
+		}
+		
+	}
+	
+
+
+?>

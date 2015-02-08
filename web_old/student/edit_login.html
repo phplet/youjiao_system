@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+<title>题酷在线</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link href="layer/skin/layer.css" type="text/css" rel="stylesheet" /> 
+ <link rel="stylesheet" type="text/css" href="css/gundong.css">
+ <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+</head>
+ 
+	<script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+    <script type='text/javascript' src="layer/layer.js"></script>
+	<script type="text/javascript" src="Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Js/jquery.json.min.js"></script>
+    <script type="text/javascript" src="Js/json2.js"></script>
+    <script type="text/javascript" src="Js/Base64.js"></script>
+    <script type="text/javascript" src="Js/sha256.js"></script>
+     <script type="text/javascript" src="Js/jquery.form.js"></script>
+     <script type="text/javascript" src="Js/json2.js"></script>
+	 
+    <script type="text/javascript" src="Js/public_base.js"></script>
+    
+     <script type="text/javascript" src="Js/edit_login.js"></script>
+    <script type="text/javascript" src="Js/flexjs.js"></script>
+	
+    
+<body>
+<div class="container">
+	<!-- header开始-->
+    <div class="header_bg">	
+        <div class="header">
+            <div class="logo">
+                <a href="Index.html"><img  src="images/logo_new.png" /></a>
+            </div>
+            <div class="logins">
+                <div class="logins_font">
+                	<span>&nbsp;<a href="javascript:void(0);" onclick="outlogin();">退 出</a></span>
+                	<span class="icon_18_16"></span>
+                    <span>&nbsp;<a href="edit_login.html">账户设置</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="icon_13_16"></span>
+                    <span style="width:50px;">&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a id="headusername" href="javascript:void(0)"></a>,欢迎您！</span>
+                    <span class="icon_26_26"></span>
+                	
+                </div>
+                <span class="cleard"></span>
+            </div>
+            <div  class="clear"></div>
+        </div>
+    </div>
+    <!-- header结束-->
+    <div style="height: 25px; font-size: 12px; text-align: right; display: block; padding-right:10px; color:#777777;">联系我们 : 15201117816 , QQ : 2278596726 , Email : sales001@hxnetwork.com</div>
+    <!-- content开始-->
+    <div class="main">
+    	<div class="main_info">
+    	 	 
+              <ul class="class_name_list">
+                  <li class="now_focus"><span class="span_space_20"></span><span class="icon_info_20 person_icon"></span><span class="span_space_15"></span><span>个人信息</span><span class="cleard"></span></li>
+                  <li><span class="span_space_20"></span><span class="icon_info_20 head_icon"></span><span class="span_space_15"></span><span>头像上传</span><span class="cleard"></span></li>
+                  <li><span class="span_space_20"></span><span class="icon_info_20 password_icon"></span><span class="span_space_15"></span><span>密码修改</span><span class="cleard"></span></li>
+                  <li><span class="span_space_20"></span><span class="icon_info_20 bookinfo_icon"></span><span class="span_space_15"></span><span>课本信息</span><span class="cleard"></span></li>
+              </ul>
+        
+              <ul class="con_list">
+                  <li class="now_focus">
+                  		<div class="info_css">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>　用户账号：<input id="userName" name="userName" class="input_radius" disabled="disabled"/></span>
+                              <br />
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>　真实姓名：<input id="userRealname" name="userRealname" class="input_radius" disabled="disabled"/></span>
+                              
+                             <br />
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>　昵　　称：<input id="userNike" name="userNike" class="input_radius" onblur="checknull(this.id);"/></span>
+                             <span class="stat_color">&nbsp;&nbsp;*&nbsp;</span><span class="userNike_Ms fromstu"></span>
+                             
+                             <br />
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>　性　　别：<input type="radio" id="userSex" name="userSex" value="1" checked="checked"/>&nbsp;男&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="userSex" name="userSex"  value="2"/>&nbsp;女</span>
+                              
+                             <br />
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>　　 Email：<input id="userEmail" name="userEmail" class="input_radius" onblur="checkEmail(this.id);"/></span>
+                             <span class="stat_color">&nbsp;&nbsp;*&nbsp;</span><span class="userEmail_Ms fromstu"></span>
+                              
+                             <br />
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>　在读学校：<input id="userSchool" name="userSchool" class="input_radius" onblur="checknull(this.id);"/></span>
+                            <span class="stat_color">&nbsp;&nbsp;*&nbsp;</span><span class="userSchool_Ms fromstu"></span>
+                             <br />
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><span>　当前年级：</span><span  >
+                             	<select id="grade_select" name="grade_select">
+                                    <option value="1">小学一年级</option>
+                                    <option value="2">小学二年级</option>
+                                    <option value="3">小学三年级</option>
+                                    <option value="4">小学四年级</option>
+                                    <option value="5">小学五年级</option>
+                                    <option value="6">小学六年级</option>
+                                    <option value="7">初中一年级</option>
+                                    <option value="8">初中二年级</option>
+                                    <option value="9">初中三年级</option>
+                                    <option value="10">高中一年级</option>
+                                    <option value="11">高中二年级</option>
+                                    <option value="12">高中三年级</option>
+                             	</select>
+                             </span></span>
+                              
+                             <br />
+                             <div class="test_sub_1">
+                                <a id="changesInfo">确定修改</a>
+                             </div>
+                        </div>
+                  
+                  </li>
+                  
+                  <li>
+                  		<div class="headimg">
+                        	<div class="headimg_L">
+                            	<span>大头像预览</span>
+                                <span id="img_src">
+                                	
+                                </span>
+                            </div>
+                            <div class="headimg_R">
+                            	<span>自定义静态头像<br />注：上传图片不能超过5M,支持jpg/gif/png格式</span>
+                            	<span class="headimg_file-box">
+                                	<form action="" method="post" id="forms" enctype="multipart/form-data">
+                                         <input type='text' name='textfield' id='textfield' class='headimg_txt headimg_input' />  
+                                         <input type='button' class='headimg_btn' value='浏览...' />
+                                            <input type="file" name="uploadedfile" class="headimg_file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" />
+                                         <input type="button" name="submit" class="headimg_btn" value="上传" onclick="uploadFiles();"/>
+                                  	</form>
+                                </span>
+                                <span>示例：</span>
+                                <span><img  src="images/nopic.png" width="80" height="80" />&nbsp;图片大小：120*120</span>
+                            </div>
+                        </div>
+                  
+                  </li>
+                  
+                  <li>
+                  	  <div style=" padding-left:200px; padding-top:30px;">
+                  		<div >
+                            <span class="text_008">用户名：</span>&nbsp;&nbsp;<span id="login_name"></span>
+                             
+                        </div>
+                        <div style="line-height:30px;"  >
+                          
+                            <div ><span>旧密码：&nbsp;&nbsp;</span><span><input  type="password" id="old_password" name="old_password" /></span></div> 	 
+                            <div ><span>新密码：&nbsp;&nbsp;</span><span><input  type="password" id="new_password" name="new_password" /></span></div> 
+                            <div ><span>新密码：&nbsp;&nbsp;</span><span><input  type="password" id="new_re_password" name="new_re_password" /></span></div> <br />
+                            <div style="padding-left:30px;"><div class="test_sub"><a id="edit_login" href="javascript:void(0)">修改密码</a></div></div> 
+                         
+                        </div>
+                      </div>
+                  </li>
+                  <li>
+                  		 
+                  		<dl class="section_books">   
+                        </dl>
+                        <div class="cleard"></div>
+                  </li>
+              </ul>
+              <div class="cleard"></div>  
+           
+        </div>    
+    </div>
+    
+    <!-- content 结束-->
+</div>
+<div class="clear_20"></div>
+<div class="footer_Bg">
+<div class="footer">
+    <span class="footer_font">
+        Copyright©2004-2014 ，北京华夏安业科技有限公司   All Rights Reserved
+         
+    </span>
+</div></div> 
+</body>
+</html>

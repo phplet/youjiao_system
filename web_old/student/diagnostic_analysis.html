@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+		<title>题酷在线</title>
+        <link href="layer/skin/layer.css" type="text/css" rel="stylesheet" />
+		<link type='text/css' href='css/diagnostic_analysis.css' rel='stylesheet' /> 
+        <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+		<script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+        <script type="text/javascript" src="Js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="Js/jquery.json.min.js"></script>
+        <script type="text/javascript" src="Js/Base64.js"></script>
+        <script type="text/javascript" src="Js/sha256.js"></script>
+        <script type="text/javascript" src="Js/json2.js"></script>
+        <script type='text/javascript' src="Js/excanvas.js"></script>
+        <script type='text/javascript' src="Js/Chart.js"></script>
+        <script type="text/javascript" src="Highcharts/js/highcharts.js"></script>
+		<script src="Highcharts/js/highcharts-more.js"></script>
+        <script type="text/javascript" src="Highcharts/js/modules/exporting.js"></script>
+        <script type="text/javascript" src="Js/public_base.js"></script>
+        <script type='text/javascript' src="layer/layer.js"></script>
+        <script type='text/javascript' src='Js/exerciseHandler.js'></script>
+        <script type='text/javascript' src="Js/diagnostic_analysis.js"></script>
+        <script type="text/javascript" src="Js/flexjs.js"></script>
+        <!--加载html编辑器-->
+		<script charset="utf-8" src="kindeditor-4.1.7/kindeditor.js"></script>
+        <script charset="utf-8" src="kindeditor-4.1.7/lang/zh_CN.js"></script>
+        
+         
+        <!--加载html编辑器-->
+	</head>
+   
+	<body>
+		 
+		<div class="header_bg">
+        <div class="header">
+            <div class="logo">
+                <a href="Index.html"><img src="images/logo_new.png"></a>
+            </div>
+            <div class="logins">
+                <div class="logins_font">
+                	<span>&nbsp;<a href="javascript:void(0);" onclick="outlogin();">退 出</a></span>
+                	<span class="icon_18_16"></span>
+                    <span>&nbsp;<a href="edit_login.html">账户设置</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="icon_13_16"></span>
+                    <span style="width:50px;">&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a id="headusername" href="javascript:void(0)">学生</a>,欢迎您！</span>
+                    <span class="icon_26_26"></span>
+                	
+                </div>
+                <span class="cleard"></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div style="height: 25px; font-size: 12px; text-align: right; display: block; padding-right:10px; color:#777777;">联系我们 : 15201117816 , QQ : 2278596726 , Email : sales001@hxnetwork.com</div>
+		<div class="content">
+        	<div class="main_left">
+            	<div class="content_lefts_img"><img src="images/diagnostic_analysis.png" width="220" height="105"/></div>
+                <div class='content_left'>
+                    <div class='nav_element' id='nav_element_template' style='display:none;'></div>
+                </div>
+            </div>
+			<div class="content_center">
+				<div style=" height:50px;"></div>
+				<div class="master_coordinates">
+					<div class="master">
+						<label>&nbsp;</label>
+					</div>
+					<div class="coordinates">
+						<a href="javascript:void(0)" onClick="coordinate_a();"><img src="images/button.png"></a>
+					</div>
+				</div>
+				<div class="generate_figure">
+					<div id="knowledge_Charts" style="width:740px; height:400px;"></div>
+                    <div class="page_list" style="height:40px;">
+                   		 <!--<div class="page_Left"><a href="javascript:void(0)" class="icon_125_35 web_icon_bottom_1" id="pre_on" style="width:80px" num="0">上一批</a></div><div class="page_Content">1</div><div class="page_Right"><a href="javascript:void(0)" class="icon_125_35 web_icon_bottom_1" style="width:80px" id="next_on" num="2">下一批</a></div><div class="cleard"></div>-->
+                         
+                    </div>
+				</div>
+                 
+				<div class="caption">
+					<div class="caption_introduce">
+						<span>以下【<label id="subject_name_s">数学</label>】知识点的图谱，"题酷“练习的掌握情况将在这里揭晓：</span><!------学科需要动态获取------>
+					</div>
+					<div class="map_shows">
+						<label>图谱说明</label>&nbsp;  <img src="images/03_green.png"  /> 优秀&nbsp;  <img src="images/03_blue.png"  /> 良好&nbsp;  <img src="images/03_red.png"  /> 较差 &nbsp; <img src="images/03_gray.png"  /> 不详
+					</div>
+					<div class="set_list">
+						<div class="set_list_ul">
+							<ul>
+								 
+							</ul>
+                            <div class="cleard"></div>
+						</div>
+					</div>
+				</div>
+                
+                <div class="no_img" style="display:none; padding-top:80px; width:577px; margin:0 auto;">
+                	<img src="images/analysis_none.png" width="577" height="233" />
+                </div>
+			</div>
+            <div class="content_center_test_kn" style="display:none;">
+            	<div class="title_box clearfix">
+                    <h3 class="now_focus">我的分析</h3>
+                    <h3>真题扫描</h3>
+                    <h3>再来五题</h3>
+                </div>
+                
+                <div class="con_box">
+                    <span class="now_focus clearfix div_span">
+                      	<div class="my_anal">
+                        	<div class="anal_L"><div class="anal_L_d">我的练习情况</div></div>
+                            <div class="anal_R">
+                            	<div class="anal_R_Font">根据你的在题酷中的<em id="kno_type_name">函数</em>的练习情况，我们统计的正确率：</div>
+                            	<div>
+                                    <div class="anal_R_1_L">
+                                        <div style="width:330px; height:220px;" id="diff_charts"></div>
+                                    </div>
+                                    
+                                    <div class="anal_R_1_L_2">
+                                        <div style="width:330px; height:220px;" id="questions_charts"></div>
+                                    </div>
+                                    <div class="cleard"></div>
+                                </div>
+                            </div>
+                            <div class="cleard"></div>
+                        </div>
+                        <div class="tiQ_nums">
+                        	<div class="anal_L_2"><div class="anal_L_d_2">我做的题数</div></div>
+                            <div class="anal_R_2">
+                            	
+                            	<div class="anal_R_2_L">
+                                	<div style="padding-bottom:20px;">我做的题数</div>
+                                    <div id="wzques_charts">0题</div>
+                                    <div class="anal_R_2_L_Font">
+                                    	<div class="anal_R_2_L_jd_my" id="quemy_bfb"></div>
+                                    </div>
+                                </div>
+                                <div class="anal_R_2_L">
+                                	<div style="padding-bottom:20px;">全网最高做题数</div>
+                                    <div  id="qwquesmax_charts">0题</div>
+                                    <div class="anal_R_2_L_Font">
+                                    	<div class="anal_R_2_L_jd_max" id="quemax_bfb"></div>
+                                    </div>
+                                </div>
+                                <div class="anal_R_2_L">
+                                	<div style="padding-bottom:20px;">全网平均做题数</div>
+                                    <div id="qwquesavg_charts">0题</div>
+                                    <div class="anal_R_2_L_Font">
+                                    	<div class="anal_R_2_L_jd_avg" id="queavg_bfb"></div>
+                                    </div>
+                               	</div>
+                                <div class="cleard"></div>
+                            </div>
+                            <div class="cleard"></div>
+                        </div>
+                        <div class="tiQ_nums">
+                        	<div class="anal_L_2"><div class="anal_L_d_2">我的掌握度</div></div>
+                            <div class="anal_R_2">
+                            	 
+                            	<div class="anal_R_2_L">
+                                	<div style="padding-bottom:20px;">我的掌握度</div>
+                                    <div style="width:95px; height:95px; margin:0 auto;">
+                                    	<canvas id="myChart_nums" height="95" width="95" class="myChart"></canvas>
+										<em class="status" id="myChart_nums_status">10%</em>
+                                    </div>
+                                </div>
+                                <div class="anal_R_2_L">
+                                	<div style="padding-bottom:20px;">全网最高掌握度</div>
+                                    <div style="width:95px; height:95px; margin:0 auto;">
+                                    	<canvas id="myChart_max" height="95" width="95" class="myChart"></canvas>
+										<em class="status"  id="myChart_max_status">20%</em>
+                                    </div>
+                                </div>
+                                <div class="anal_R_2_L">
+                                	<div style="padding-bottom:20px;">全网平均掌握度</div>
+                                    <div style="width:95px; height:95px; margin:0 auto;">
+                                    	<canvas id="myChart_avg" height="95" width="95" class="myChart"></canvas>
+										<em class="status"  id="myChart_avg_status">15%</em>
+                                    </div>
+                                </div>
+                                <div class="cleard"></div>
+                            </div>
+                            <div class="cleard"></div>
+                        </div>
+                    </span>
+             
+                    <span class="div_span">
+                       <div class="my_zhenti">
+                       	  <div class="kno_title"></div>
+                       	  <ul id="zhenti_lists">
+                              
+						  </ul>
+                       </div>
+                    </span>
+                    <span class="div_span">
+                    	<div class="my_zhuanti">
+                        	<div class="knoZ_title"></div>
+                        	<ul id="zhuanti_lists">
+                            	 
+                            </ul>
+                            <div><a href="javascript:void(0);" id="save_juan" onClick="save_zhuanti();" class="icon_125_31 web_icon_bottom_5" style="display:block;">交卷</a></div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="content_center_test_xxzb" style="display:none;">
+            	<div style="height:35px; line-height:35px;">
+                	<span style="float:left; color:#3c3c3c; font-size:23px; font-weight:bolder;">我的学习坐标</span><span style=" float:right;"><a href="javascript:void(0)" onClick="back_index();"><img src="images/return_button.png"></a></span>
+                </div>
+                <div class="cleard"></div>
+            	<div style="padding:10px; border:#CCC solid 1px; border-radius:5px; background:#FFF;">
+                    <div class="month_css"><a href="javascript:void(0)" onClick="coordinate(30)">最近一月</a>&nbsp;&nbsp;<a href="javascript:void(0)" onClick="coordinate(90)">最近三月</a>&nbsp;&nbsp;<a href="javascript:void(0)" onClick="coordinate(180)">最近半年</a>&nbsp;&nbsp;<a href="javascript:void(0)" onClick="coordinate(360)">最近一年</a></div>
+                    <div id="coordinate_charts" style="width:720px; height:400px;"></div>
+                </div>
+            </div>
+            
+			<div class="content_right"></div>
+		</div>
+		
+		
+        <div class="clear_20"></div>
+<div class="footer_Bg">
+<div class="footer">
+    <span class="footer_font">
+        Copyright©2004-2014 ，北京华夏安业科技有限公司   All Rights Reserved
+        
+    </span>
+</div> </div>
+	</body>
+</html>

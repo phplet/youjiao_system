@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+<title>无标题文档</title>
+	<link href="../themes/default/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="../themes/icon.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/Style.css" rel="stylesheet" type="text/css" />
+    <script src="../jquery-easyui-1.3.0/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../jquery-easyui-1.3.0/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.json.min.js" type="text/javascript"></script>
+    <script src="../Scripts/json2.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.easyui.theme.js" type="text/javascript"></script>
+    <script src="../Scripts/Base64.js" type="text/javascript"></script>
+    <script src="../locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="../Scripts/Common.js" type="text/javascript"></script>
+    <script src="../Scripts/admission_teststart.js" type="text/javascript"></script>
+    <script src="../Scripts/public_base.js" type="text/javascript"></script>
+</head>
+<style>
+	.stu_list{margin-left:20px; border-top:#CCC solid 1px;border-left:#CCC solid 1px;}
+	.stu_list td{border-right:#CCC solid 1px;border-bottom:#CCC solid 1px; line-height:30px; text-align:center; }
+	.test_checked li{ float:left; width:300px; line-height:30px; }
+	.test_lists li{ float:left; width:300px; line-height:30px; }
+</style>
+<body class="easyui-layout">
+	<div region="center" style="padding:5px; border:none;">
+    	<div class="easyui-panel" title="入学测试》新入学测试" border="true" collapsible="false">
+        	 <div class="tab_list_3" style="margin:10px;">
+                    <div class="title_box_3 clearfix">
+                        <div id="tab_1" class="now_focus_3 tab">新注册会员</div>
+                        <div id="tab_2" class="tab">已注册会员</div>
+                         
+                    </div>
+                    
+                    <div class="con_box">
+                        <div class="now_focus_3 clearfix">
+                        	  <span class="addclassform" style="display:block;">
+                                  <form id="StudentForm"> 
+                                  
+                                   <ul>
+                                    
+                                    <li style="height:20px;">
+                                        <span >
+                                            <span class="text_float addclasstitle">用户名：</span>
+                                            <span class="text_float addclasstext addclassform_left">
+                                                <input id="stuUName" name="stuUName" class="easyui-validatebox" data-options="required:true" style="width:145px;"/>&nbsp;&nbsp;<a href="#" style=" text-decoration:none" id="checkname" onclick="selverify('stuUName');">验证</a>
+                                            </span>
+                                            <span class="color_text text_float">&nbsp;*</span><span id="stuUName_Ms" class="color_text text_float stuForm">&nbsp;请输入邮箱格式！</span>
+                                        </span>
+                                        <span class="cleared"></span>
+                                    </li>
+                                    <li style="height:20px;">
+                                        <span >
+                                            <span class="text_float addclasstitle">姓名：</span>
+                                            <span class="text_float addclasstext addclassform_left">
+                                                <input id="stuRealName" name="stuRealName" class="easyui-validatebox" data-options="required:true" onblur="valida_null(this)" style="width:180px;"/>
+                                            </span>
+                                            <span class="color_text text_float">&nbsp;*</span><span id="stuRealName_Ms" class="color_text text_float stuForm">&nbsp;请输入2-4位中文汉字！</span>
+                                        </span>
+                                        <span class="cleared"></span>
+                                    </li>
+                                    <li style="height:20px;">
+                                        <span >
+                                            <span class="text_float addclasstitle">性别：</span>
+                                            <span class="text_float addclasstext addclassform_left">
+                                                <input id="stusex"  type="radio" name="stusex" value="1" checked="checked"/>&nbsp;男&nbsp;
+                                                <input id="stusex" type="radio" name="stusex" value="2"/>&nbsp;女&nbsp;
+                                            </span>
+                                            
+                                        </span>
+                                        <span class="cleared"></span>
+                                    </li>
+                                    <li style="height:20px;">
+                                        <span >
+                                            <span class="text_float addclasstitle">邮箱：</span>
+                                            <span class="text_float addclasstext addclassform_left">
+                                                <input id="stuEmail" name="stuEmail" class="easyui-validatebox" data-options="required:true" onblur="valida_null(this)" style="width:180px;"/>
+                                            </span>
+                                            <span class="color_text text_float">&nbsp;*</span><span id="stuEmail_Ms" class="color_text text_float stuForm">&nbsp;请输入正确的邮箱！</span>
+                                        </span>
+                                        <span class="cleared"></span>
+                                    </li>
+                                    
+                                    <li style="height:20px;">
+                                        <span >
+                                            <span class="text_float addclasstitle">当前年级：</span> 
+                                            <span class="text_float addclasstext addclassform_left">
+                                                <select id="classstudys" name="classstudys"  class="easyui-combobox" style="width:187px;" editable=false required  name="12"  panelHeight="120">
+                                                    <option value="0">请选择</option>
+                                                     
+                                                    <option value="1">小学一年级</option>
+                                                    <option value="2">小学二年级</option>
+                                                    <option value="3">小学三年级</option>
+                                                    <option value="4">小学四年级</option>
+                                                    <option value="5">小学五年级</option>
+                                                    <option value="6">小学六年级</option>
+                                                    <option value="7">初中一年级</option>
+                                                    <option value="8">初中二年级</option>
+                                                    <option value="9">初中三年级</option>
+                                                    <option value="10">高中一年级</option>
+                                                    <option value="11">高中二年级</option>
+                                                    <option value="12">高中三年级</option>
+                                                </select>
+                                            </span>
+                                            <span class="color_text text_float">&nbsp;*</span><span id="classstudys_Ms" class="color_text text_float stuForm">&nbsp;当前年级不能为空！</span>
+                                        </span>
+                                        <span class="cleared"></span>
+                                    </li>
+                                    <li style="height:20px;">
+                                        <span >
+                                            <span class="text_float addclasstitle">在读学校：</span>
+                                            <span class="text_float addclasstext addclassform_left">
+                                                <input id="schoolName" name="schoolName" class="easyui-validatebox" data-options="required:true" onblur="valida_null(this)" style="width:180px;"/>
+                                            </span>
+                                            <span class="color_text text_float">&nbsp;*</span><span id="schoolName_Ms" class="color_text text_float stuForm">&nbsp;请输入学校名称！</span>
+                                        </span>
+                                        <span class="cleared"></span>
+                                    </li>
+                                    <li style="height:20px;">
+                                        <span>
+                                            <span class="text_float addclasstitle">家长联系方式：</span>
+                                            <span class="text_float addclasstext addclassform_left">
+                                                <input id="stuTel" name="stuTel" class="easyui-validatebox" data-options="required:true" onblur="valida_null(this)" style="width:180px;"/>
+                                            </span>
+                                            <span class="color_text text_float">&nbsp;*</span><span id="stuTel_Ms" class="color_text text_float stuForm">&nbsp;请输入11位手机号码！</span>
+                                        </span>
+                                        <span class="cleared"></span>
+                                    </li>
+                                    
+                                     
+                                    
+                                    </ul>
+                                    <span class="cleared"></span>
+                                     
+                                  </form>
+                              </span>
+                        </div>
+                 
+                        <div>
+                        	 <table border="0" cellpadding="0" cellspacing="0" style="margin-left:60px;">
+                             	
+                                <tr height="40">
+                                	<td>用户名：</td>
+                                    <td><input type="text" name="username_Sea" /></td>
+                                    <td>&nbsp;&nbsp;<a class="easyui-linkbutton" onclick="selusername();">查 询</a></td>
+                             	</tr>
+                                 <tr height="40">
+                                	<td>学生姓名：</td>
+                                    <td><input type="text" name="realname_Sea" /></td>
+                                    <td>&nbsp;&nbsp;<a class="easyui-linkbutton" onclick="selrelname();">查 询</a></td>
+                             	</tr>
+                                 <tr height="40">
+                                	<td>本校区学生：</td>
+                                    <td>
+                                    	<select id="zone_stu_source">
+                                    		<option value="1">新生源</option>
+                                            <option value="0">老生源</option>
+                                    	</select>
+                                   	</td>
+                                    <td>&nbsp;&nbsp;<a class="easyui-linkbutton" onclick="setstudents();">查 询</a></td>
+                             	</tr>
+                             </table>
+                             <table class="stu_list" width="95%" border="0" cellpadding="0" cellspacing="0" id="search_stulist">
+                             	<tr bgcolor="#f5f5f5"><td>用户名</td><td>姓 名</td><td>联系电话</td><td>年 级</td><td>操 作</td></tr>
+                                 
+                             </table>
+                        </div>
+                        
+                    </div>
+             </div>
+             <div class="nextstaptest" style="margin:10px;">
+             	<div style="line-height:40px;">已选测试试卷：</div>
+                <div style="border-bottom:#CCC solid 1px; padding-bottom:10px;">
+                	<ul class="test_checked">
+                    	 
+                    </ul>
+                    <div class="cleared"></div>
+                </div>
+                <div style="line-height:40px;">选择测试试卷：</div>
+                <div>学科：<select id="subject_ids" onchange="getsubjectTestList(this.value);">
+                	<option value="1" selected="selected">语文</option>
+                    <option value="2">数学</option>
+                    <option value="3">英语</option>
+                    <option value="4">物理</option>
+                    <option value="5">化学</option>
+                    <option value="6">生物</option>
+                    <option value="7">地理</option>
+                    <option value="8">历史</option>
+                    <option value="9">政治</option>
+                </select></div>
+                <div><ul class="test_lists">
+                	 
+                </ul><div class="cleared"></div></div>
+             </div>
+        	 <div align="center" style="padding:20px;" class="next_link"><a class="easyui-linkbutton" onclick="nextstap();">下一步</a></div>
+             <div align="center" style="padding:20px;" class="save_link"><a class="easyui-linkbutton" onclick="saveTemp();">确 认</a></div>
+        </div>
+         
+    	
+    </div>
+	
+</body>
+</html>

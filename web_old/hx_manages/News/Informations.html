@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    <script type="text/javascript" src="../Scripts/Informations.js"></script>
+   	<script charset="utf-8" src="../kindeditor-4.1.7/kindeditor.js"></script>
+	<script charset="utf-8" src="../kindeditor-4.1.7/lang/zh_CN.js"></script>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false" style="padding: 5px;">
+            
+         
+			<div id="informations"  style="padding:20px;  height:530px; ">
+				<table>
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #ffffff;height:25px;">
+						通知标题:
+						</td>
+						<td style="width: 500px;text-align:left;border:1px solid #ffffff;height:25px;">
+							<input type="text" name="inform_title" id="inform_title" value="" style="width:500px;"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #ffffff;height:25px;">
+						通知内容:
+						</td>
+						<td style="width: 500px;text-align:left;border:1px solid #ffffff;height:250px;">
+							<textarea id="answerArea" name="content"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #ffffff;height:25px;">
+						显示截止日期:
+						</td>
+						<td style="width: 150px;text-align:left;border:1px solid #ffffff;height:25px;">
+                        	<input id="inform_date" name="inform_date" class="easyui-datebox" style="width:150px;"></input>
+						</td>
+					</tr>
+					<tr id="zone_class"></tr>
+                   
+                    <!--<tr>
+						<td style="width: 120px;text-align:right;border:1px solid #ffffff;height:25px;">
+						是否包括过往学员:
+						</td>
+						<td style="width: 150px;text-align:left;border:1px solid #ffffff;height:25px;">
+							<input type="radio" name="yesTojz" value="checkbox"> 是 
+							<input type="radio" name="yesTojz" value="checkbox"> 否  
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 120px;text-align:right;border:1px solid #ffffff;height:25px;">
+						是否给家长发送短信:
+						</td>
+						<td style="width: 150px;text-align:left;border:1px solid #ffffff;height:25px;">
+							<input type="radio" name="yesTojz" value="checkbox"> 是 
+							<input type="radio" name="yesTojz" value="checkbox"> 否  
+						</td>
+					</tr>-->
+					<tr>
+						<td colspan="2" style="width: 100px;text-align:center;border:1px solid #ffffff;height:35px;">
+							<a href="javascript:void(0)" id="publish" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="publish_message()">发布通知</a>
+                            &nbsp;&nbsp;<a href="javascript:void(0)" id="publish" class="easyui-linkbutton" data-options="iconCls:'icon-no'" onclick="publish_message()">重 置</a>
+                        </td>
+					</tr>
+				</table>
+			</div>
+             
+            <div id="informations_demo"></div>
+            <div id="ccc" style=" padding-top:5px; padding-bottom:5px;" >
+                <div id="informations_bar">
+                        <div class="month_Schooltop" >
+                            <div style="float:left; width:10px; height:20px;"> </div>
+                            <div class="hx_Schooltop_sc">
+                                    通知状态：<span>
+                                                <select id="info_status" class="easyui-combobox"   name="12"  panelHeight="auto">
+                                                     
+                                                </select>
+                                              </span>
+                            </div>
+                                    
+                         </div>       
+                                
+                </div>
+                
+                <div id="informations_list" title="&nbsp;通知列表"></div>
+                 
+           </div> 
+           
+
+ </div> 
+ 
+
+</body>
+</html>

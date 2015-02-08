@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏教育测评_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script>
+	 
+    <script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Big_Classe_Student.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    
+     
+</head>
+<body>
+<div style="padding: 5px;">
+ 	 <div class="text_border">
+     	<div class="newstitle" id="stu_title">
+             &nbsp;&nbsp;班级与学生管理&nbsp;>>&nbsp;<script type="text/javascript">document.write(public_Bigclass_name)</script>管理&nbsp;>>&nbsp;当前班级&nbsp;>>&nbsp;学生管理
+        </div>
+        <div style="padding: 10px; display:inline-block;">
+           <!--班级列表 -->
+           <div>
+           		<ul id="stus_show">
+                	  
+                </ul>
+                <div class="cleared"></div>
+                
+           </div> 
+           
+          
+           
+        </div>
+     </div>  
+</div>
+
+<div id="send_messages"  style="display:none; padding:10px 10px 10px 10px;"><!--教学备注-->
+     <div>
+     	<table>
+        	<tr>
+            	<td>
+                	接收者：
+                </td>
+                <td>
+                	<input type="hidden" id="send_uid" />
+     				<input  type="text" id="send_Name" />
+                </td>
+            </tr>
+            <tr>
+            	<td>
+                	内容：
+                </td>
+                <td>
+                	<textarea id="send_content" cols="30" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+            	<td>
+                	是否给家长发短信：
+                </td>
+                <td>
+                	<input  type="radio" name="send_P"  value="1"/>是&nbsp;
+                    <input  type="radio" name="send_P"  value="0"/>否
+                </td>
+            </tr>
+        </table>
+     	
+     </div> 
+     
+</div>  
+         
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+	"totals":239,
+	"schools":[{
+		"id":1,
+		"schoolName":"华夏校区一",
+		"nowBigStus":"130",
+		"nowOneStus":"100",
+		"joinBigStus":"50",
+		"joinOneStus":"40",
+		"loseBigStus":"10",
+		"loseOneStus":"20"
+		 
+	},{
+	   "id":2,
+	    "schoolName":"华夏校区2",
+		"nowBigStus":"150",
+		"nowOneStus":"110",
+		"joinBigStus":"60",
+		"joinOneStus":"70",
+		"loseBigStus":"20",
+		"loseOneStus":"30"
+	 
+	},{
+	  	"id":3,
+	  	"schoolName":"华夏校区3",
+		"nowBigStus":"132",
+		"nowOneStus":"101",
+		"joinBigStus":"53",
+		"joinOneStus":"44",
+		"loseBigStus":"15",
+		"loseOneStus":"26"
+	 
+	}]
+
+}

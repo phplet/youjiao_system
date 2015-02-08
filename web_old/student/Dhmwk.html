@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link type="text/css" rel="stylesheet" href="css/confirmcss.css" />
+    <link rel="stylesheet" type="text/css" href="css/upload_file.css" />
+	<title>题酷在线</title>
+ 	<link href="layer/skin/layer.css" type="text/css" rel="stylesheet" />
+    <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+	<script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+    <script type='text/javascript' src="layer/layer.js"></script>
+	<script type="text/javascript" src="Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Js/jquery.json.min.js"></script>
+    <script type="text/javascript" src="Js/json2.js"></script>
+    <script type="text/javascript" src="Js/Base64.js"></script>
+    <script type="text/javascript" src="Js/sha256.js"></script>
+	 
+    <script type="text/javascript" src="Js/jquery.ui.draggable.js"></script>
+	<script type="text/javascript" src="Js/confirmjs.js"></script>
+    <script type="text/javascript" src="Js/json2.js"></script>
+	<script src='Js/Dhmwk.js' type="text/javascript"></script>
+    <script src='Js/uimages_files.js' type="text/javascript"></script>
+    <script type="text/javascript" src="Js/jquery.form.js"></script>
+    
+	<script charset="utf-8" src="Js/homewkStatus.js"></script>
+    <script charset="utf-8" src="Js/public_base.js"></script>
+    <script type="text/javascript" src="Js/flexjs.js"></script>
+    <!--加载html编辑器-->
+	<script charset="utf-8" src="kindeditor-4.1.7/kindeditor.js"></script>
+	<script charset="utf-8" src="kindeditor-4.1.7/lang/zh_CN.js"></script>
+	<script>
+	        KindEditor.ready(function(K) {
+	                window.editor = K.create('#answerArea');
+					
+	        });
+	</script>
+	<!--加载html编辑器-->
+ 
+	 
+</head>
+	
+
+<body>
+	<div class="container">
+	<!-- header开始-->
+    <div class="header_bg">	
+        <div class="header">
+            <div class="logo">
+                <a href="Index.html"><img  src="images/logo_new.png" /></a>
+            </div>
+            <div class="logins">
+                <div class="logins_font">
+                	<span>&nbsp;<a href="javascript:void(0);" onclick="outlogin();">退 出</a></span>
+                	<span class="icon_18_16"></span>
+                    <span>&nbsp;<a href="edit_login.html">账户设置</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="icon_13_16"></span>
+                    <span style="width:50px;">&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a id="headusername" href="javascript:void(0)"></a>,欢迎您！</span>
+                    <span class="icon_26_26"></span>
+                	
+                </div>
+                <span class="cleard"></span>
+            </div>
+            <div  class="clear"></div>
+        </div>
+    </div>
+    <!-- header结束-->
+     <div style="height: 25px; font-size: 12px; text-align: right; display: block; padding-right:10px; color:#777777;">联系我们 : 15201117816 , QQ : 2278596726 , Email : sales001@hxnetwork.com</div>
+    <!-- content开始-->
+    <div class="main" style="padding-top:20px;">
+    	<div class="main_left_1">
+        	<!--<div class="main_box_1DH">
+            	 <span class="text_001" style="float:left;">作业本 >>></span>
+                 <span class="text_004" id="sjClass" style="float:left;">
+                 	 
+                 </span>
+                  <span class="text_004" style="padding-left:20px;">
+                 	现在已有 
+                 </span>
+                 <span class="text_005">
+                 	8
+                 </span>
+                 <span class="text_004">
+                 	人交了作业 
+                 </span>
+				 <span class="text_004" style="float:right; padding-right:10px;">
+                 	<span class="sub_lishi"><a href="javascript:void(0)" id="linshi">临时保存</a></span><span class="sub_lishi"><a href="work_indexs.html">返&nbsp;&nbsp;回</a></span>
+                 </span>
+            </div>-->
+            <div class="main_box_3DH" id="zyt" >
+            	 <div class="main_box_3_titleDH">
+                    <div class="main_box_3_title_l" id="main_box_3_title_l"><!--<span class="text_004">作业名称： <span id="sjName"></span> 上传时间： <span id="sjTime"></span></span>--></div>
+                    <div class="main_box_3_title_r" id="main_box_3_title_r"><span class="text_005" id="sjtinum"></span><span class="text_002"></span><span class="text_002" id="sjtishu"></span></div>
+                 </div>
+                 <div class="main_box_3_cenDH">
+                 	 <div id="oneQuestion" class="main_box_3_cen_1"></div>
+                    
+                     <div id="htmlbj" class="main_box_3_cen_3">
+                     	 
+                        <div class="main_box_3_cen_3_cc">
+                        	<textarea id="answerArea" name="content" style="width:680px;"></textarea>
+                        </div>
+                        <div class="answer_upload" style="text-align:left; padding-top:5px;">
+                       
+   							<div class="btn">
+            					<span>添加附件</span>
+            					<input id="fileupload" type="file" name="mypic"  onchange="changesupload()"/>
+        					</div>
+        					<div class="progress">
+    							<span class="bar"></span>
+							</div>
+        					<div class="files">
+								<div class="tv_main"><ul>
+									<li class="tv_main_img">序号</li>
+ 			    					<li class="tv_main_img">图片</li>
+									<li class="tv_main_pic">名称</li>
+									<li class="tv_main_size">大小</li>
+									<li class="tv_main_op">操作</li>
+									</ul><div class="cleard"></div>
+                                </div>
+							</div>
+        <!--<div class="files"></div>
+        <div id="showimg"></div>-->
+        					<p style="font-size:12px; margin-top:20px;">说明：示例中只允许上传gif/jpg/txt/doc格式的图片或文档，图片大小不能超过500k。</p>
+        
+        					<div id="anwe1"  style="display:none;"></div>
+   						</div>  
+                     </div>
+             
+                     <div id="zyAnswer">
+                        <span class="text_002">&nbsp;请选择&nbsp;</span>
+                        <span class="text_006">
+                            <input type="radio" value="A" name="daan_A" />&nbsp;A
+                            <input type="radio" value="B" name="daan_A" />&nbsp;B
+                            <input type="radio" value="C" name="daan_A" />&nbsp;C
+                            <input type="radio" value="D" name="daan_A" />&nbsp;D
+                        </span>
+                    </div>
+                    <div id="radio_more"></div>
+                    
+                    <div class="main_box_3_cen_2">
+                     	 <span class="upsubmit_a"  onclick="ToNext()"  ><span class="icon_120_33 nextsubmit" id="dtk_001" title="下一题">下一题</span><span class="icon_120_33 lastsubmit" id="dtk"  >确 定</span></span>
+                         <span class=" span_spaceR_30"></span>
+                         <span class="upsubmit_a" ><span class="icon_120_33 upsubmit" title="上一题" onclick="UpNext()">上一题</span></span>
+                         
+                     </div>
+					 <div style="clear:both;"></div>
+                </div>
+            </div>
+            <!-- 答题卡，状态为隐藏 开始-->
+			<div id="answers" class="answers">
+		 
+                <div>
+                    <div> 
+                        <div class="answers_title"><caption>答题卡</caption></div>
+                        <table id="anser1"  width="650px" border="0" cellpadding="0" cellspacing="0" align="center">
+                            <tr>
+                                <th>题号</th>
+                                <th>你的答案</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="margin:auto;margin-top:20px; margin-bottom:20px; text-align:center;width:250px; height:40px; ">
+                        <div style="width:300px;">
+                            <span class="buttonSpan icon_125_35 web_icon_bottom_5" style="margin-right:20px;"><a href="javascript:void(0)" onclick="submitAnswer()">完成并提交</a> </span>
+                            <span class="buttonSpan icon_125_35 web_icon_bottom_2" ><a href="javascript:void(0)" onclick="relode()">返回重新做</a></span>
+                            <span class="cleard"></span>
+                        </div>
+                    </div>
+                </div>
+			</div>
+    <!-- 答题卡，状态为隐藏 结束-->
+          
+        </div>
+        <div class="main_right_1">
+        	<div class="test_info">
+            	<div class="text_bottom_side">
+                    <div>
+                        <span class="text_name">学校：</span>
+                        <span class="text_CT" id="school_name"></span>
+                         
+                    </div>
+                    <div class="cleard"></div>
+                    <div>
+                        <span class="text_name">校区：</span>
+                        <span class="text_CT" id="zone_name"></span>
+                         
+                    </div>
+                    <div class="cleard"></div>
+                    <div>
+                        <span class="text_name">班级名称：</span>
+                        <span class="text_CT" id="class_name"></span>
+                        
+                    </div>
+                    <div class="cleard"></div>
+                    <div>
+                        <span class="text_name">科目：</span>
+                        <span class="text_CT" id="subject_name"></span>
+                        
+                    </div>
+                    <div class="cleard"></div>
+                    <div>
+                        <span class="text_name">作业名称：</span>
+                        <span class="text_CT" id="work_name"></span>
+                         
+                    </div>
+                    <div class="cleard"></div>
+                    <div class="scrolf">
+                        <span class="text_name">总分：</span>
+                        <span class="text_CT" id="scrools"></span>
+                        
+                    </div>
+                    <div class="cleard"></div>
+                    <div>
+                        <span class="text_name">布置日期：</span>
+                        <span class="text_CT" id="date_name"></span>
+                        
+                    </div>
+                    <div class="cleard"></div>
+                    <div>
+                        <span class="text_name">布置：</span>
+                        <span class="text_CT" id="work_flag"></span>
+                        
+                    </div>
+                    <div class="cleard"></div>
+                </div>
+                <div class="test_que">
+                    已交
+                    <span class="test_dui total_right"></span>
+                    人
+                    <br>
+                    题目数
+                    <span class="test_dui total_wrong"></span>
+                </div>
+                <div class="link_sub">
+                    <a id="linshi" class="icon_125_35 web_icon_bottom_1">临时保存</a>  
+                </div>
+                <div class="home_link">
+                	<a href="./work_indexs.html"> << 返回作业首页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content 结束-->
+    
+</div>
+<div class="clear_20"></div>
+<div class="footer_Bg">
+<div class="footer">
+    <span class="footer_font">
+        Copyright©2004-2014 ，北京华夏安业科技有限公司   All Rights Reserved
+         
+    </span>
+</div> </div>
+</body>
+</html>

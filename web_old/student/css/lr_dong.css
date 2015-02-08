@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* 滚动列表内容样式表 */
+.blk_18 {
+ BORDER-RIGHT: #e3e3e3 1px solid; BORDER-TOP: #e3e3e3 1px solid; MARGIN-TOP: 8px; FONT-SIZE: 12px; BACKGROUND: #f3f3f3; OVERFLOW: hidden; BORDER-LEFT: #e3e3e3 1px solid; WIDTH: 390px; BORDER-BOTTOM: #e3e3e3 1px solid; ZOOM: 1; margin:30px auto;}
+.blk_18 .pcont {
+ FLOAT: left; OVERFLOW: hidden; WIDTH: 350px
+}
+.blk_18 .ScrCont {
+ WIDTH: 32766px; ZOOM: 1
+}
+.blk_18 #List1_1 {
+ FLOAT: left
+}
+.blk_18 #List2_1 {
+ FLOAT: left
+}
+.blk_18 #List1_2 {
+ FLOAT: left
+}
+.blk_18 #List2_2 {
+ FLOAT: left
+}
+.blk_18 #List1_3 {
+ FLOAT: left
+}
+.blk_18 #List2_3 {
+ FLOAT: left
+}
+
+.blk_18 .LeftBotton {
+ BACKGROUND: url(../images/picr_1.gif) no-repeat; FLOAT: left; MARGIN: 10px 1px; WIDTH: 15px; HEIGHT: 72px
+}
+.blk_18 .RightBotton {
+ BACKGROUND: url(../images/picr_1.gif) no-repeat; FLOAT: left; MARGIN: 10px 1px; WIDTH: 15px; HEIGHT: 72px
+}
+.blk_18 .LeftBotton {
+ BACKGROUND-POSITION: 0px 0px; MARGIN-LEFT: 5px
+}
+.blk_18 .RightBotton {
+ BACKGROUND-POSITION: 0px -100px; MARGIN-LEFT: -1px
+}
+.blk_18 .LeftBotton:hover {
+ BACKGROUND-POSITION: -20px 0px
+}
+.blk_18 .RightBotton:hover {
+ BACKGROUND-POSITION: -20px -100px
+/*.blk_18 .pl IMG {
+ DISPLAY: block; MARGIN: 6px auto 1px; CURSOR: pointer; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}*/
+.blk_18 .pl{
+ FLOAT: left; WIDTH: 117px; height:117px;  background:url(../images/tab_P_bg.jpg) no-repeat;
+}
+
+/*.blk_18 A.pl:hover {
+ BORDER-RIGHT: #ff9900 1px solid; BORDER-TOP: #ff9900 1px solid; BACKGROUND: #fff; BORDER-LEFT: #ff9900 1px solid; COLOR: #ff9900; BORDER-BOTTOM: #ff9900 1px solid
+}*/
+
+.commu_cont3 {
+ MARGIN: 9px 7px 7px; LINE-HEIGHT: 150%
+}
+.commu_cont3 UL {
+ WIDTH: 188px
+}
+

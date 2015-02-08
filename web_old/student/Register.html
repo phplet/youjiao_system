@@ -1,0 +1,78 @@
+﻿立即注册<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>题酷在线</title>
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="themes/icon.css" />
+    <link href="layer/skin/layer.css" type="text/css" rel="stylesheet" />
+    <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+	<script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+    <script type='text/javascript' src="layer/layer.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.json.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="Scripts/sha256.js"></script>
+    <script type="text/javascript" src="Scripts/Base64.js"></script>
+    <script type="text/javascript" src="locale/easyui-lang-zh_CN.js"></script>
+     
+    <script type="text/javascript" src="Scripts/Register.js"></script>
+    <script type="text/javascript" src="Js/flexjs.js"></script>
+</head>
+<body>
+    <div id="RegisterWin" class="easyui-dialog" title="欢迎注册一对一测评系统" style="width: 380px; height: 520px;"
+        minimizable="false" maximizable="false" resizable="false" collapsible="false" closable="false" draggable="true" shadow="true" modal="true" iconCls="icon-user">
+        <div class="easyui-layout" fit="true">
+            <div region="center" border="false" style="padding: 5px;  background: #fff;">
+         <form id="LoginForm">
+      <div style="width:240px; margin:5px auto;">
+    <p>
+        用户名：<br />
+        <input type="text" class="easyui-validatebox" id="UserName" data-options="validType:'minLength[255]',validType:'email',missingMessage:'请使用邮箱作为用户名，推荐您注册网易邮箱',invalidMessage:'请使用邮箱作为用户名，推荐您注册网易邮箱',required:true" style="width:180px;"/>
+        <span style="color:red;">*</span><br />
+        <span style="color:#808080;font-size:12px;">请使用邮箱作为用户名，推荐您注册网易邮箱</span>
+    </p>
+    <p>
+        密码：<br />
+        <input type="password" class="easyui-validatebox" id="UserPassword" style="width:180px;" required="true" validType="valipw['#UserName']"/>
+        <span style="color:red;">*</span><br />
+        <span style="color:#808080;font-size:12px;">密码由6~32个字符组成，字符可以是字母或者数字，且不能和账号相同。</span>
+    </p>
+    <p>
+        确认密码：<br />
+        <input type="password" class="easyui-validatebox" id="ComfirePassw" style="width:180px;" required="true" validType="equals['#UserPassword']"/>
+        <span style="color:red;">*</span>
+    </p>
+    <p>
+        真实姓名：<br />
+        <input type="text" class="easyui-validatebox" id="RealName" data-options="validType:'minLength[10]',required:true" style="width:180px;"/>
+        <span style="color:red;">*</span>
+    </p>
+    <p>
+        性别：<br />
+        <input type="text" id="UserGender" style="width:185px;"/>
+        <span style="color:red;">*</span>
+    </p>
+    <p>
+        选择身份：<br />
+        <select id="identity" style="width:185px;">
+            <option value="1">学生</option>
+         <!--    <option value="2">教师</option> -->
+        </select>
+        <span style="color:red;">*</span>
+    </p>
+    <p id="coursespan" style="display:none;">
+        选择学科：<br />
+        <select id="coursese" style="width:185px;"></select>
+        <span style="color:red;">*</span>
+    </p>
+    </div>
+  </form>
+            </div>
+        </div>
+ </div>
+</body>
+</html>

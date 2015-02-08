@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+		<title>题酷在线</title>
+		<link type='text/css' href='css/exercise_list.css' rel='stylesheet' />
+        <link href="layer/skin/layer.css" type="text/css" rel="stylesheet" />
+        <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+		<script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+        <script type='text/javascript' src="layer/layer.js"></script>
+        <script type="text/javascript" src="Js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="Js/jquery.json.min.js"></script>
+        <script type="text/javascript" src="Js/Base64.js"></script>
+        <script type="text/javascript" src="Js/sha256.js"></script>
+        
+        <script type="text/javascript" src="Js/json2.js"></script>
+        <script type="text/javascript" src="Js/public_base.js"></script>
+		<script type='text/javascript' src='Js/exerciseHandler.js'></script>
+		<script type='text/javascript' src='Js/exercise_list_zhenti.js'></script>
+        <script type="text/javascript" src="Js/flexjs.js"></script>
+        <style>
+		
+		    .main_left{float:left;width:220px;}
+			.content_left{
+				float:none;
+				width:220px;
+			}
+			.content_lefts_img{width:220px; border-bottom:#ebebeb dotted 1px;} 
+        	.content_center{float:right;width:760px; }
+			.title_pic{ width:0px;}
+			.title_label{margin-top:10px; width:auto; padding-left:15px; height:60px; font-size:14px; line-height:25px; color:#272727;text-align:left;}
+			.main_done{ text-align:left; line-height:35px; padding-left:15px;}
+			.last_numColor{ color:#0092b6; font-weight:bolder;}
+			.content_element_main{ height:auto;}
+			
+			.main_enter{ width:320px; margin:0 auto; padding-top:50px;}
+			.icon_125_35 a{ color:#fff; font-size:14px; text-decoration:none; font-weight:500;}
+			.icon_125_35{ width:100px; float:left; margin:0px 5px 0px 5px;}
+			
+        </style> 
+	</head>
+     
+	<body>
+		<div class="header_bg">	
+        <div class="header">
+            <div class="logo">
+                <a href="Index.html"><img  src="images/logo_new.png" border="0"/></a>
+		  </div>
+            <div class="logins">
+                <div class="logins_font">
+                	<span>&nbsp;<a href="javascript:void(0);" onclick="outlogin();">退 出</a></span>
+                	<span class="icon_18_16"></span>
+                    <span>&nbsp;<a href="edit_login.html">账户设置</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="icon_13_16"></span>
+                    <span style="width:50px;">&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a id="headusername" href="javascript:void(0)"></a>,欢迎您！</span>
+                    <span class="icon_26_26"></span>
+                	
+                </div>
+                <span class="cleard"></span>
+            </div>
+            <div  class="clear"></div>
+        </div>
+    </div>
+    <div style="height: 25px; font-size: 12px; text-align: right; display: block; padding-right:10px; color:#777777;">联系我们 : 15201117816 , QQ : 2278596726 , Email : sales001@hxnetwork.com</div>
+        	<div class='content'>
+			<div class="main_left">
+            	<div class='content_lefts_img'><img src="images/web_icon_103.png" width="220" height="105" /></div>
+                <div class='content_left'>
+                    <div class='nav_element' id='nav_element_template' style='display:none;'></div>
+                </div>
+            </div>
+			<div class='content_center'>
+				
+				<div class='content_element_zt' id='content_element_template' style='display:none;'>
+					<div class='content_element_title_zt'>
+						<div class='title_pic'></div>
+						<div class='title_label'></div>
+						<div style='clear:both;'></div>
+					</div>
+					<div class='content_element_main'>
+						<div class='main_done'><!--我得了<span class='last_score'>90</span>分,共有<span class="last_numColor">222</span>人完成练习--></div>
+						<div class='main_enter'> 
+                        	<span class="icon_125_35 web_icon_bottom_1 flag_lets"><a class='zhuanti_enter' href='javascript:void(0);'>我来试试</a></span>
+                            <span class="icon_125_35 web_icon_bottom_5 flag_catch"><a class='zhuanti_enter' href='javascript:void(0);'>接着上次做</a></span>
+                            <span class="icon_125_35 web_icon_bottom_2 flag_again"><a class='zhuanti_enter' href='javascript:void(0);'>再来试试</a></span>
+                            <span class="icon_125_35 web_icon_bottom_3 flag_anew"><a class='zhuanti_enter' href='javascript:void(0);'>重新试试</a></span>
+                            <span class="cleard"></span>
+							 
+						</div>
+					</div>
+				</div>
+			    <div class="content_molds">
+                	<ul class="active_ul" id="proviceli_list"></ul>
+                    <div class="cleard"></div>
+                	<ul class="active_ul" id="yearli_list"></ul>
+                    <div class="cleard"></div>
+                </div>	
+				<div class='content_new'>
+					 
+					<div class='content_list'></div>
+				</div>
+                <div class="cleard"></div>
+				<!--<div class='content_hot'>
+					<div>人气真题:</div>
+					<div class='content_list'></div>
+				</div>
+                <div class="cleard"></div>
+				<div class='content_done'>
+					<div>我做过的:</div>
+					<div class='content_list'></div>
+				</div>
+
+				<div class="cleard"></div>-->
+				
+			</div>
+			<div class='cleard'></div>
+		</div>
+		<div class=''></div>
+        	
+         
+        <div class="clear_20"></div>
+<div class="footer_Bg">
+<div class="footer">
+    <span class="footer_font">
+        Copyright©2004-2014 ，北京华夏安业科技有限公司   All Rights Reserved
+        
+    </span>
+</div> </div>
+	</body>
+</html>

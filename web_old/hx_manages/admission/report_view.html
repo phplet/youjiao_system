@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+<title>题酷在线</title>
+<link rel="stylesheet" type="text/css" href="../../student/css/base.css">
+<link href="../../student/layer/skin/layer.css" type="text/css" rel="stylesheet" /> 
+ <link rel="../../student/stylesheet" type="text/css" href="css/gundong.css">
+ <link href="../../student/css/web_icon.css" type="text/css" rel="stylesheet" />
+</head>
+ 
+	<script type='text/javascript' src='../../student/Js/jquery-1.8.2.min.js'></script>
+    <script type='text/javascript' src="../../student/layer/layer.js"></script>
+	<script type="text/javascript" src="../../student/Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../student/Js/jquery.json.min.js"></script>
+    <script type="text/javascript" src="../../student/Js/json2.js"></script>
+    <script type="text/javascript" src="../../student/Js/Base64.js"></script>
+    <script type="text/javascript" src="../../student/Js/sha256.js"></script>
+    <script type="text/javascript" src="../../student/Js/json2.js"></script>
+    <script type="text/javascript" src="../../student/Highcharts/js/highcharts.js"></script>
+    <script src="../../student/Highcharts/js/highcharts-more.js"></script>
+    <script type="text/javascript" src="../../student/Highcharts/js/modules/exporting.js"></script>
+    <script type="text/javascript" src="../../student/Js/public_base.js"></script>
+    <script type="text/javascript" src="../Scripts/report_view.js"></script>
+    
+    
+<body>
+<!--startprint1-->
+<div class="container">
+	 
+    <!-- content开始-->
+    <div class="main">
+    	 <div class="report_main">
+         	<div class="report_header">
+            	<div class="report_left">
+                	<img  src="/Content/images/logo_1.png" width="188" height="75" id="logo_url" />
+                </div>
+                <div class="report_right">
+                	<div style="line-height:45px;"><span id="stu_name" class="font_color_000">小王</span>&nbsp;<span class="font_color_b70129" id="subject_name">数学</span>&nbsp;<span class="font_color_000">入学测试报告</span><span style="float:right;"><a onclick="edit_reports();" class="icon_125_35 web_icon_bottom_3" style="width:90px;">修 改</a></span></div>
+                    <div style="font-size:12px; line-height:20px;"><span>测试时间：</span><span id="create_date">2014-05-12</span></div>
+                </div>
+                <div class="cleard"></div>
+            </div>
+            <div class="cleard"></div>
+            <div class="report_que_list">
+            	<div class="report_type">卷面情况</div>
+                <div class="que_info">
+                	<span>试卷难度系数：</span><span id="diffcuty_id" class="font_color_b50025"></span>&nbsp;&nbsp;
+                    <span>卷面得分：</span><span id="scores"  class="font_color_b50025"></span>&nbsp;&nbsp;
+                    <span>答题用时：</span><span id="tests_times"  class="font_color_b50025"></span>&nbsp;&nbsp;
+                    <span>答对：</span><span id="right_sum"  class="font_color_b50025"></span>&nbsp;&nbsp;
+                    <span>答错：</span><span id="wrong_sum"  class="font_color_b50025"></span>&nbsp;&nbsp;
+                </div>
+                <table id="que_list" cellpadding="0" cellspacing="0" border="0">
+                
+                </table>
+            </div>
+            <div class="report_cartogram">
+            	<div class="report_type">诊断报告</div>
+                <div style="width:900px; margin:0 auto; padding-top:20px;">
+                	<div id="que_Charts" ></div>
+                	<div id="knowledge_Charts" style="margin-top:30px;"></div>
+                </div>
+            </div>
+            
+            <div class="report_ability">
+            	<div class="report_type">学习能力维度</div>
+                <div class="report_ablity_list">
+                	 <table id="ablity_list" cellpadding="0" cellspacing="0" border="0">
+                     	 
+                     </table>
+                </div>
+                <div class="report_ablity_cartogram">
+                	<div id="ability_Charts" style="height:340px;"></div>
+                </div>
+                <div class="cleard"></div>
+            </div>
+            
+            <div id="slogan_list">
+            	
+            </div>
+            
+            <div class="person_info">
+            	
+            </div>
+            
+         </div> 
+    </div>
+   
+</div>
+ <!--endprint1-->
+  <div align="center" style="padding-top:30px;"><div style="width:220px;"><a onclick="edit_reports();" class="icon_125_35 web_icon_bottom_3" style="width:90px; float:left;">修 改</a><span style="display:block; width:20px; float:left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a onclick="print_reports(1);" class="icon_125_35 web_icon_bottom_1" style="width:90px; float:left;">打 印</a></div><div class="cleard"></div></div>
+    <!-- content 结束-->
+<div class="clear_20"></div>
+<div style="display:none;" id="question_text_contentcut"></div>
+</body>
+</html>

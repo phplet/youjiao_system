@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Messages_edit.js"></script>
+   	<script charset="utf-8" src="../kindeditor-4.1.7/kindeditor.js"></script>
+	<script charset="utf-8" src="../kindeditor-4.1.7/lang/zh_CN.js"></script>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false" style="padding: 5px;">
+            
+         
+			<div id="informations"  style="padding:20px;  height:400px; ">
+				<table>
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #ffffff;height:25px;">
+						消息标题:
+						</td>
+						<td style="width: 500px;text-align:left;border:1px solid #ffffff;height:25px;">
+							<input type="text" id="news_Title" name="tzBt" value="" style="width:500px;"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 100px;text-align:right;border:1px solid #ffffff;height:25px;">
+						消息内容:
+						</td>
+						<td style="width: 500px;text-align:left;border:1px solid #ffffff;height:250px;">
+							<textarea id="answerArea" name="content"></textarea>
+						</td>
+					</tr>
+					
+					<tr>
+						<td colspan="2" style="width: 100px;text-align:center;border:1px solid #ffffff;height:35px;">
+							<a href="javascript:void(0)" id="publish" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="publish_message()">修改消息</a>
+                            &nbsp;&nbsp;<a href="javascript:void(0)" id="publish" class="easyui-linkbutton" data-options="iconCls:'icon-no'" onclick="publish_message()">重 置</a>
+                        </td>
+					</tr>
+				</table>
+			</div>
+             
+            <div id="informations_demo"></div>
+            <div id="ccc" style=" padding-top:5px; padding-bottom:5px;" >
+                <div id="informations_bar">
+                        <div class="month_Schooltop" >
+                            <div style="float:left; width:10px; height:20px;"> </div>
+                            <div class="hx_Schooltop_sc">
+                                    消息状态：<span>
+                                                <select id="school_Name" class="easyui-combobox"   name="12"  panelHeight="auto">
+                                                    <option value="0">显示中</option>
+                                                    <option value="1">已过期</option>
+                                                </select>
+                                              </span>
+                            </div>
+                                    
+                         </div>       
+                                
+                </div>
+                
+                <div id="informations_list">
+                </div>
+                 
+           </div> 
+           
+
+ </div> 
+ 
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>欢迎登录-互动平台</title>
+    <link rel="stylesheet" type="text/css" href="student/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="student/css/web_icon.css" />
+    <link href="student/layer/skin/layer.css" type="text/css" rel="stylesheet" />
+    <link rel="icon" href="hx_manages/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="student/Js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="student/Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="student/Js/jquery.json.min.js"></script>
+    <script type="text/javascript" src="Scripts/codenum.js"></script>
+    <script type='text/javascript' src="student/layer/layer.js"></script>
+    <script type="text/javascript" src="student/Js/json2.js"></script>
+    <script type="text/javascript" src="student/Js/Base64.js"></script>
+    <script type="text/javascript" src="student/Js/sha256.js"></script>
+    <script type="text/javascript" src="student/Js/public_base.js"></script>
+    <script type="text/javascript" src="Scripts/register.js"></script>
+</head>
+  
+     
+<body onload="createCode()">
+<div class="warps">
+	 <div class="header">
+     	<div class="logo">
+     		<a href="student/Index.html"><img  src="student/images/logo_home.png"/></a>
+     	</div>
+         
+     </div>
+     <div class="main_Is">
+     		<div class="reg_title">欢迎访问我们的网站,请注册并创建属于你的 题酷 账户。</div>
+            <div class="main_R">
+                 <div class="mains_reg" >
+                         <div class="reg_ct">
+                                 <div class="info_css">
+                                    <div>
+                                    	<span class="names_80">用户名：</span>
+                                    	<span class="input_370"><input id="userName" type="text" name="userName" class="input_radius" onblur="checknull(this.id);"/></span>
+                                        <span class="stat_color">&nbsp;&nbsp;*&nbsp;</span><span class="userName_Ms fromstu">请用真实的邮箱地址注册</span>
+                                    </div>
+                                    <div class="cleard"></div>
+                                     
+                                    <div>
+                                     	<span class="names_80">昵　称：</span>
+                                        <span class="input_370"><input id="userNike"  type="text" name="userNike" class="input_radius" onblur="checknull(this.id);"/></span>
+                                     	<span class="stat_color">&nbsp;&nbsp;*&nbsp;</span><span class="userNike_Ms fromstu">起个敞亮的,别人都会这样喊你哦</span>
+                                    </div>
+                                    <div class="cleard"></div>
+                                    <div>
+                                    	<span class="names_80">真实姓名：</span>
+                                        <span class="input_370"><input id="userRealname"  type="text" name="userRealname" class="input_radius" onblur="checknull(this.id);"/></span>
+                                    	<span class="stat_color">&nbsp;&nbsp;*&nbsp;</span><span class="userRealname_Ms fromstu">真实姓名为2-4个汉字</span>
+                                    </div>
+                                    <div class="cleard"></div> 
+                                    
+                                    <div>
+                                    	<span class="names_80">性　别：</span>
+                                        <span class="input_370">&nbsp;&nbsp;
+                                        <input type="radio" name="stusex" id="stusex_1" value="1" checked="checked" />&nbsp;男&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="stusex" id="stusex_2" value="2" />&nbsp;女</span>
+                                    </div>
+                                    <div class="cleard"></div>
+                                    <div>
+                                     	<span class="names_80">Email：</span>  
+                                        <span class="input_370"><input id="userEmail"  type="text" name="userEmail" class="input_radius" onblur="checknull(this.id);"/></span>
+                                     	<span class="stat_color">&nbsp;&nbsp;*&nbsp;</span><span class="userEmail_Ms fromstu">别填错了，找回密码用哦</span>
+                                    </div>
+                                    <div class="cleard"></div> 
+                                    
+                                    <div>
+                                         <span class="names_80">当前年级：</span><span class="input_370">
+                                            <select id="grade_select" name="grade_select" class="select_css">
+                                                <option value="1">小学一年级</option>
+                                                <option value="2">小学二年级</option>
+                                                <option value="3">小学三年级</option>
+                                                <option value="4">小学四年级</option>
+                                                <option value="5">小学五年级</option>
+                                                <option value="6">小学六年级</option>
+                                                <option value="7">初中一年级</option>
+                                                <option value="8">初中二年级</option>
+                                                <option value="9">初中三年级</option>
+                                                <option value="10">高中一年级</option>
+                                                <option value="11">高中二年级</option>
+                                                <option value="12">高中三年级</option>
+                                            </select>
+                                         </span>
+                                     </div>
+                                     <div class="cleard"></div> 
+                                     <div>
+                                     	<span class="names_80">在读学校：</span>   
+                                        <span class="input_370"><input id="userSchool"  type="text" name="userSchool" class="input_radius" onblur="checknull(this.id);"/></span>
+                                    	<span class="stat_color">&nbsp;&nbsp;*&nbsp;</span><span class="userSchool_Ms fromstu">学校名称不能为空</span>
+                                    </div>
+                                    <div class="cleard"></div>
+                                    <div>
+                                     	<span class="names_80">联系方式：</span>
+                                        <span class="input_370"><input id="userphone"  type="text" name="userphone" class="input_radius" /></span>
+                                    	 
+                                    </div>
+                                    <div class="cleard"></div>
+                                    
+                                     <div class="test_sub_1">
+                                        <a id="changesInfo">注 册</a>
+                                     </div>
+                                 </div>
+                         </div>
+                 </div>
+                 <div class="mains_info">
+                 	<div class="padding_20">
+                        <div class="minute_title">
+                            已经注册过了？
+                        </div>
+                        <div class="minute_tk">
+                            <a href="index.html">点击这里登录</a>
+                        </div>
+                        <div class="minute_title">
+                            欢迎来到题酷在线
+                        </div>
+                        <div class="minute_tk">
+                            注册后你将被加入我们的邮件列表中,当有更新时我们会通知您;我们的移动产品也同样适用这个账号。
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <div class="cleard"></div>
+     </div>
+     
+     <div class="footer">
+     	Copyright©2004-2013 ，北京华夏安业科技有限公司 All Rights Reserved 
+     </div>
+     
+     
+</div>
+</body>
+</html>

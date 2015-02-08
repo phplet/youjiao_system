@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    <script type="text/javascript" src="../Scripts/Teacher_Corrects.js"></script>
+   
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false" style="padding: 5px;">
+
+        <div id="SerToolBar">
+           <div class="hx_Schooltop">
+               <ul>
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	   
+                   <li class="hx_Schooltop_enable" style="width:200px;">
+                   		校区名称：<span id="zonename_1"><select id="zonenames" class="easyui-combobox" style="width:120px;"  name="12"  panelHeight="auto">
+		<option value="1">A校区</option>
+		<option value="2">B校区</option>
+        
+	</select></span><span id="zonename_1_s" style=" line-height:23px;"></span>
+                   </li>
+                   
+                   <li class="hx_Schooltop_enable">
+                   		选择科目：<span id="subject_Z"><select id="subjects" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto" editable=false>
+									<option value="请选择">请选择</option>
+									<option value="1">语文</option>
+                                    <option value="2">数学</option>
+                        			<option value="3">英语</option>
+                        			<option value="4">物理</option>
+                                    <option value="5">化学</option>
+                                    <option value="6">生物</option>
+                                    <option value="7">地理</option>
+                                    <option value="8">历史</option>
+                                    <option value="9">政治</option>
+        
+	</select></span><span id="subject_T" style="line-height:23px;"></span>
+                   </li>
+                    
+                   <li class="hx_Schooltop_enable" style="width:200px;">
+                   		选择年：<select id="yeartime" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto" editable=false>
+		 
+								</select>
+                              	月：<select id="monthtime" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto" editable=false>
+		 
+								</select>
+                   </li>
+                   
+                   
+                   <li class="hx_Schooltop_nbsp">&nbsp;</li> 
+                   <li class="hx_Schooltop_enable" id="teachersear">
+                   		选择教师：<span><input id="teacher_names"  style="width:50px;"/></span>
+                   </li>
+                   <li  class="hx_Schooltop_search_sc">
+                       <a id="BtnSearch" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a> 
+                   </li>
+                    
+                </ul>
+          </div>
+        </div>
+
+        <div id="teacher_Corrects" title="&nbsp;学务报表&nbsp;>>&nbsp;教师批改统计"></div>
+ 
+
+ </div> 
+ 
+
+</body>
+</html>

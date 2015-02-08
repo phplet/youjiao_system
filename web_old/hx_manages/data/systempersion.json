@@ -1,0 +1,35 @@
+[{
+		"id":1,
+		"username":"111@163.com",
+		"realname":"负责人一",
+		"name":"wwww",
+		"subject":"北京市",
+		"email":"大钟寺华杰大厦01",
+		"creat_date":"2013-05-12",
+		"distroy_date":"2013-05-13",
+		"mobile":"1"
+	},{
+	  "id":2,
+	  "username":"2222@163.com",
+		"realname":"负责人2",
+		"name":"wwww",
+		"subject":"北京市",
+		"email":"大钟寺华杰大厦01",
+		"creat_date":"2013-05-12",
+		"distroy_date":"2013-05-13",
+	  	"mobile":"1"
+	   
+	 
+	},{
+	  "id":3,
+	  "username":"3333@163.com",
+		"realname":"负责人3",
+		"name":"wwww",
+		"subject":"北京市",
+		"email":"大钟寺华杰大厦01",
+		"creat_date":"2013-05-12",
+		"distroy_date":"2013-05-13",
+	  "mobile":"0"
+	   
+	 
+	}]

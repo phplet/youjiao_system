@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+<title>无标题文档</title>
+	<link href="../themes/default/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="../themes/icon.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/Style.css" rel="stylesheet" type="text/css" />
+    <script src="../jquery-easyui-1.3.0/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../jquery-easyui-1.3.0/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.json.min.js" type="text/javascript"></script>
+    <script src="../Scripts/json2.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.easyui.theme.js" type="text/javascript"></script>
+    <script src="../Scripts/Base64.js" type="text/javascript"></script>
+    <script src="../locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="../Scripts/Common.js" type="text/javascript"></script>
+    <script src="../Scripts/admission_report.js" type="text/javascript"></script>
+    <script src="../Scripts/public_base.js" type="text/javascript"></script>
+</head>
+<style>
+	 .test_header{line-height:25px; font-size:12px;}
+	 .test_infos{line-height:25px; font-size:12px;}
+	 .test_type_css{ font-size:18px; line-height:35px; margin-top:20px; font-weight:bolder; color:#696969;border-top:#CCC solid 1px;}
+	 .question_list{ padding-top:20px;}
+	 #que_list{border-top:#CCC solid 1px; border-left:#CCC solid 1px; width:98%; }
+	 #que_list td{border-bottom:#CCC solid 1px; border-right:#CCC solid 1px; padding:5px; line-height:25px;}
+	 .text_color_ff9900{ color:#ff9900; font-size:12px;}
+	 #ablity_list{border-top:#CCC solid 1px; border-left:#CCC solid 1px; width:98%; }
+	 #ablity_list td{border-bottom:#CCC solid 1px; border-right:#CCC solid 1px;padding:5px; line-height:25px;}
+	 textarea{ border:#e3e3e3 solid 1px;}
+	 #ping_demo_lists li{margin-top:20px; margin-left:20px;}
+	 .demo_list_f{ float:left; width:460px; border:#CCC solid 1px; line-height:25px; padding:10px;}
+	.demo_list_r{ float:left; width:30px; margin-left:30px; margin-top:10px; vertical-align:middle;}
+</style>
+<body class="easyui-layout">
+	<div region="center" style="padding:5px; border:none;">
+    	<div class="easyui-panel" title="入学测试》生成报告" border="true" collapsible="false" style="padding:20px;">
+        	<div class="test_header">
+            	<span>试卷名称：</span><span id="test_name"></span> <br />
+                <span>学生姓名：</span><span id="stuReal_name"></span>&nbsp;&nbsp;
+                <span>测试学科：</span><span id="stusubject_name"></span>&nbsp;&nbsp;
+                <span>测试时间：</span><span id="stucreate_date"></span>
+            </div>
+            <div>
+            	<div class="test_type_css">卷面情况</div>
+                <div class="test_infos">
+                	<span>试卷难度系数：</span><span id="diffcuty_id"></span>&nbsp;&nbsp;
+                    <span>卷面得分：</span><span id="scores"></span>&nbsp;&nbsp;
+                    <span>答题用时：</span><span id="tests_times"></span>&nbsp;&nbsp;
+                    <span>答对：</span><span id="right_sum"></span>&nbsp;&nbsp;
+                    <span>答错：</span><span id="wrong_sum"></span>&nbsp;&nbsp;
+                </div>
+                <div class="question_list">
+                	<table id="que_list" cellpadding="0" cellspacing="0" border="0">
+                    	
+                        
+                    </table>
+                     
+                </div>
+                <div class="test_type_css">诊断报告</div>
+                <div style="padding:10px; border:#CCC solid 1px; ">
+                	<div style="color:#008000; font-size:12px;">学习能力维度</div>
+                    <div style="padding-bottom:10px;padding-left:25px;"><span style="color:#333; font-size:12px;">是否忽略</span>&nbsp;
+                        <input name="ablity_yn"  type="radio" value="1" checked="checked" onclick="re_show('ablity_list');"/>&nbsp;不忽略&nbsp;
+                        <input name="ablity_yn" type="radio" value="0" onclick="re_hidding('ablity_list');"/>&nbsp;忽略&nbsp;<span class="text_color_ff9900">忽略表示能力项不出现在报告结果页面，默认为“不忽略”。请至少选择三项</span>
+                    </div>
+                    <table id="ablity_list" cellpadding="0" cellspacing="0" border="0">
+                    	 
+                    </table>
+                </div>
+                <div id="slogan_list">
+                	 
+            	</div>
+                <div style="padding:20px 10px 10px 10px; border:#CCC solid 1px; margin-top:20px;">
+                    <div style="height:40px;"><span style="float:left; width:90px;">&nbsp;&nbsp;联系人：</span><span style="float:left; width:400px;"><input  type="text" name="zone_Persion" id="zone_Persion" style="width:360px;"/></span><span class="cleared"></span></div>
+                	<div style="height:40px;"><span style="float:left; width:90px;">&nbsp;&nbsp;报名电话：</span><span style="float:left; width:400px;"><input  type="text" name="zone_tel" id="zone_tel" style="width:360px;"/></span><span class="cleared"></span></div>
+                    <div style="height:40px;"><span style="float:left; width:90px;">&nbsp;&nbsp;校区地址：</span><span style="float:left; width:400px;"><input  type="text" name="zone_address" id="zone_address" style="width:360px;"/></span><span class="cleared"></span></div>
+                	
+                </div>
+            </div>
+        	<div align="center" style="padding:20px 0px 20px 0px;"><a class="easyui-linkbutton" onclick="save_report(0);" id="save_report_s">保 存</a>&nbsp;&nbsp;<a class="easyui-linkbutton" onclick="save_report(1);" id="edit_report_s">修 改</a></div>
+        </div>
+         
+    </div>
+	<div id="ping_demo_win" iconCls="icon-save" title="评语模板选择">
+	  <ul id="ping_demo_lists">
+      	
+      </ul>
+      <div class="cleared"></div>
+       
+	</div>
+    <div style="display:none;" id="question_text_contentcut"></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+	"totals":239,
+	"schools":[{
+		"id":1,
+		"userName":"li1",
+		"realname":"李一",
+		"subject":"语文",
+		"userEmail":"大钟寺华杰大厦01",
+		"creat_date":"2013-05-11",
+		"bigSum":"320/500",
+		"oneSum":"20/200",
+		"type":"你猜",
+		"mobile":"1",
+		"school_id":"12"
+	},{
+	   "id":2,
+	    "userName":"wang2",
+		"realname":"王二",
+		"subject":"数学",
+		"userEmail":"大钟寺华杰大厦02",
+		"creat_date":"2013-05-12",
+		"bigSum":"400/500",
+		"oneSum":"120/200",
+		"type":"教务",
+	    "mobile":"1",
+	    "school_id":"13" 
+	 
+	},{
+	  "id":3,
+	  	"userName":"zhang3",
+		"realname":"张三",
+		"subject":"英语",
+		"userEmail":"大钟寺华杰大厦03",
+		"creat_date":"2013-05-13",
+		"bigSum":"40/500",
+		"oneSum":"70/200",
+		"type":"教师",
+	  	"mobile":"0",
+	  	"school_id":"14"
+	 
+	}]
+
+}

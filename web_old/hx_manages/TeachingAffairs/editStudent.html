@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Teaching_editStudent.js"></script>
+      
+</head>
+ 
+<body style="padding:5px;"   >
+    
+    <div style="border:#8DB2E3 solid 1px; height:auto; font-size:12px; padding-bottom:20px;">
+        <div class="newstitle">
+             &nbsp;&nbsp;班级与学生管理&nbsp;>>&nbsp;修改学生
+        </div>
+        <div id="SerToolBar">
+           
+           <div class="hx_Schooltop">
+                
+               <ul >
+                   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+                   <li class="hx_Schooltop_Scname">
+                        学校名称：<span class="hx_text001">华夏学校</span>
+                   </li>
+                   <li class="hx_Schooltop_Scname">
+                        校区名称：<span class="hx_text001">华夏校区</span>
+                   </li>
+                     
+                </ul>
+                
+          </div>
+          
+        </div>
+  		<div class="addclassform" >
+              <form id="TeacherForm"> 
+              <input id="hiddenteacherid" type="hidden" />
+               <ul>
+                <!--<li style="padding-left:150px;font-size:14px; ">新 建 班 级</li>-->
+                <li style="height:20px;">
+                	<div>
+                    	<div class="text_float addclasstitle">学号ID：</div>
+                    	<div class="text_float addclasstext">hx_0000001</div>
+                	</div>
+                    <div class="cleared"></div>
+                  
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">用户名：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="teacherUName" name="teacherUName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherUName_Ms" class="color_text text_float">&nbsp;请输入字母和数字组合！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">姓名：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="teacherUName" name="teacherUName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherUName_Ms" class="color_text text_float">&nbsp;请输入字母和数字组合！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">性别：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input  type="radio" name="sex" value="1"/>&nbsp;男&nbsp;
+                            <input  type="radio" name="sex" value="2"/>&nbsp;女&nbsp;
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherUName_Ms" class="color_text text_float">&nbsp;请输入字母和数字组合！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">邮箱：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="teacherUName" name="teacherUName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherUName_Ms" class="color_text text_float">&nbsp;请输入字母和数字组合！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">当前年级：</div> 
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<select id="teacherSubjects" name="teacherSubjects"  class="easyui-combobox" style="width:187px;"  name="12"  panelHeight="auto">
+                                <option value="1">数学001科目</option>
+                                <option value="2">禁用</option>
+                            </select>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherRName_Ms" class="color_text text_float">&nbsp;请输入中文姓名,2-4位汉字！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">在读学校：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="teacherUName" name="teacherUName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherUName_Ms" class="color_text text_float">&nbsp;请输入字母和数字组合！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                <li style="height:20px;">
+                	<div >
+                    	<div class="text_float addclasstitle">家长联系方式：</div>
+                    	<div class="text_float addclasstext addclassform_left">
+                        	<input id="teacherUName" name="teacherUName" class="easyui-validatebox" data-options="required:true" style="width:180px;"/>
+                        </div>
+                        <div class="color_text text_float">&nbsp;*</div><div id="teacherUName_Ms" class="color_text text_float">&nbsp;请输入字母和数字组合！</div>
+                    </div>
+                    <div class="cleared"></div>
+                </li>
+                  
+                 
+                 
+                <li>&nbsp;</li>
+                <li style=" height:30px; line-height:30px; padding-left:150px;">
+							<a href="#" class="easyui-linkbutton"   data-options="iconCls:'icon-ok'">登陆</a>&nbsp;&nbsp;
+                            <a href="#" class="easyui-linkbutton"   data-options="iconCls:'icon-cancel'">取消</a>
+                </li>
+                </ul>
+                <div class="cleared"></div>
+                 
+              </form>
+            </div>
+     </div>
+ 
+</body>
+</html>
+ 

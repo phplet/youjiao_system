@@ -1,0 +1,39 @@
+[{  
+		"id":1,
+		"teacherUName":"zhang3",
+		"TeacherRName":"张三",
+		"TeacherSubject":"语文",
+		"TeacherRole":"教师",
+		"TeacherEmail":"zhang@163.com",
+		"creat_date":"2013-05-15",
+		"TeacherBigStu":"20/200",
+		"TeacherOneStu":"100/200",
+		"mobile":"1",
+		"c_id":"12"
+	},{
+	   "id":2,
+	   "teacherUName":"wang2",
+		"TeacherRName":"王二",
+		"TeacherSubject":"数学",
+		"TeacherRole":"教师",
+		"TeacherEmail":"zhang22@163.com",
+		"creat_date":"2013-04-15",
+		"TeacherBigStu":"30/200",
+		"TeacherOneStu":"120/220",
+		"mobile":"0",
+		"c_id":"13"
+	 
+	},{
+	  "id":3,
+	  	"teacherUName":"lisan",
+		"TeacherRName":"李三",
+		"TeacherSubject":"化学",
+		"TeacherRole":"教师",
+		"TeacherEmail":"1111@163.com",
+		"creat_date":"2013-06-15",
+		"TeacherBigStu":"20/200",
+		"TeacherOneStu":"130/220",
+		"mobile":"1",
+		"c_id":"14"
+	 
+}]

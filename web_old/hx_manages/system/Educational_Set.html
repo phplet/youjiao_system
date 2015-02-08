@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏教育测评_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+     
+    <script type="text/javascript" src="../Scripts/persionEducational_Set.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+
+</head>
+ 
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false"  style="padding:5px;" >
+        
+        <div id="SerToolBar">
+           <div class="hx_Schooltop">
+               <ul>
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	   <li class="hx_Schooltop_Scname">
+                   		系统名称：<span class="hx_text001">互动平台</span>
+                   </li>
+                   <li class="hx_Schooltop_enable">
+                   		状态：<span>
+                        		<select id="startusid" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto">
+									<option value="1">启用</option>
+									<option value="0">禁用</option>
+								</select>
+                              </span>
+                   </li>
+                   <li class="hx_Schooltop_name">
+                       姓名：<input id="SchoolText" class="easyui-validatebox" type="text" style="width:80px;" value="请输入姓名"/>
+                   </li>
+                   <li  class="hx_Schooltop_search">
+                       <a id="BtnSearch" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a> 
+                   </li>
+                   <li class="hx_Schooltop_add">
+                       <a id="BtnAdd"  class="easyui-linkbutton" data-options="iconCls:'icon-add'" title="添加人员">人员</a>
+                   </li>
+                </ul>
+          </div>
+        </div>
+ 
+        <div id="Educational_Set" class="easyui-datagrid" >
+        </div>
+ 
+        <div id="wdialog">
+            <div data-options="region:'center'" style="padding:5px;padding-left:25px;">
+              <form id="SchoolForm"> 
+               <!--<div class="text_pbottom">
+                    <img  src="../images/head_img.png" width="50" height="50" style="border:0px;"/>
+                    &nbsp;&nbsp;<span ><a href="#" >更改头像</a></span>
+                </div>-->
+                
+                <div class="text_pbottom">
+                    用 户 名：
+                    <input id="userName" name="userName" class="easyui-validatebox" data-options="required:true" style="width:145px;"/>&nbsp;&nbsp;<a href="#" style=" text-decoration:none" id="checkname" onclick="selverify('userName');">验证</a>
+                    <span class="color_text">*</span><span id="userName_Ms" class="color_text addSchoolForm">&nbsp;请输入邮箱格式！</span>
+                </div>
+                
+                
+                <div class="text_pbottom">
+                    真实姓名：
+                    <input n id="userRealName" name="userRealName" class="easyui-validatebox" onblur="valida_null(this)" data-options="required:true" style="width:180px;"/>
+                    <span class="color_text">*</span><span id="userRealName_Ms" class="color_text addSchoolForm">&nbsp;请输入中文姓名,2-4位汉字！</span>
+                </div>
+                <div class="text_pbottom">
+                    性　　别：
+                    <input type="radio" name="userSex" id="userSex" value="1"  checked="checked"/>　男　
+                    <input type="radio" name="userSex" id="userSex" value="2" />　女
+                     
+                </div>
+                <div class="text_pbottom">
+                    联系方式：
+                    <input id="userTel" name="userTel" style="width:180px;" onblur="valida_null(this)"/>
+                    <span class="color_text">*</span><span id="userTel_Ms" class="color_text addSchoolForm">&nbsp;联系方式为11位数字！</span>
+                </div>
+                
+                <div class="text_pbottom">
+                    邮　　箱：
+                    <input id="userEmail" style="width:180px;" onblur="valida_null(this)"/>
+                    <span class="color_text">*</span><span id="userEmail_Ms"  class="color_text addSchoolForm">&nbsp;用户邮箱必须为电子邮件格式！</span>
+                </div>
+               
+                <div class="text_pbottom">
+                    学　　科：
+                    <select id="userSubjects" name="userSubjects" class="easyui-combobox" editable=false style="width:187px;"  name="12"  panelHeight="100">
+						<option value="请选择">请选择</option>
+                        <option value="1">语文</option>
+						<option value="2">数学</option>
+                        <option value="3">英语</option>
+                        <option value="4">物理</option>
+                        <option value="5">化学</option>
+                        <option value="6">生物</option>
+                        <option value="7">地理</option>
+                        <option value="8">历史</option>
+                        <option value="9">政治</option>
+					</select>
+                     
+                </div>
+                <div class="text_pbottom">
+                    学校名称：
+                    <select  id="userSchool" name="userSchool" class="easyui-combobox" editable=false style="width:187px;" panelHeight="150">
+                    	<option value="请选择">请选择</option>
+                    </select>
+                    
+                </div>
+                 <div>
+                    <span style="line-height:25px;float:left;">备　　注：</span>
+                    <span style=" float:left;">&nbsp;
+                    	<textarea id="userMessage" name="userMessage" style="height:100px; width:360px;"></textarea>
+                   	</span>
+                     
+                </div>
+                
+              
+              </form>
+            </div>
+        </div>
+        
+         
+        <div id="SeltPerson">
+            <div data-options="region:'center'" style="padding-left:16px; padding-top:12px;">
+                
+                 <!--<div class="text_pbottom">
+                    <img  src="../images/head_img.png" width="50" height="50" style="border:0px;"/>
+                    &nbsp;&nbsp;<span ><a href="#" >更改头像</a></span>
+                </div>-->
+                 
+                <div class="text_pbottom">
+                    用 户 名：<span id="sel_username"></span>
+                     
+                </div>
+                 
+                <div class="text_pbottom">
+                    邮　　箱：<span id="sel_email"></span>
+                    
+                </div>
+                <div class="text_pbottom">
+                    姓　　名：<span id="sel_realname"></span>
+                    
+                </div>
+                <div class="text_pbottom">
+                    姓　　别：<span id="sel_sex"></span>
+                    
+                </div>
+                <div class="text_pbottom">
+                    学　　科：<span id="sel_subject"></span>
+                     
+                </div>
+                <div class="text_pbottom">
+                    选择学校：<span id="sel_School"></span>
+                     
+                    
+                </div>
+                
+                <div class="text_pbottom">
+                    联系方式：<span id="sel_tel"></span>
+                     
+                </div>
+                <div >
+                    备　　注：<span id="sel_note"></span>
+                </div>
+                
+            </div>
+        </div>
+ </div>
+ 
+</body>
+</html>

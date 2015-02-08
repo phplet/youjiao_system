@@ -1,0 +1,504 @@
+<?php
+/**
+ * 定义工具类
+ * @author xiaokun
+ */
+class utils_handler {
+	/**
+	 * @param  $tables
+	 * @param  $condition
+	 */
+	
+	public static function analytic_condition($tables, $condition) {
+		//制作where条件
+		$where = '';
+		if ($condition) {
+			$tmpArray = explode ( '$', $condition ); //array('param1^value1','param2^value2');
+			$resultArray = array ();
+			foreach ( $tmpArray as $cdn1 ) {
+				if (strpos ( $cdn1, '^' ) !== false) { //如果是等于检索
+					$cdnArray = explode ( '^', $cdn1 ); //array('param1','value1');
+					//查询条件所属表
+					foreach ( $tables as $key => $value ) {
+						if (in_array ( $cdnArray [0], $value )) {
+							$tmp_tbl = $value;
+							$resultArray [] = $tmp_tbl [0] . '.' . $cdnArray [0] . '="' . $cdnArray [1] . '"';
+							break;
+						}
+					}
+				} else if (strpos ( $cdn1, '@' ) !== false) {
+					$cdnArray = explode ( '@', $cdn1 ); //array('param1','value1');
+					//查询条件所属表
+					foreach ( $tables as $key => $value ) {
+						if (in_array ( $cdnArray [0], $value )) {
+							$tmp_tbl = $value;
+							$resultArray [] = $tmp_tbl [0] . '.' . $cdnArray [0] . ' like "%' . $cdnArray [1] . '%"';
+							break;
+						}
+					}
+				} else if (strpos ( $cdn1, '|' ) !== false) { //不等于条件
+					$cdnArray = explode ( '|', $cdn1 ); //array('param1','value1');
+					//查询条件所属表
+					foreach ( $tables as $tableName ) {
+						if (in_array ( $cdnArray [0], $$tableName )) {
+							$tmp_tbl = $$tableName;
+							$resultArray [] = $tmp_tbl [0] . '.' . $cdnArray [0] . '!="' . $cdnArray [1] . '"';
+							break;
+						}
+					}
+				}
+			}
+			$where = implode ( ' AND ', $resultArray );
+		}
+		return $where;
+	}
+	
+	/**
+	 * @param  $data 数组 判断是否为二维数组
+	 */
+	public static function is_two_dimensional_array($data) {
+		$flag = true;
+		foreach ( $data as $value ) {
+			$flag = is_array ( $value ) ? $flag && true : $flag && false;
+		}
+		return $flag;
+	}
+	
+	/**
+	 * @author by xiaokun 
+	 * 简单实验之 可以做延伸扩展
+	 * 获取二维数组中指定字段的和  可以扩展
+	 * @param $array
+	 */
+	public static function get_array_value_total($array, $field) {
+		$total = 0;
+		$callback = function ($value, $key) use($field, &$total) {
+			$total += intval ( $value [$field] );
+		};
+		array_walk ( $array, $callback );
+		return $total;
+	}
+	
+	/**
+	 * 获取IP地址
+	 */
+	public static function get_real_ip() {
+		$ip = false;
+		if (! empty ( $_SERVER ["HTTP_CLIENT_IP"] )) {
+			$ip = $_SERVER ["HTTP_CLIENT_IP"];
+		}
+		if (! empty ( $_SERVER ["HTTP_X_FORWARDED_FOR"] )) {
+			$ips = explode ( ", ", $_SERVER ["HTTP_X_FORWARDED_FOR"] );
+			if ($ip) {
+				array_unshift ( $ips, $ip );
+				$ip = FALSE;
+			}
+			for($i = 0; $i < count ( $ips ); $i ++) {
+				if (! eregi ( "^(10|172\.16|192\.168)\.", $ips [$i] )) {
+					$ip = $ips [$i];
+					break;
+				}
+			}
+		}
+		return ($ip ? $ip : $_SERVER ["REMOTE_ADDR"]);
+	}
+	
+	public static function analytic_where($whereArray) {
+		$whereTmp = array ();
+		$where = '';
+		foreach ( $whereArray as $key => $value ) {
+			$whereTmp [] = $key . '=' . $value;
+		}
+		
+		$where = implode ( ' AND ', $whereTmp );
+		return 'where ' . $where;
+	}
+	
+	/**
+	 * 
+	 * @param  $condition center_id^139$zone_id^177$level^4
+	 */
+	public static function analytic_condition2array($condition) {
+		$tmpArray = explode ( '$', $condition );
+		$conditionArray = array ();
+		foreach ( $tmpArray as $key => $value ) {
+			if (strpos ( $value, '^' ) !== false) {
+				$tmp = explode ( '^', $value );
+				$conditionArray [] = $tmp [0] . '="' . $tmp [1] . '"';
+			} else if (strpos ( $value, '@' ) !== false) {
+				$tmp = explode ( '@', $value );
+				$conditionArray [] = $tmp [0] . ' like %' . $tmp [1] . '%';
+			} else if (strpos ( $value, '|' ) !== false) {
+				$tmp = explode ( '|', $value );
+				$conditionArray [] = $tmp [0] . ' !="' . $tmp [1] . '"';
+			}
+		}
+		
+		return $conditionArray;
+	}
+	
+	/**
+	 * 
+	 * @param  $value
+	 * @param  $array  存在则返回true 
+	 */
+	
+	public static function array_value_exists($value, $array) {
+		$flag = false;
+		foreach ( $array as $k => $v ) {
+			$tmp = $value == $v ? true : false;
+			$flag = $flag || $tmp;
+		}
+		return $flag;
+	}
+	//获取科目名称
+	public static function get_subject_name($subjectId) {
+		$subjectName = null;
+		switch ($subjectId) {
+			case '1' :
+				$subjectName = 'yw';
+				break;
+			case '2' :
+				$subjectName = 'sx';
+				break;
+			case '3' :
+				$subjectName = 'yy';
+				break;
+			case '4' :
+				$subjectName = 'wl';
+				break;
+			case '5' :
+				$subjectName = 'hx';
+				break;
+			case '6' :
+				$subjectName = 'sw';
+				break;
+			case '7' :
+				$subjectName = 'dl';
+				break;
+			case '8' :
+				$subjectName = 'ls';
+				break;
+			case '9' :
+				$subjectName = 'zz';
+				break;
+		}
+		return $subjectName;
+	}
+	
+	public static function get_edu_info($subjectId) {
+		$subjectName = self::get_subject_name ( $subjectId );
+		$eduInfo = array ();
+		$eduInfo ['edu_book'] = $subjectName . '_edu_book';
+		$eduInfo ['edu_chapter'] = $subjectName . '_edu_chapter';
+		$eduInfo ['edu_chapter2question'] = $subjectName . '_edu_chapter2question';
+		$eduInfo ['edu_unit'] = $subjectName . '_edu_unit';
+		$eduInfo ['exam_question'] = $subjectName . '_exam_question';
+		$eduInfo ['exam_question_index'] = $subjectName . '_exam_question_index';
+		$eduInfo ['exam_examination'] = $subjectName . '_exam_examination';
+		$eduInfo ['exam_examination2question'] = $subjectName . '_exam_examination2question';
+		$eduInfo ['edu_zhuanti'] = $subjectName . '_edu_zhuanti';
+		$eduInfo ['edu_knowledge'] = $subjectName . '_edu_knowledge';
+		return $eduInfo;
+	}
+	
+	/**
+	 * 
+	 * 创建文件夹
+	 */
+	public static function cmk($fpath) {
+		$dir = explode ( '/', $fpath );
+		$dirs = array ();
+		foreach ( $dir as $key => $val ) {
+			$dirs [] = $val;
+			$inpath = implode ( '/', $dirs );
+			if (! is_dir ( $inpath ) && $inpath) {
+				if (false == mkdir ( $inpath )) {
+					return false;
+				}
+			}
+		}
+		return $inpath;
+	}
+	
+	/**
+	 * 创建指定key的二维数组
+	 * @param  $count
+	 */
+	public static function create_array_by_key($key) {
+		$tmp [$key] = array ();
+		return $tmp;
+	}
+	
+	/**
+	 * 
+	 */
+	public static function create_exercise_array() {
+		global $examType, $subjectType;
+		$arrExercise = array ();
+		foreach ( $examType as $key => $value ) {
+			foreach ( $subjectType as $k => $v ) {
+				$arrExercise ['content'] [$value] [$v] = '{}';
+			}
+		}
+		$arrExercise ['newest'] = '';
+		return $arrExercise;
+	}
+	
+	/**
+	 * @author by xiaokun
+	 * @param array $result array()
+	 * @param int $count
+	 */
+	public static function rand_result($result, $count) {
+		$tmp = array ();
+		$end = count($result)-1;
+		$rsRand = utils_handler::no_rand($begin=0, $end, $count);
+		foreach ($rsRand as $key=>$value){
+			array_push($tmp, $result[$value]);
+		}
+		return $tmp;
+	}
+	
+	/**
+	 * 生成没有重复的随即数
+	 * @param  $begin
+	 * @param  $end
+	 * @param  $limit
+	 */
+	public static function  no_rand($begin,$end,$limit){ 
+		$rand_array=range($begin,$end); 
+		shuffle($rand_array);//调用现成的数组随机排列函数 
+		return array_slice($rand_array,0,$limit);//截取前$limit个 
+	} 
+	
+	/**
+	 * 
+	 * 解析data数据
+	 * @param  $data
+	 */
+	public static function analytic_data($data) {
+		$dbtype = $data ['dbtype'];
+		$contentTmp ['ids'] = array ();
+		$contentTmp ['dbtype'] = $dbtype;
+		if (isset ( $data ['content'] )) {
+			foreach ( $data ['content'] as $key => $value ) {
+				array_push ( $contentTmp ['ids'], $value ['id'] );
+			}
+		}
+		if ($dbtype == '1') {
+			$contentTmpOther ['dbtype'] = '2';
+		} else if ($dbtype == '2') {
+			$contentTmpOther ['dbtype'] = '1';
+		}
+		$content ['0'] = $contentTmp;
+		$content ['1'] = $contentTmpOther;
+		return $content;
+	}
+	
+	public static function num2str_upper($key) {
+		global $numType;
+		return $numType [$key];
+	}
+	
+	/**
+	 * 
+	 * 二维数组排序
+	 * @param  $arr
+	 * @param  $keys
+	 * @param  $type
+	 */
+	public static function array_sort($arr, $keys, $type = 'asc') {
+		$keysvalue = $new_array = array ();
+		foreach ( $arr as $k => $v ) {
+			$keysvalue [$k] = $v [$keys];
+		}
+		if ($type == 'asc') {
+			asort ( $keysvalue );
+		} else {
+			arsort ( $keysvalue );
+		}
+		reset ( $keysvalue );
+		foreach ( $keysvalue as $k => $v ) {
+			$new_array [$k] = $arr [$k];
+		}
+		return $new_array;
+	}
+	
+	/**
+	 * 生成单纯数字的验证码
+	 * @param  $num
+	 * @param  $w
+	 * @param  $h
+	 */
+	 public  static function getCodeNum($num,$w,$h) {
+		$code = "";
+		for ($i = 0; $i < $num; $i++) {
+			$code .= rand(0, 9);
+		}
+		//4位验证码也可以用rand(1000,9999)直接生成
+		//将生成的验证码写入session，备验证页面使用
+		$_SESSION["helloweba_num"] = $code;
+		//创建图片，定义颜色值
+		Header("Content-type: image/PNG");
+		$im = imagecreate($w, $h);
+		$black = imagecolorallocate($im, 0, 0, 0);
+		$gray = imagecolorallocate($im, 200, 200, 200);
+		$bgcolor = imagecolorallocate($im, 255, 255, 255);
+	
+		imagefill($im, 0, 0, $gray);
+	
+		//画边框
+		imagerectangle($im, 0, 0, $w-1, $h-1, $black);
+	
+		//随机绘制两条虚线，起干扰作用
+		$style = array (
+			$black,
+			$black,
+			$black,
+			$black,
+			$black,
+			$gray,
+			$gray,
+			$gray,
+			$gray,
+			$gray
+		);
+		imagesetstyle($im, $style);
+		$y1 = rand(0, $h);
+		$y2 = rand(0, $h);
+		$y3 = rand(0, $h);
+		$y4 = rand(0, $h);
+		imageline($im, 0, $y1, $w, $y3, IMG_COLOR_STYLED);
+		imageline($im, 0, $y2, $w, $y4, IMG_COLOR_STYLED);
+	
+		//在画布上随机生成大量黑点，起干扰作用;
+		for ($i = 0; $i < 80; $i++) {
+			imagesetpixel($im, rand(0, $w), rand(0, $h), $black);
+		}
+		//将数字随机显示在画布上,字符的水平间距和位置都按一定波动范围随机生成
+		$strx = rand(3, 8);
+		for ($i = 0; $i < $num; $i++) {
+			$strpos = rand(1, 6);
+			imagestring($im, 5, $strx, $strpos, substr($code, $i, 1), $black);
+			$strx += rand(8, 12);
+		}
+		imagepng($im);
+		imagedestroy($im);
+	}
+	
+	
+	/**
+	 * 生成数字+字母组合的验证码
+	 * @param  $num
+	 * @param  $w
+	 * @param  $h
+	 */
+public static function getCodeChar($num,$w,$h) {
+	// 去掉了 0 1 O l 等
+	$str = "23456789abcdefghijkmnpqrstuvwxyz";
+	$code = '';
+	for ($i = 0; $i < $num; $i++) {
+		$code .= $str[mt_rand(0, strlen($str)-1)];
+	}
+	//将生成的验证码写入session，备验证页面使用
+	$_SESSION["helloweba_char"] = $code;
+	//创建图片，定义颜色值
+	Header("Content-type: image/PNG");
+	$im = imagecreate($w, $h);
+	$black = imagecolorallocate($im, mt_rand(0, 200), mt_rand(0, 120), mt_rand(0, 120));
+	$gray = imagecolorallocate($im, 118, 151, 199);
+	$bgcolor = imagecolorallocate($im, 235, 236, 237);
+
+	//画背景
+	imagefilledrectangle($im, 0, 0, $w, $h, $bgcolor);
+	//画边框
+	imagerectangle($im, 0, 0, $w-1, $h-1, $gray);
+	//imagefill($im, 0, 0, $bgcolor);
+
+
+
+	//在画布上随机生成大量点，起干扰作用;
+	for ($i = 0; $i < 80; $i++) {
+		imagesetpixel($im, rand(0, $w), rand(0, $h), $black);
+	}
+	//将字符随机显示在画布上,字符的水平间距和位置都按一定波动范围随机生成
+	$strx = rand(3, 8);
+	for ($i = 0; $i < $num; $i++) {
+		$strpos = rand(1, 6);
+		imagestring($im, 5, $strx, $strpos, substr($code, $i, 1), $black);
+		$strx += rand(8, 14);
+	}
+	imagepng($im);
+	imagedestroy($im);
+}
+//定义用户等级
+	public static function user_level(){
+		$array['info'] = array(1,2,3,4,5);
+		$array['max'] = 5;
+		$array['min'] = 1;
+		return $array;
+	}
+
+	
+	public static function cut_str($string, $sublen, $start = 0, $code = 'UTF-8') 
+		{ 
+			if($code == 'UTF-8') 
+			{ 
+				$pa ="/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|\xe0[\xa0-\xbf][\x80-\xbf]|[\xe1-\xef][\x80-\xbf][\x80-\xbf]|\xf0[\x90-\xbf][\x80-\xbf][\x80-\xbf]|[\xf1-\xf7][\x80-\xbf][\x80-\xbf][\x80-\xbf]/"; 
+				preg_match_all($pa, $string, $t_string); 
+				if(count($t_string[0]) - $start > $sublen) return join('', array_slice($t_string[0], $start, $sublen)); 
+				return join('', array_slice($t_string[0], $start, $sublen)); 
+			} 
+			else 
+			{ 
+				$start = $start*2; 
+				$sublen = $sublen*2; 
+				$strlen = strlen($string); 
+				$tmpstr = ''; for($i=0; $i<$strlen; $i++) 
+				{ 
+					if($i>=$start && $i<($start+$sublen)) 
+					{ 
+						if(ord(substr($string, $i, 1))>129) 
+						{ 
+							$tmpstr.= substr($string, $i, 2); 
+						} 
+						else 
+						{ 
+							$tmpstr.= substr($string, $i, 1); 
+						} 
+					} 
+					if(ord(substr($string, $i, 1))>129) $i++; 
+				} 
+				if(strlen($tmpstr)<$strlen ) $tmpstr.= ""; 
+				return $tmpstr; 
+			} 
+		}
+		
+	/**
+	 * 查询具体试题结果集处理
+	 */
+		public static function set_ti_result($result){
+			foreach ($result as $k=>$v){
+				if($v['objective_flag']==1 and (strtoupper(utils_handler::cut_str($v['objective_answer'],1,0))=="F"||strtoupper(utils_handler::cut_str($v['objective_answer'],1,0))=="T")){
+					$result[$k]["type"] = 99;
+				}
+			
+				else {
+					if($v['objective_flag']==1 and utils_handler::cut_str($v['objective_answer'],1,-1)!="组"){
+						if(strlen($v['objective_answer'])>1){
+							$result[$k]["type"] = 22;
+						}
+						else{
+							$result[$k]["type"] = 21;
+						}
+					}
+					else
+					{
+						   $result[$k]["type"] = 99;
+					}
+				}
+			}
+			return $result;
+		}	
+}

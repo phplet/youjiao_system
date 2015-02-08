@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Ability.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+</head>
+<style>
+	textarea{ font-size:12px;}
+</style>
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false" style="padding: 5px;">
+
+        <div id="SerToolBar">
+           <div class="hx_Schooltop" > 
+               <ul>
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	   <li class="hx_Schooltop_Scname">
+                   		学校名称：<span class="hx_text001" id="center_name">华夏学校</span>
+                   </li>
+                   <li class="hx_Schooltop_enable">
+                   		学科：<span><select id="subject_id" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto">
+		<option value="请选择">请选择</option>
+		 
+	</select></span>
+                   </li>
+                   
+                   <li class="hx_Schooltop_add_sc">
+                       <a id="BtnAdd" class="easyui-linkbutton"   data-options="iconCls:'icon-add'" title="添加能力维度">能力维度</a>
+                   </li>
+                </ul>
+          </div>
+        </div>
+
+        <div id="ability_list"></div>
+
+        <div id="addAbility">
+            <div data-options="region:'center'" style="padding:5px;padding-left:38px; ">
+              <form id="addAbilityForm"> 
+              
+                <p>
+                    <span class="color_text">*</span>能力维度名称：
+                    <input id="abName" class="easyui-validatebox" data-options="required:true" style="width:260px;" value="限定10字内" onfocus="if (value =='限定10字内'){value =''}" onblur="if (value ==''||value.length>10){value='限定10字内'}" />
+                </p>
+                <p style="line-height:25px; padding-top:10px;">
+                    <span class="color_text">*</span>能力维度简述：
+                    <input id="abinfo" class="easyui-validatebox" data-options="required:true" style="width:260px;" value="限定100字内" onfocus="if (value =='限定100字内'){value =''}" onblur="if (value ==''||value.length>100){value='限定100字内'}" />
+                    
+                </p>
+                <p style="line-height:25px; padding-top:10px; padding-bottom:10px;">
+                    <span class="color_text" >　　*</span>适用学科：
+                    <input  type="checkbox" name="alibity_Sub1" value="1" />语文&nbsp;&nbsp;
+                    <input  type="checkbox" name="alibity_Sub1" value="2" />数学&nbsp;&nbsp;
+                    <input  type="checkbox" name="alibity_Sub1" value="3" />英语&nbsp;&nbsp;
+                    <input  type="checkbox" name="alibity_Sub1" value="4" />物理&nbsp;&nbsp;
+                    <input  type="checkbox" name="alibity_Sub1" value="5" />化学&nbsp;&nbsp;
+                    <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input  type="checkbox" name="alibity_Sub1" value="6" />生物&nbsp;&nbsp;
+                    <input  type="checkbox" name="alibity_Sub1" value="7" />地理&nbsp;&nbsp;
+                    <input  type="checkbox" name="alibity_Sub1" value="8" />历史&nbsp;&nbsp;
+                    <input  type="checkbox" name="alibity_Sub1" value="9" />政治&nbsp;&nbsp;
+                     
+                </p>
+                <p>
+                    <span class="color_text" style=" ">　　　&nbsp;*</span>A等级：
+                     
+                    <textarea id="a_level" class="easyui-validatebox" data-options="required:true" style="width:260px;" value="限定100字内" onfocus="if (value =='限定100字内'){value =''}" onblur="if (value ==''||value.length>100){value='限定100字内'}" rows="1"></textarea>
+                    <br /><br />
+                    <span class="color_text">　　　&nbsp;*</span>B等级：
+                    <textarea id="b_level" class="easyui-validatebox" data-options="required:true" style="width:260px;" value="限定100字内" onfocus="if (value =='限定100字内'){value =''}" onblur="if (value ==''||value.length>100){value='限定100字内'}" rows="1"></textarea>
+                    <br /><br />
+                    <span class="color_text">　　　&nbsp;*</span>C等级：
+                    <textarea id="c_level" class="easyui-validatebox" data-options="required:true" style="width:260px;" value="限定100字内" onfocus="if (value =='限定100字内'){value =''}" onblur="if (value ==''||value.length>100){value='限定100字内'}" rows="1"></textarea>
+                     
+                     
+                </p>
+                 
+              </form>
+            </div>
+        </div>
+      
+   </div>    
+        
+</body>
+</html>

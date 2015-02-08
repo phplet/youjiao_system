@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏教育测评_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script>
+	 
+    <script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Student_StudyReport.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    <style>
+		.stuInfo_table_side{border-left:#E3E3E3 dotted 1px; border-top:#E3E3E3 dotted 1px;}
+    	.stuInfo_table_side td{ border-right:#E3E3E3 dotted 1px; border-bottom:#E3E3E3 dotted 1px; padding:5px 0px 5px 10px;}
+		.stuInfo_table_side td input{ height:20px; font-size:12px; line-height:20px;}
+    </style> 
+     
+</head>
+<body>
+<div style="padding: 5px;">
+ 	 <div class="text_border">
+     	<div class="newstitle" id="stu_title">
+             &nbsp;&nbsp;班级与学生管理&nbsp;>>&nbsp;<script type="text/javascript">document.write(public_Bigclass_name)</script>管理&nbsp;>>&nbsp;当前班级&nbsp;>>&nbsp;>>&nbsp;学生详情&nbsp;>>&nbsp;学生学习报告
+        </div>
+        
+        <div style="padding: 10px;">
+        	<div class="student_title" >
+            	华夏学校  大钟寺校区  中考拔优班
+            </div>   
+           <!--学生信息 -->
+           <div style="padding-bottom:10px;">
+               <ul id="student_info">
+               		 
+               </ul>
+               <div class="cleared"></div>
+           </div> 
+           <!--作业/测试详情 -->
+           <div style="margin-top:10px;">
+           		<div style="height:40px; background-color:#ccc; font-size:12px; font-weight:bolder; line-height:40px; padding-left:10px;">
+                	<span>学生能力维度</span>
+                </div>
+                 
+                <div style=" height:auto; border:#CCC solid 1px; padding:10px; font-size:12px;  line-height:22px;">
+                	<div>
+                    	是否忽略&nbsp;<input type="radio" name="alibly_radio"  value="1"/>&nbsp;不忽略&nbsp;<input type="radio" name="alibly_radio"  value="0"/>&nbsp;忽略&nbsp;注：忽略表示能力项不出现在报告结果页面，默认为“不忽略”。请至少选择三项
+                    </div>
+                	<div id="#lists"></div>
+                	<div id="Assesslist" class="easyui-datagrid" data-options="height:350"></div>
+                </div>
+           </div>
+            
+           <!--试卷成绩统计 -->
+           <div style="margin-top:10px;">
+           		 
+                 
+           </div>
+           
+            
+           
+        </div>
+     </div>  
+</div>
+         
+</body>
+</html>

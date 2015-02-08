@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+<title>题酷在线</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link href="layer/skin/layer.css" type="text/css" rel="stylesheet" /> 
+ <link rel="stylesheet" type="text/css" href="css/gundong.css">
+ <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+</head>
+ 
+	<script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+    <script type='text/javascript' src="layer/layer.js"></script>
+	<script type="text/javascript" src="Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Js/jquery.json.min.js"></script>
+    <script type="text/javascript" src="Js/json2.js"></script>
+    <script type="text/javascript" src="Js/Base64.js"></script>
+    <script type="text/javascript" src="Js/sha256.js"></script>
+    <script type="text/javascript" src="Js/json2.js"></script>
+    <script type="text/javascript" src="Highcharts/js/highcharts.js"></script>
+    <script src="Highcharts/js/highcharts-more.js"></script>
+    <script type="text/javascript" src="Highcharts/js/modules/exporting.js"></script>
+    <script type="text/javascript" src="Js/public_base.js"></script>
+    <script type="text/javascript" src="Js/report_view.js"></script>
+    <script type="text/javascript" src="Js/flexjs.js"></script>
+    
+    
+<body>
+<div class="container">
+	<!-- header开始-->
+    <div class="header_bg">	
+        <div class="header">
+            <div class="logo">
+                <a href="Index.html"><img  src="images/logo_new.png" /></a>
+            </div>
+            <div class="logins">
+                <div class="logins_font">
+                	<span>&nbsp;<a href="javascript:void(0);" onclick="outlogin();">退 出</a></span>
+                	<span class="icon_18_16"></span>
+                    <span>&nbsp;<a href="edit_login.html">账户设置</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="icon_13_16"></span>
+                    <span style="width:50px;">&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a id="headusername" href="javascript:void(0)"></a>,欢迎您！</span>
+                    <span class="icon_26_26"></span>
+                	
+                </div>
+                <span class="cleard"></span>
+            </div>
+            <div  class="clear"></div>
+        </div>
+    </div>
+    <!-- header结束-->
+    <div style="height: 25px; font-size: 12px; text-align: right; display: block; padding-right:10px; color:#777777;">联系我们 : 15201117816 , QQ : 2278596726 , Email : sales001@hxnetwork.com</div>
+    <!-- content开始-->
+    <div class="main">
+    	 <div class="report_main">
+         	<div class="report_header">
+            	<div class="report_left">
+                	<img  src="images/logo_1.png" width="188" height="75" id="logo_url" />
+                </div>
+                <div class="report_right">
+                	<div style="line-height:45px;"><span id="stu_name" class="font_color_000">小王</span>&nbsp;<span class="font_color_b70129" id="subject_name">数学</span>&nbsp;<span class="font_color_000">入学测试报告</span></div>
+                    <div style="font-size:12px; line-height:20px;"><span>测试时间：</span><span id="create_date">2014-05-12</span></div>
+                </div>
+                <div class="cleard"></div>
+            </div>
+            <div class="cleard"></div>
+            <div class="report_que_list">
+            	<div class="report_type">卷面情况</div>
+                <div class="que_info">
+                	<span>试卷难度系数：</span><span id="diffcuty_id" class="font_color_b50025"></span>&nbsp;&nbsp;
+                    <span>卷面得分：</span><span id="scores"  class="font_color_b50025"></span>&nbsp;&nbsp;
+                    <span>答题用时：</span><span id="tests_times"  class="font_color_b50025"></span>&nbsp;&nbsp;
+                    <span>答对：</span><span id="right_sum"  class="font_color_b50025"></span>&nbsp;&nbsp;
+                    <span>答错：</span><span id="wrong_sum"  class="font_color_b50025"></span>&nbsp;&nbsp;
+                </div>
+                <table id="que_list" cellpadding="0" cellspacing="0" border="0">
+                
+                </table>
+            </div>
+            <div class="report_cartogram">
+            	<div class="report_type">诊断报告</div>
+                <div style="width:900px; margin:0 auto; padding-top:20px;">
+                	<div id="que_Charts" ></div>
+                	<div id="knowledge_Charts" style="margin-top:30px;"></div>
+                </div>
+            </div>
+            
+            <div class="report_ability">
+            	<div class="report_type">学习能力维度</div>
+                <div class="report_ablity_list">
+                	 <table id="ablity_list" cellpadding="0" cellspacing="0" border="0">
+                     	
+                     </table>
+                </div>
+                <div class="report_ablity_cartogram">
+                	<div id="ability_Charts" style="height:340px;"></div>
+                </div>
+                <div class="cleard"></div>
+            </div>
+            
+            <div id="slogan_list">
+            	
+            </div>
+            
+            <div class="person_info">
+            	
+            </div>
+            
+         </div> 
+    </div>
+    
+    <!-- content 结束-->
+</div>
+<div class="clear_20"></div>
+<div class="footer_Bg">
+<div class="footer">
+    <span class="footer_font">
+        Copyright©2004-2014 ，北京华夏安业科技有限公司   All Rights Reserved
+         
+    </span>
+</div></div> 
+
+<div id="question_text_contentcut" style="display:none;"></div>
+</body>
+</html>

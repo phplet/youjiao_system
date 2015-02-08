@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+        <meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    <script type="text/javascript" src="../Scripts/Students_Work.js"></script>
+   
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center',border:false" style="padding: 5px;">
+    
+        <div id="SerToolBar" style="height:70px;" >
+           <div class="hx_Schooltop" >
+               <ul>
+               
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	   <li class="text_float" style=" padding-top:3px; display:none;">
+                   		 <input type="radio" name="radios" value="0" checked="checked"/> 搜索条件&nbsp;&nbsp;
+                   </li> 
+                   <li class="hx_Schooltop_enable">
+                   		班级类型：<span><select id="class_types" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto" editable=false>
+		 
+	</select></span>
+                   </li>
+               	   <li class="hx_Schooltop_enable">
+                   		班级状态：<span><select id="class_modes" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto" editable=false>
+		 
+	</select></span>
+                   </li>
+                   <li class="hx_Schooltop_enable" style="width:220px;">
+                   		选择班级：<span><select id="class_names" class="easyui-combobox" style="width:150px;"  name="12"  panelHeight="auto" editable=false>
+		  
+	</select></span>
+                   </li>
+                    <li class="hx_Schooltop_enable" style=" width:auto">
+                   		学科：<span id="subject_1"><select id="subjects" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto" editable=false>
+						<option value="请选择">请选择</option>
+                        <option value="1">语文</option>
+                        <option value="2">数学</option>
+                        <option value="3">英语</option>
+                        <option value="4">物理</option>
+                        <option value="5">化学</option>
+                        <option value="6">生物</option>
+                        <option value="7">地理</option>
+                        <option value="8">历史</option>
+                        <option value="9">政治</option>
+        
+	</select></span><span id="subject_1_s" style="line-height:23px;"></span>&nbsp;&nbsp;
+                   </li>
+                   
+                   
+                </ul>
+          </div>
+          <div class="hx_Schooltop" >
+               <ul>
+               	    
+                   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+                  <!-- <li class="text_float" style="padding-top:3px;">
+                   		 <input type="radio" name="radios" value="1"/> 全部搜索&nbsp;&nbsp;
+                   </li> -->
+                   <li class="hx_Schooltop_enable " style="width:140px;">
+                   		开始时间：<span><input id="begintime" class="easyui-datebox" style="width:70px;"></input></span>
+                   </li>
+                   <li class="hx_Schooltop_enable" style="width:140px;">
+                   		结束时间：<span><input id="endtime" class="easyui-datebox" style="width:70px;"></input></span>
+                   </li>
+                   <li class="hx_Schooltop_enable" style="width:136px;">
+                   		学生姓名：<span><input type="text" id="stuname" name="stuname" style="width:60px;" /></span>
+                   </li>
+                   <li class="hx_Schooltop_enable" style="width:100px;">
+                   		<a id="BtnSearch" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a> 
+                   </li>
+                   
+                </ul>
+          </div>
+        </div>
+
+        <div id="teacher_Corrects" title="&nbsp;学务报表&nbsp;>>&nbsp;学生测评统计"></div>
+ 
+
+ </div> 
+ 
+
+</body>
+</html>

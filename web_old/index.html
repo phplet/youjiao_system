@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+    <title>优教教学,题酷学习</title>
+    <link rel="stylesheet" type="text/css" href="student/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="student/css/web_icon.css" />
+    <link href="student/layer/skin/layer.css" type="text/css" rel="stylesheet" />
+    <link rel="icon" href="hx_manages/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="student/Js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="student/Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="student/Js/jquery.json.min.js"></script>
+    <script type="text/javascript" src="Scripts/codenum.js"></script>
+    <script type='text/javascript' src="student/layer/layer.js"></script>
+    <script type="text/javascript" src="student/Js/json2.js"></script>
+    <script type="text/javascript" src="student/Js/Base64.js"></script>
+    <script type="text/javascript" src="student/Js/sha256.js"></script>
+    <script type="text/javascript" src="student/Js/public_base.js"></script>
+    <script type="text/javascript" src="Scripts/login.js"></script>
+</head>
+  
+     
+<body>
+<div class="warps">
+	 <div class="header">
+     	<div class="logo">
+     		<div style="float:left"><a href="student/Index.html"><img  src="student/images/logo_home.png"/></a></div>
+            <div style="float:right"><a href="#"><img src="student/images/logo_1.png"/></a></div>
+     	</div>
+        <div class="cleard"></div>
+     </div>
+     <div class="main_I">
+         <div class="mains" >
+                 <div class="Login_ct">
+                     
+                        <div class="Login_user"><span >用户名：</span><span><input type="text" name="username" class="userinput" /></span></div>
+                        <div class="Login_user_2"><span>密　码：</span><span><input type="password" name="userpassword" class="userinput" /></span></div>
+                        <div class="Login_user_2"><span>验证码：</span><span><input type="text" name="checked_name" class="userinput_checked" /></span>
+                            <span><img src="#" id="code_img"/></span>
+                            <span class="code_next" onclick="changeCode()">看不清,换一张</span>
+                        </div>
+                        
+                        <div class="Login_user_3"></div>
+                        <div class="Login_user_1">
+                            <span class="login_f"><a  href="javascript:void(0)" onclick="logins()" class="icon_125_35  web_icon_bottom_1 " style="width:105px;">登 录</a></span>
+                            <span  class="login_r">&nbsp;&nbsp;&nbsp;&nbsp;没有账号 现在 <a href="register.html">学生注册</a></span>
+                        </div>
+                        <div class="cleard"></div>
+                        <!--<div class="bottom_line">
+                            <div class="bottom_line_span">你可以通过以下方式快速登录</div>
+                            <div style=" padding-left:68px;"><img src="student/images/qq.png" /></div>
+                        </div>-->
+                 </div>
+         </div>
+     </div>
+     <div class="footer">
+     	Copyright©2004-2014 ，北京华夏安业科技有限公司 All Rights Reserved 
+     </div>
+     
+     
+</div>
+</body>
+</html>

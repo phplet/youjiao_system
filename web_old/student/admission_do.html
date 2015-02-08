@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+<meta http-equiv="expires" content="Wed,26 Feb 1997 08:21:57 GMT" /> 
+		<title>题酷在线</title>
+		<link type='text/css' href='css/exercise_zhenti_do.css' rel='stylesheet' />
+        
+     	<link href="layer/skin/layer.css" type="text/css" rel="stylesheet" />
+        <link href="css/web_icon.css" type="text/css" rel="stylesheet" />
+        <script type='text/javascript' src='Js/jquery-1.8.2.min.js'></script>
+        <script type='text/javascript' src="layer/layer.js"></script>
+        <script type="text/javascript" src="Js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="Js/jquery.json.min.js"></script>
+        <script type="text/javascript" src="Js/Base64.js"></script>
+        <script type="text/javascript" src="Js/sha256.js"></script>
+         
+        <script type="text/javascript" src="Js/json2.js"></script>
+        <script type="text/javascript" src="Js/public_base.js"></script>
+		<script type='text/javascript' charset="utf-8" src="kindeditor-4.1.7/kindeditor.js"></script>
+		<script type='text/javascript' charset="utf-8" src="kindeditor-4.1.7/lang/zh_CN.js"></script>
+		
+		<script type='text/javascript' src='Js/exerciseHandler.js'></script>
+		<script type='text/javascript' src='Js/admission_do.js'></script>
+        <script type="text/javascript" src="Js/flexjs.js"></script>
+		 
+        
+	</head>
+    
+	<body>
+		<div class="header_bg">	
+        <div class="header">
+            <div class="logo">
+                <a href="Index.html"><img  src="images/logo_new.png" /></a>
+            </div>
+            <div class="logins">
+                <div class="logins_font">
+                	<span>&nbsp;<a href="javascript:void(0);" onclick="outlogin();">退 出</a></span>
+                	<span class="icon_18_16"></span>
+                    <span>&nbsp;<a href="edit_login.html">账户设置</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="icon_13_16"></span>
+                    <span style="width:50px;">&nbsp;</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;<a id="headusername" href="javascript:void(0)"></a>,欢迎您！</span>
+                    <span class="icon_26_26"></span>
+                	
+                </div>
+                <span class="cleard"></span>
+            </div>
+            <div  class="clear"></div>
+        </div>
+    </div>
+    <div style="height: 25px; font-size: 12px; text-align: right; display: block; padding-right:10px; color:#777777;">联系我们 : 15201117816 , QQ : 2278596726 , Email : sales001@hxnetwork.com</div>
+    <div class="clear_30"></div>
+    	<div class="mode_titles">
+            	 
+                <div style="float:left;"><img src="images/web_icon_105.png" width="220" height="105" /></div>
+            	<div class='question_zhuanti' style='float:left;'></div>
+                <div class="cleard"></div>
+        </div>
+		<div class='content' >
+        	
+			<div class='question_head'>
+				<div class='question_count'>
+                	<a href='javascript:void(0);' id="back_home" style='font-size:12px;'>返回首页</a>&nbsp;&nbsp;
+                    <a href='javascript:void(0);' id="back_html" style='font-size:12px;'>返回上一步</a>&nbsp;&nbsp;
+					<a href='javascript:void(0);' class='begin_exam' style='font-size:12px;'>在线作答</a>
+                    <!--&nbsp;&nbsp;
+					<a href='javascript:void(0);' class='check_answer' style='font-size:12px;'>解析答案</a>&nbsp;&nbsp;
+					<a href='javascript:void(0);' class='download_word' style='font-size:12px;'>下载WORD</a>-->
+                    
+                    
+				</div>
+				<!--<div class='exam_timer' style='display:none;'>
+					<span>用时：</span><span class='exam_timer_show'>00:00:00</span>
+				</div>
+				<div class='exam_submit' style='float:right;display:none;'>
+					<input type='button' class='tmp_save' value='暂时保存'></input>
+					<input type='button' class='exam_submit_btn' value='交卷'></input>
+					<input type='button' class='submit_btn' value='提交' style='display:none;'></input>
+				</div>-->
+				<div style='clear:both;'></div>
+				<div class='exam_history'>
+					<div class='history_element' id='history_element_template' style='display:none;'></div>
+				</div>
+				
+			</div>
+            <div>
+                <div class='content_center' style="width:1000px;">
+                    <div class='question_content'>
+                        
+                        <div class='question_content_main' id='question_content_main_template' style='display:none;margin-top:10px;'>
+                            <div class='main_content' style='border-bottom:0;'>
+                                <div class='main_content_content' style='margin-bottom:30px;min-height:40px;'></div>
+                                <div class='main_content_submit'>
+                                    <input type='button' class='question_submit' value='提交'></input>
+                                </div>
+                            </div>
+                            <div class='main_option' style='display:none;'>
+                                <input type='radio' class='option_btn' value='A' name='option' ></input>A&nbsp;
+                                <input type='radio' class='option_btn' value='B' name='option' ></input>B&nbsp;
+                                <input type='radio' class='option_btn' value='C' name='option' ></input>C&nbsp;
+                                <input type='radio' class='option_btn' value='D' name='option' ></input>D&nbsp;
+                                <span class='option_e'><input type='radio' class='option_btn' value='E' name='option' ></input>E&nbsp;</span>
+                            </div>
+                            <div class='main_text' style=''></div>
+                            <div class='main_answer' style='display:none;position:relative;'>
+                                <div style='margin:10px 0;font-weight: bold;' >本题结果:
+                                    <input type='radio' value=1 class='subjective_check' name='subjective_check'></input>
+                                    <span class='answer_correct'>√</span>
+                                    <input type='radio' value=0 class='subjective_check' name='subjective_check'></input>
+                                    <span class='answer_wrong'>×</span>
+                                </div>
+                                <div style='margin:10px 0;font-weight: bold;' >参考答案:</div><div class='offical_answer'></div>
+                                <div style='margin:10px 0;font-weight: bold;' >您的答案:</div><div class='my_answer'></div>
+                                <div class='main_question_next' style='display:none;'>
+                                    <a href='javascript:void(0);' class='add_to_haoti' style='font-size:12px; color:#0094b1;'>收藏好题</a>
+                                </div>
+                            </div>
+                            <div class='main_analyze' style='display:none;'>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="content_right_ZT" id="right_sct"  style="display:none;">
+                	<div class="right_scroll_bot_1">
+                    	<span class="span_heightS"></span><span class="icon_32_32 come_on_icon"></span>
+                    	<span class='exam_timer_show'>00:00:00</span>    
+                    </div>
+                     
+                     
+                    <div class="right_scroll_bot submit_btn cursorI" >
+                    	<span class="span_heightS"></span><span class="icon_32_32 sub_exam_icon"></span>
+                    	 
+                        <span >交卷</span>
+                    </div>
+                </div>
+                <div class='content_right' style='display:none;'>
+                    <div class='answer_card_head'>答题卡</div>
+                    <div class='answer_card_objective' id='answer_objective_template' style='display:none;'>
+                        <span class='answer_index'>1</span>&nbsp;
+                        <input type='radio' name='option' value='A'></input><span>A</span>
+                        <input type='radio' name='option' value='B'></input><span>B</span>
+                        <input type='radio' name='option' value='C'></input><span>C</span>
+                        <input type='radio' name='option' value='D'></input><span>D</span>
+                    </div>
+                    
+                    <div class='answer_card_subjective' id='answer_subjective_template' style='display:none;'>
+                        <div class='answer_index' >1</div>
+                        <textarea class='subjective_content' ></textarea>
+                        <div style='clear:both;'></div>
+                    </div>
+                </div>
+                <div class="cleard"></div>
+            </div>
+		</div>
+        <div class="exam_over_sroces" style="display:none;">
+        	<div class="exam_overbg_FFF">
+            	<ul class="exam_over_Stitle">
+                	<li>本次测试得分率</li>
+                    <li>全站得分率</li>
+                    <li>已击败学生</li>
+                    <li>答题用时</li>
+                    <li>全站平均用时</li>
+                </ul>
+                <div class="cleard"></div>
+                <ul class="exam_over_Scontent">
+                	
+                </ul>
+                <div class="cleard"></div>
+                <div class="his_exam_srocesList">
+                	<span>本卷完成的历史记录：</span>
+                    <span class="his_exam_sroces">
+                    	<span>2013-12-12年完成 得分90分</span>
+                        <span>2013-12-12年完成 得分90分</span>
+                        <span>2013-12-12年完成 得分90分</span>
+                        <span>2013-12-12年完成 得分90分</span>
+                    </span>
+                </div>
+                <div style="text-align:center;"><a href="./exercise_zhenti.html" class="icon_125_35 web_icon_bottom_3">返回栏目首页</a></div>
+            </div>
+        </div>
+		<!--<div class='score_panel' style='display:none;'>
+			<span>恭喜！本次答题获得<span class='score_span'>90</span>分，请再接再厉！</span>
+			<input type='button' class='back_btn' value='返回' ></input>
+		</div>-->
+		 
+        <div class="clear_20"></div>
+<div class="footer_Bg">
+<div class="footer">
+    <span class="footer_font">
+        Copyright©2004-2014 ，北京华夏安业科技有限公司   All Rights Reserved
+        
+    </span>
+</div> </div>
+ 
+	</body>
+</html>

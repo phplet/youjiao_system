@@ -1,0 +1,63 @@
+{
+	"count":239,
+	"list":[{
+		"id":1,
+		"sendTime":"2013-04-12",
+		"title":"定制作业",
+		"subject":"1",
+		"classname":"大钟寺小学",
+		"teacher":"张教师",
+		"center_id":"15",
+		"zone_id":"18",
+		"class_id":"1",
+		"teacher_id":"64",
+		"score":"80/100",
+		"status":"0"
+	},{
+	  	"id":2,
+	  	"sendTime":"2013-05-12",
+		"title":"定制作业2",
+		"subject":"2",
+		"classname":"大钟寺小学021",
+		"teacher":"王教师",
+		"center_id":"15",
+		"zone_id":"5",
+		"class_id":"1",
+		"teacher_id":"64",
+		"score":"70/100",
+		"status":"1"
+	 
+	},{
+	  	"id":3,
+		"sendTime":"2013-07-12",
+		"title":"定制作业3",
+		"subject":"2",
+		"classname":"大钟寺小学031",
+		"teacher":"王2",
+		"center_id":"15",
+		"zone_id":"5",
+		"class_id":"1",
+		"teacher_id":"64",
+		"score":"90/100",
+		"status":"2"
+	 
+	}
+	,{
+	  	"id":4,
+		"sendTime":"2013-06-12",
+		"title":"定制作业4",
+		"subject":"6",
+		"classname":"大钟寺小学041",
+		"teacher":"李XX",
+		"center_id":"15",
+		"zone_id":"5",
+		"class_id":"3",
+		"teacher_id":"64",
+		"score":"100/100",
+		"status":"3"
+	 
+	}
+	
+	]
+
+}

@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>华夏优教互动平台_校区管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/default/header.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Style.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.json.min.js"></script><script type="text/javascript" src="../Scripts/json2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.easyui.theme.js"></script>
+    <script type="text/javascript" src="../Scripts/Base64.js"></script>
+    <script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../Scripts/Common.js"></script>
+    <script type="text/javascript" src="../Scripts/Teacher_Ma.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.form.js"></script>
+    <script type="text/javascript" src="../Scripts/public_base.js"></script>
+    <script type="text/javascript" src="../Scripts/Permission.js"></script>
+    <script type="text/javascript" src="../Scripts/featureTab.js"></script> 
+    <script type="text/javascript" src="../DataDefine/feature.js"></script>
+<style type="text/css">
+.demo{width:400px; margin:30px auto; height:140px;}
+.demo p{line-height:32px}
+.btn{position: relative;overflow: hidden;margin-right: 4px;display:inline-block;*display:inline;padding:4px 10px 4px;font-size:14px;line-height:18px;*line-height:20px;color:#fff;text-align:center;vertical-align:middle;cursor:pointer;background-color:#5bb75b;border:1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf;border-bottom-color:#b3b3b3;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+.btn input {position: absolute;top: 0; right: 0;margin: 0;border: solid transparent;opacity: 0;filter:alpha(opacity=0); cursor: pointer;}
+.progress { position:relative; margin-left:100px; margin-top:-24px; width:200px;padding: 1px; border-radius:3px; display:none}
+.bar {background-color: green; display:block; width:0%; height:20px; border-radius: 3px; }
+.percent { position:absolute; height:20px; display:inline-block; top:3px; left:2%; color:#fff }
+.files{height:22px; line-height:22px; margin:10px 0}
+.delimg{margin-left:20px; color:#090; cursor:pointer}
+</style>
+</head>
+ <script>
+ 	var dingshiqi = null;
+         
+        $(document).ready(function () {
+            $("#themeList").theme({ themeBase: "themes", headerThemeBase: "Content" });
+           
+            $("#logout").click(function (event) {
+
+                $.messager.confirm('温馨提示', '确定要退出系统吗？', function (r) {
+                    if (r) {
+                        var cookieOptions = { path: "/", expires: -1 };
+                        $.cookie("AuthToken", null, cookieOptions);
+                        $.cookie("UserInfo", null, cookieOptions);
+                        
+                        event.preventDefault();
+                        window.location.href = "Login.html";
+                    }
+                });
+
+            });
+
+            // 过滤掉非法的数组元素
+            function arrayFilter(array, fun) {
+                var tempArray = [];
+                $.each(array, function (i, n) {
+                    if (n.children) {
+                        tempArray.push(n);
+                    } else {
+                        if (fun(n.operate)) {
+                            tempArray.push(n);
+                        }
+                    }
+                });
+                return tempArray;
+            }
+
+            feature = arrayFilter(feature, $.permission);
+			
+
+            var deleteItem = [];
+
+            $.each(feature, function (index, value) {
+                if (value.children) {
+                    value.children = arrayFilter(value.children, $.permission);
+                    feature[index] = value;
+                    if (!value.children || value.children.length == 0) {
+                        deleteItem.push(value.id);
+                    }
+                }
+            });
+
+            if (deleteItem.length > 0) {
+                $.each(deleteItem, function (i, n) {
+                    $.each(feature, function (k, f) {
+                        if (f.id == n) {
+                            feature.splice(k, 1);
+                            return false;
+                        }
+                    });
+                });
+            }
+
+            if (feature.length == 0) {
+                // 清楚验证信息
+                var cookieOptions = { path: "/", expires: -1 };
+                $.cookie("AuthToken", null, cookieOptions);
+                $.cookie("UserInfo", null, cookieOptions);
+                window.location.href = "Login.html";
+            }
+
+            $("#feature").tree({
+                data: feature,
+                onSelect: function (node) {
+                    if (node.attributes && node.attributes.url && node.attributes.url != "") {
+                        var nodeText = node.text;
+                        $.each(feature, function (index, n) {
+                            if (n.id != node.id && n.children != null && n.children.length > 0) {
+                                $.each(n.children, function (ci, cn) {
+                                    if (cn.id == node.id) {
+                                        nodeText = n.text;
+                                        return false;
+                                    }
+                                });
+                            }
+                        });
+                        ChangeThisTab(nodeText, node.attributes.url);
+                    }
+                }
+            });
+            //$("*[operate]").permission();
+           // ChangeThisTab("首页", "HomePage.html");
+
+            $(document).ajaxSend(function (event, request, settings) {
+
+                if ($.cookie("AuthToken") != null && $.trim($.cookie("AuthToken")).length > 0) {
+                    request.setRequestHeader("Authorization", "Digest " + $.cookie("AuthToken"));
+                }
+
+            });
+			
+            try {
+                var UserInfo = $.evalJSON($.cookie("UserInfo"));
+
+                if (UserInfo != null) {
+                    $('#headusername').text(UserInfo.username);
+                    switch (parseInt(UserInfo.level)) {
+                        case 1:
+							$('#A_zones').hide();
+                            $('#indecuserddd').text('校长');
+                            break;
+                        case 2:
+                            $('#indecuserddd').text('教学主任');
+							$('#A_zones').show();
+							selCenter_Zone('#A_zones',UserInfo.id);
+                            break;
+                        case 3:
+                            $('#indecuserddd').text('班主任');
+							$('#A_zones').hide();
+                            break;
+                        case 4:
+                            $('#indecuserddd').text('教师');
+							$('#A_zones').hide();
+                            break;
+						case 9:
+                            $('#indecuserddd').text('管理员');
+							$('#A_zones').hide();
+                            break;
+                    }
+                }
+
+            } catch (err) {
+
+            };
+
+            $('#browesmessage').dialog({
+                width: 620,
+                height: 40,
+                closed: true,
+                noheader: true
+            });
+
+            $('#browesmessage').dialog('move', { top: 8 });
+
+            if ($.browser.msie && ($.browser.version == "6.0") && !$.support.style) {
+                setTimeout('$("#browesmessage").dialog("open");dingshiqi = setTimeout(\'$("#browesmessage").dialog("close");clearTimeout(dingshiqi);\', 15000);', 3000);
+            }
+            
+        });
+ </script>
+<body style="background-color:#d2e0f2;">
+<div id="header" >
+            <div class="headerNav">
+                <a class="logo" href="http://edu.hxpad.com" target="_blank">标志</a>
+                <ul class="nav">
+                    <li><a href="http://edu.hxpad.com/templets/class/gywm.html" target="_blank">关于我们</a></li>
+                    <li><a href="http://edu.hxpad.com" target="_blank">华夏安业</a></li>
+                </ul>
+                <ul class="themeList" id="themeList">
+                    
+                    <li theme="default">
+                        <div class="selected">蓝色</div>
+                    </li>
+                    <li theme="Sunny">
+                        <div>绿色</div>
+                    </li>
+                    <li theme="pepper-grinder">
+                        <div>紫色</div>
+                    </li>
+                    <li theme="cupertino">
+                        <div>银色</div>
+                    </li>
+                    <li theme="dark-hive">
+                        <div>天蓝</div>
+                    </li>
+                </ul>
+                <ul class="userInfoheader">
+                    <li>
+                    	<select id="A_zones" onchange="selupdata(this.value);"></select>&nbsp;&nbsp;
+                        欢迎您，
+                        <b id="headusername" style="color:#ff0000; font-size:11pt;"></b>&nbsp;
+                        <span id="indecuserddd"></span>，
+                        <a id="userSetInfo" href="#">账户设置</a>
+                        <a id="logout" href="#">退出</a>
+                    </li>
+                </ul>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+
+<div>
+    <div style="float:left; width:20%; background-color:#fff;" >
+        	
+            <div title="功能菜单" style="padding: 5px; overflow: auto; ">
+                <div class="panel-header accordion-header accordion-header-selected" style=" height: 15px;">
+                    <div class="panel-title">功能菜单</div>
+                    <div class="panel-tool">
+                        <a class="accordion-collapse" href="javascript:void(0)"></a>
+                    </div>
+                </div>
+                <ul id="feature" class="easyui-tree" style="border:#CCC solid 1px; padding:10px 0px 10px 0px"></ul>
+            </div>
+        
+    
+    </div>
+    <div  style="padding:5px; float:left; width:79%; background-color:#fff;" >
+    	<div class="tabs-header" style="margin-bottom:10px;">
+        <div class="tabs-wrap" style=" left: 0px; width:100%;">
+        <ul class="tabs">
+        <li class="tabs-selected">
+        <a class="tabs-inner" href="javascript:void(0)">
+        <span class="tabs-title">首页</span>
+        <span class="tabs-icon"></span>
+        </a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        
+        <div id="SerToolBar_teacher">
+           <div class="hx_Schooltop_teacher">
+           	    
+               <ul >
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	   <li class="hx_Schooltop_Scname">
+                   		学校名称：<span class="hx_text001">华夏学校</span>
+                   </li>
+                   <li class="hx_Schooltop_Scname">
+                   		校区名称：<span class="hx_text001">华夏校区</span>
+                   </li>
+                   <li class="hx_Schooltop_enable_teacher">
+                   		学科选择：<span>
+                        		<select id="teacher_sub" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="100">
+									<option value="请选择">请选择</option>
+									<option value="1">语文</option>
+                                    <option value="2">数学</option>
+                        			<option value="3">英语</option>
+                        			<option value="4">物理</option>
+                                    <option value="5">化学</option>
+                                    <option value="6">生物</option>
+                                    <option value="7">地理</option>
+                                    <option value="8">历史</option>
+                                    <option value="9">政治</option>
+								</select>
+                              </span>
+                   </li>
+                   <li class="hx_Schooltop_enable">
+                   		状态：<span>
+                        		<select id="startusid" class="easyui-combobox" style="width:60px;"  name="12"  panelHeight="auto">
+									<option value="1">启用</option>
+									<option value="2">禁用</option>
+								</select>
+                              </span>
+                   </li>
+                   <li class="hx_Schooltop_name">
+                       姓名：<input id="SchoolText" class="easyui-validatebox" type="text" style="width:80px;" value="请输入姓名"/>
+                   </li>
+                   <li  class="hx_Schooltop_search_sel">
+                       <a id="BtnSearch" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查看</a> 
+                   </li>
+                    
+                </ul>
+                
+                <ul style=" clear:both; padding-top:5px;">
+               	   <li class="hx_Schooltop_nbsp">&nbsp;</li>
+               	     
+                   <li class="hx_Schooltop_add">
+                       <a id="BtnAddTeacher"  class="easyui-linkbutton" data-options="iconCls:'icon-add'" title="新增教师">新增教师</a>&nbsp;&nbsp;
+                       <a id="BtnAddMoreTeacher"  class="easyui-linkbutton" data-options="iconCls:'icon-add'" title="批量新建教师">批量新建教师</a>&nbsp;&nbsp;
+                       <a id="BtnAddSearch"  class="easyui-linkbutton" data-options="iconCls:'icon-add'" title="加入教师">加入教师</a>
+                   </li>
+                </ul>
+               
+          </div>
+        </div>
+ 
+        <div id="Teacher_Ma" class="easyui-datagrid" style="height:800px; " >
+        </div>
+ 
+       </div>
+       
+ </div>      
+       
+       </body></html>
