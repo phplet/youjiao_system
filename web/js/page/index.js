@@ -17,15 +17,13 @@ define([
             '</div>'
         ].join('');
 
-        this.domNode = document.createElement('documentFragment');
-        $(this.domNode).html(this.templates);
 
         this.wantshow = 'wo jiushi nei rong';
 
         this.init = function(){
 
-
-
+            this.inherited(arguments);
+console.log(this.domNode);
             console.log('index is init');
             this._initEvent();
             this.emit('initComplete');
@@ -33,7 +31,6 @@ define([
         };
 
         this._initEvent = function(){
-            console.log(this.domNode);
             $(this.domNode).delegate('#btn1' , 'click' , util.hitch(this , this._btnClickHandler))
         };
 

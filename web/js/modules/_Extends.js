@@ -40,4 +40,7 @@ define([
             return o;
         });
     };
+
+    return ClassBase;
+
 });

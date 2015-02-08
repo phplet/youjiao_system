@@ -14,13 +14,13 @@ require([
 
     var mod = new index();
 
-    $('body').append(mod.domNode);
-
     mod.on('initComplete' , function(){
         console.log('catch index init complete event');
     });
 
     mod.init();
+
+    $('body').append(mod.domNode);
 
 
 

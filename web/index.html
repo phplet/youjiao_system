@@ -4,38 +4,6 @@
     <meta charset="UTF-8">
     <title></title>
     <script type="text/javascript" data-main="/js/main" src="/js/lib/require.js"></script>
-    <script type="text/javascript">
-
-        var hitch = function(scope , method){
-            return function(){
-                return method.apply(scope , arguments);
-            }
-        };
-
-        var t1 = {
-            name : 'tony'
-        };
-
-        var t2 = {
-            name : 'sky'
-        };
-
-        var showName = function(title , script , xx){
-            console.log(title + ': ' + this.name);
-        }
-
-        t1.showName = hitch(t1 , showName);
-
-        t1.showName = function(){
-            return showName.apply(this , arguments);
-        }
-
-        t1.showName();
-
-
-
-
-    </script>
 </head>
 <body>
 </body>

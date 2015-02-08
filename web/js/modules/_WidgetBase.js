@@ -13,13 +13,19 @@ define([
         this.templates = '';
         //dom借点
         this.domNode = '';
+
         //初始化
-        this.init = function(){};
+        this.init = function(){
+            this.domNode = document.createElement('documentFragment');
+            this.domNode.innerHTML = this.templates;
+            console.log('widgetBase init');
+        };
+
         //销毁
         this.destroy = function(){};
     };
 
-    _WidgetBase = _WidgetBase.extend(_Evented);
+    _WidgetBase = _WidgetBase.extend(_Extends , _Evented);
 
     return _WidgetBase;
 
