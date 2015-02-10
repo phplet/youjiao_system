@@ -7,15 +7,29 @@ require.config({
         //text插件
         text : 'lib/require-text',
         //jQuery
-        jquery : 'lib/jquery'
+        jquery : 'lib/jquery',
+
+        dataTable : 'lib/jquery.dataTables.min'
     }
 });
 
 require([
-    'page/index'
-] , function(index){
+    'modules/Header',
+    'modules/Nav',
+    'page/CenterZoneManager'
+] , function(Header , Nav , CenterZoneManager){
 
-    var mod = new index();
+    var header = new Header();
+    header.init();
+
+    $('.header').append(header.domNode);
+
+    var nav = new Nav();
+    nav.init();
+
+    $('.nav').append(nav.domNode);
+
+    var mod = new CenterZoneManager();
 
     mod.on('initComplete' , function(){
         console.log('catch index init complete event');
@@ -23,7 +37,7 @@ require([
 
     mod.init();
 
-    $('body').append(mod.domNode);
+    $('.content').append(mod.domNode);
 
 
 

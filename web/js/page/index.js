@@ -4,11 +4,11 @@
  */
 define([
     'jquery',
-    '../modules/Util',
+    'modules/Util',
     'modules/_Extends',
     'modules/_WidgetBase',
     'text!./templates/index.html'
-], function ($, util, _extend, _WidgetBase, templates) {
+], function ($, Util, _extend, _WidgetBase, templates) {
 
     var Index = function () {
 

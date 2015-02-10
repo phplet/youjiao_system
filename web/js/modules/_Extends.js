@@ -2,8 +2,8 @@
  * Created by tonyjiang on 15/2/8.
  */
 define([
-    'Util'
-],function(util){
+    'modules/Util'
+],function(Util){
     var ClassBase = function(){
         this.inherited = function(){
             return (function(_this , _proto , arg){

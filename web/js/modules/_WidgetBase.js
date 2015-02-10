@@ -4,8 +4,9 @@
 define([
     'modules/_Extends',
     'modules/_Evented',
-    'Util'
-] , function(_Extends , _Evented , util){
+    'modules/Util',
+    'jquery'
+] , function(_Extends , _Evented , Util , $){
 
     //组件基础类
     var _WidgetBase = function(){
@@ -14,10 +15,15 @@ define([
         //dom借点
         this.domNode = '';
 
+        this._beforeRender = function(){
+            this.domNode = document.createDocumentFragment();
+            this.domNode.appendChild($(this.templates)[0]);
+        };
+
         //初始化
         this.init = function(){
-            this.domNode = document.createElement('documentFragment');
-            this.domNode.innerHTML = this.templates;
+            this._beforeRender();
+            //$(this.domNode).html(this.templates);
             console.log('widgetBase init');
         };
 
