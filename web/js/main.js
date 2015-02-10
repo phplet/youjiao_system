@@ -15,7 +15,7 @@ require.config({
 
 require([
     'modules/Header',
-    'modules/nav',
+    'modules/Nav',
     'page/CenterZoneManager'
 ] , function(Header , Nav , CenterZoneManager){
 
@@ -24,7 +24,7 @@ require([
 
     $('.header').append(header.domNode);
 
-    var nav = new nav();
+    var nav = new Nav();
     nav.init();
 
     $('.nav').append(nav.domNode);
