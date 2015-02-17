@@ -6,10 +6,14 @@ require.config({
     paths : {
         //text插件
         text : 'lib/require-text',
+        //css插件
+        css : 'lib/require-css.min',
+        cssPath : '/css',
         //jQuery
         jquery : 'lib/jquery',
 
-        dataTable : 'lib/jquery.dataTables.min'
+        dataTable : 'lib/jquery.dataTables.min',
+        'dataTable.bootstrap' : 'lib/dataTables.bootstrap'
     }
 });
 

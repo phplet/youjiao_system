@@ -6,7 +6,12 @@ define([
     'modules/_WidgetBase',
     'modules/Util',
 
-    'dataTable'
+    'dataTable',
+    'dataTable.bootstrap',
+
+    'css!cssPath/jquery.dataTables.css',
+    'css!cssPath/bootstrap.min.css',
+    'css!cssPath/dataTables.bootstrap.css'
     //'text!./templates/nav.html'
 ] , function($ , _WidgetBase , Util){
 
