@@ -13,31 +13,40 @@ require.config({
     }
 });
 
+var pageName = window.location.pathname;
+pageName = pageName == '/' ? 'page/index' :  'page' + pageName ;
+
+
 require([
     'modules/Header',
     'modules/Nav',
-    'page/CenterZoneManager'
-] , function(Header , Nav , CenterZoneManager){
+    pageName
+] , function(Header , Nav , Page){
 
-    var header = new Header();
-    header.init();
+    $(document).ready(function(){
 
-    $('.header').append(header.domNode);
+        var header = new Header();
+        header.parentNode = $('.header');
+        header.init();
 
-    var nav = new Nav();
-    nav.init();
+        var nav = new Nav();
+        nav.parentNode = $('.nav');
+        nav.init();
 
-    $('.nav').append(nav.domNode);
+        var mod = new Page();
+        mod.parentNode = $('.content')[0];
 
-    var mod = new CenterZoneManager();
+        //mod.on('initComplete' , function(){
+        //    console.log('catch index init complete event');
+        //});
 
-    mod.on('initComplete' , function(){
-        console.log('catch index init complete event');
+        mod.init();
+
     });
 
-    mod.init();
 
-    $('.content').append(mod.domNode);
+
+    //$('.content').append(mod.domNode);
 
 
 

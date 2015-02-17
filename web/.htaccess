@@ -1,0 +1,14 @@
+RewriteEngine on
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.html
+
+<FilesMatch "\.(html|js)$">
+    Header unset ETag
+    Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0, proxy-revalidate, no-transform"
+    Header set Pragma "no-cache"
+</FilesMatch>

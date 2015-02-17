@@ -15,16 +15,22 @@ define([
         //dom借点
         this.domNode = '';
 
+        this.parentNode = document.body;
+
         this._beforeRender = function(){
             this.domNode = document.createDocumentFragment();
             this.domNode.appendChild($(this.templates)[0]);
+            if(this.parentNode instanceof jQuery){
+                this.parentNode = this.parentNode.get(0);
+            }
+            this.parentNode.appendChild(this.domNode);
         };
 
         //初始化
         this.init = function(){
             this._beforeRender();
             //$(this.domNode).html(this.templates);
-            console.log('widgetBase init');
+            //console.log('widgetBase init');
         };
 
         //销毁
@@ -32,7 +38,6 @@ define([
     };
 
     _WidgetBase = _WidgetBase.extend(_Extends , _Evented);
-
     return _WidgetBase;
 
 });
