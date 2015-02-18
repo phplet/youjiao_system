@@ -9,8 +9,9 @@ define([
     'dataTable',
     'dataTable.bootstrap',
 
-    'css!cssPath/jquery.dataTables.css',
+    //'css!cssPath/jquery.dataTables.css',
     'css!cssPath/bootstrap.min.css',
+    //'css!cssPath/bootstrap-theme.min.css',
     'css!cssPath/dataTables.bootstrap.css'
     //'text!./templates/nav.html'
 ] , function($ , _WidgetBase , Util){
@@ -41,6 +42,7 @@ define([
             this.widgetJQ = $('#data-table');
             this.widget = $('#data-table').DataTable({
                 "data" : dataSet,
+                //"ordering" : false,
                 "columns": [
                     { "title": "Engine" },
                     { "title": "Browser" },
@@ -49,6 +51,7 @@ define([
                     { "title": "Grade", "class": "center" }
                 ]
             });
+            this.widgetJQ.addClass('table table-bordered table-striped');
         };
 
         this._initEvents = function(){
