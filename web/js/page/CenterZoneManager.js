@@ -8,11 +8,20 @@ define([
     'modules/_WidgetBase',
     'text!./templates/centerZoneManager.html',
 
-    'modules/Table'
-], function ($, Util, _extend, _WidgetBase, templates , Table) {
+    'modules/Table',
+    'modules/Select',
+
+    'css!cssPath/CenterZoneManager.css'
+], function ($, Util, _extend, _WidgetBase, templates , Table , Select) {
 
 
     var tableData = [
+        ['Trident','Internet Explorer 4.0','Win 95+','4','X'],
+        ['Trident','Internet Explorer 5.0','Win 95+','5','C'],
+        ['Trident','Internet Explorer 5.5','Win 95+','5.5','A'],
+        ['Trident','Internet Explorer 6','Win 98+','6','A'],
+        ['Trident','Internet Explorer 7','Win XP SP2+','7','A'],
+        ['Trident','AOL browser (AOL desktop)','Win XP','6','A'],
         ['Gecko','Firefox 1.0','Win 98+ / OSX.2+','1.7','A'],
         ['Gecko','Firefox 1.5','Win 98+ / OSX.2+','1.8','A'],
         ['Gecko','Firefox 2.0','Win 98+ / OSX.2+','1.8','A'],
@@ -80,11 +89,23 @@ define([
         };
 
         this._initComps = function(){
+
+            this.selectComps = new Select({
+                label : '状态',
+                options : [
+                    {label : '启用' , value :'1'},
+                    {label : '禁用' , value : '0'}
+                ]
+            });
+            this.selectComps.parentNode = $('.search-bar');
+            this.selectComps.init();
+
             this.tableComps = new Table();
             //console.log(this.tableComps);
-            console.log(this.domNode);
             this.tableComps.parentNode = $('.center-zone-table');
             this.tableComps.init();
+
+
         };
 
         this._initEvents = function(){

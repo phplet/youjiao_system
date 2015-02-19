@@ -11,6 +11,9 @@ require.config({
         cssPath : '/css',
         //jQuery
         jquery : 'lib/jquery',
+        //bootstrap
+        bootstrap : 'lib/bootstrap.min',
+
 
         dataTable : 'lib/jquery.dataTables.min',
         'dataTable.bootstrap' : 'lib/dataTables.bootstrap'

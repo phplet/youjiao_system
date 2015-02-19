@@ -35,7 +35,8 @@ define([
         }
         this.prototype = Util.mixin(this.prototype , _extendsPrototype);
         return Util.hitch(this , function(){
-            var o = new this();
+            //暂时满足当前使用,后期完善
+            var o = new this(arguments[0]);
             o.constructor = this;
             return o;
         });

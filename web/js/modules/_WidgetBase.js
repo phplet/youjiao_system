@@ -18,8 +18,9 @@ define([
         this.parentNode = document.body;
 
         this._beforeRender = function(){
-            this.domNode = document.createDocumentFragment();
-            this.domNode.appendChild($(this.templates)[0]);
+            //this.domNode = document.createDocumentFragment();
+            //this.domNode.appendChild($(this.templates)[0]);
+            this.domNode = $(this.templates)[0];
             if(this.parentNode instanceof jQuery){
                 this.parentNode = this.parentNode.get(0);
             }

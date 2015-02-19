@@ -13,11 +13,16 @@ define(function(){
 
         //暂时没用
         clone : function(src){
-            var target = {};
-            for(var i in src){
-                target[i] = src[i];
+            if(src instanceof Array){
+                return src.slice();
+            }else{
+                var target = {};
+                for(var i in src){
+                    target[i] = src[i];
+                }
+                return target;
             }
-            return target;
+
         },
 
         //混入

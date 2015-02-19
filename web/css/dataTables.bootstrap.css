@@ -331,3 +331,13 @@ div.DTFC_LeftFootWrapper table {
 div.FixedHeader_Cloned table {
     margin: 0 !important
 }
+
+/*   customCssStyle   */
+.dataTable .row-hovered{
+    background:rgba(209,227,237,0.5)!important;
+}
+
+.dataTable .row-selected{
+    background : #4183c4!important;
+    color:#fff;
+}

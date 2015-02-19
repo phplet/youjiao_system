@@ -55,13 +55,19 @@ define([
         };
 
         this._initEvents = function(){
-            this.widgetJQ.delegate('tr' , 'click' , Util.hitch(this , function(e){
-                $(this.widgetJQ).find('.row-selected').removeClass('row-selected');
-                $(e.currentTarget).addClass('row-selected');
-                var data = this.widget.row(e.currentTarget).data();
-                this.emit('rowSelect' , {row : e.currentTarget , data : data});
-            }));
+            this.widgetJQ.delegate('tbody tr' , 'click' , _clickRowHandler);
+            this.widgetJQ.delegate('tbody tr' , 'mouseover' , function(){$(this).addClass('row-hovered')});
+            this.widgetJQ.delegate('tbody tr' , 'mouseout' , function(){$(this).removeClass('row-hovered')});
         };
+
+        var _clickRowHandler = Util.hitch(this , function(e){
+            $(this.widgetJQ).find('.row-selected').removeClass('row-selected');
+            $(e.currentTarget).addClass('row-selected');
+            var data = this.widget.row(e.currentTarget).data();
+            this.emit('rowSelect' , {row : e.currentTarget , data : data});
+        });
+
+
 
         this.clear = function(){
             return this.widget.clear();
