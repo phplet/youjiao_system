@@ -27,7 +27,10 @@ pageName = pageName == '/' ? 'page/index' :  'page' + pageName ;
 require([
     'modules/Header',
     'modules/Nav',
-    pageName
+    pageName,
+
+    'css!cssPath/bootstrap.min.css',
+    'css!cssPath/dataTables.bootstrap.css'
 ] , function(Header , Nav , Page){
 
     $(document).ready(function(){

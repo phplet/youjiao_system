@@ -25,12 +25,12 @@ define([
         ['Trident','AOL browser (AOL desktop)','Win XP','6','A']
     ];
 
-    var Table = function(){
+    var Table = function(params){
         this.templates = '<table cellpadding="0" cellspacing="0" border="0" class="data-table" id="data-table"></table>';
 
         this.widget = null;
 
-        this.init = function(params){
+        this.init = function(){
 
             this.inherited(arguments);
             this._initTable();
@@ -40,17 +40,8 @@ define([
 
         this._initTable = function(){
             this.widgetJQ = $('#data-table');
-            this.widget = $('#data-table').DataTable({
-                "data" : dataSet,
-                //"ordering" : false,
-                "columns": [
-                    { "title": "Engine" },
-                    { "title": "Browser" },
-                    { "title": "Platform" },
-                    { "title": "Version", "class": "center" },
-                    { "title": "Grade", "class": "center" }
-                ]
-            });
+
+            this.widget = $('#data-table').DataTable(params);
             this.widgetJQ.addClass('table table-bordered table-striped');
         };
 

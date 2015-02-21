@@ -29,9 +29,9 @@ define([
 
             this._initData();
 
-            console.log(this.domNode);
-
             $(this.domNode).selectpicker();
+
+            this._initEvent();
 
         };
 
@@ -44,6 +44,12 @@ define([
             }
             $(this.domNode).html(dropHTML);
         };
+
+        this._initEvent = function(){
+            $(this.domNode).on('change', function(e){
+                console.log('select changed : ' , $(this).val());
+            });
+        }
 
         //this._initDropDown = function(){
         //    console.log(this.options);
